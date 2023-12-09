@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
-
+import 'package:image_picker/image_picker.dart';
 import 'package:travel_app/widgets/textformfield.dart';
 
 class ScreenAdd extends StatefulWidget {
@@ -21,6 +23,8 @@ class _ScreenAddState extends State<ScreenAdd> {
   final _budget = TextEditingController();
   final _startingDate = TextEditingController();
   final _endingDate = TextEditingController();
+
+  File? selectedimage;
 
   dynamic customValidator(dynamic value) {
     if (value == null || value.isEmpty) {
@@ -56,7 +60,9 @@ class _ScreenAddState extends State<ScreenAdd> {
               children: [
                 const SizedBox(height: 10),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    fromgallery();
+                  },
                   child: Container(
                     height: screenheight * 0.3,
                     width: screenwidth * double.infinity,
@@ -65,26 +71,31 @@ class _ScreenAddState extends State<ScreenAdd> {
                       border:
                           Border.all(color: const Color(0xFF355952), width: 4),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'ADD COVER PHOTO',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Color(0xFF355952),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Icon(
-                          Icons.add_a_photo,
-                          color: Color(0xFF355952),
-                        )
-                      ],
-                    ),
+                    // child: const Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     Text(
+                    //       'ADD COVER PHOTO',
+                    //       style: TextStyle(
+                    //         fontWeight: FontWeight.bold,
+                    //         fontSize: 25,
+                    //         color: Color(0xFF355952),
+                    //       ),
+                    //     ),
+                    //     SizedBox(
+                    //       width: 20,
+                    //     ),
+                    //     Icon(
+                    //       Icons.add_a_photo,
+                    //       color: Color(0xFF355952),
+                    //     )
+                    //   ],
+                    // ),
+                    child: Image(
+                        image: selectedimage != null
+                            ? FileImage(selectedimage!)
+                            : AssetImage('assets/ongoing.jpg')
+                                as ImageProvider),
                   ),
                 ),
                 sizedbox,
@@ -237,10 +248,20 @@ class _ScreenAddState extends State<ScreenAdd> {
       addUpcomingTrip(_trip);
     }
 
-    _startingPoint.clear();
-    _destinationPoint.clear();
-    _budget.clear();
-    _startingDate.clear();
-    _endingDate.clear();
+    // _startingPoint.clear();
+    // _destinationPoint.clear();
+    // _budget.clear();
+    // _startingDate.clear();
+    // _endingDate.clear();
+  }
+
+  fromgallery() async {
+    print("Entering fromgallery function");
+    final returnedimage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      selectedimage = File(returnedimage!.path);
+    });
   }
 }
