@@ -94,7 +94,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                     child: Image(
                         image: selectedimage != null
                             ? FileImage(selectedimage!)
-                            : AssetImage('assets/ongoing.jpg')
+                            : const AssetImage('assets/ongoing.jpg')
                                 as ImageProvider),
                   ),
                 ),
@@ -234,6 +234,7 @@ class _ScreenAddState extends State<ScreenAdd> {
     }
 
     final _trip = TripModel(
+      image: selectedimage!.path,
       startingPoint: _sname,
       endingingPoint: _ename,
       budget: _budgets,
@@ -253,6 +254,12 @@ class _ScreenAddState extends State<ScreenAdd> {
     // _budget.clear();
     // _startingDate.clear();
     // _endingDate.clear();
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text(
+        'Trip Added Successfully',
+      ),
+      behavior: SnackBarBehavior.floating,
+    ));
   }
 
   fromgallery() async {

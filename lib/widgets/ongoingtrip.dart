@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class OngoingWidget extends StatelessWidget {
@@ -27,7 +29,8 @@ class OngoingWidget extends StatelessWidget {
               color: Color(0xFF355952),
             ),
             image: DecorationImage(
-              image: AssetImage(image),
+              image: FileImage(
+                  File(image)), // Use FileImage to load from file path
               fit: BoxFit.fill,
             ),
           ),

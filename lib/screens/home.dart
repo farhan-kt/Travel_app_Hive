@@ -56,6 +56,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                   ),
                   const SizedBox(height: 10),
                   Container(
+                    height: screenheight * 0.24,
+                    width: MediaQuery.of(context).size.width * 0.97,
                     child: ValueListenableBuilder(
                       valueListenable: ongoingTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
@@ -72,7 +74,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                                   child: OngoingWidget(
                                     date: data.startingDate,
                                     place: data.endingingPoint,
-                                    image: '',
+                                    image: data.image,
                                   ),
                                   onTap: () {
                                     Navigator.push(
@@ -100,8 +102,9 @@ class _ScreenHomeState extends State<ScreenHome> {
                                 color: Color(0xFF355952),
                               ),
                             ),
-                            child:
-                                Image(image: AssetImage('assets/no trip.png')),
+                            child: Image(
+                                image: AssetImage(
+                                    'assets/Animation - 1702115822228.json')),
                           );
                         }
                       },
@@ -114,6 +117,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                   ),
                   const SizedBox(height: 10),
                   Container(
+                    height: screenheight * 0.24,
+                    width: MediaQuery.of(context).size.width * 0.97,
                     child: ValueListenableBuilder(
                       valueListenable: upcomingTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
@@ -125,12 +130,12 @@ class _ScreenHomeState extends State<ScreenHome> {
                               final data = tripList[index];
                               return Container(
                                 height: screenheight * 0.24,
-                                width: MediaQuery.of(context).size.width * 0.4,
+                                width: MediaQuery.of(context).size.width * 0.97,
                                 child: InkWell(
                                   child: UpcomingWidget(
                                     date: data.startingDate,
                                     place: data.endingingPoint,
-                                    image: 'assets/upcoming.jpg',
+                                    image: data.image,
                                   ),
                                   onTap: () {
                                     Navigator.push(
@@ -149,7 +154,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                         } else {
                           return Container(
                             height: screenheight * 0.24,
-                            width: MediaQuery.of(context).size.width * 0.4,
+                            width: MediaQuery.of(context).size.width * 0.97,
                             decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8)),
