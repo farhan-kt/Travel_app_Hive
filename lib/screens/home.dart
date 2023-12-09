@@ -56,15 +56,13 @@ class _ScreenHomeState extends State<ScreenHome> {
                   ),
                   const SizedBox(height: 10),
                   Container(
-                    height: screenheight * 0.24,
-                    width: MediaQuery.of(context).size.width * 0.97,
                     child: ValueListenableBuilder(
                       valueListenable: ongoingTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
                           Widget? child) {
                         if (tripList.isNotEmpty) {
                           return ListView.builder(
-                            itemCount: tripList.length,
+                            itemCount: tripList.isNotEmpty ? 1 : 0,
                             itemBuilder: (ctx, index) {
                               final data = tripList[index];
                               return Container(
@@ -74,6 +72,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                                   child: OngoingWidget(
                                     date: data.startingDate,
                                     place: data.endingingPoint,
+                                    image: '',
                                   ),
                                   onTap: () {
                                     Navigator.push(
@@ -93,9 +92,16 @@ class _ScreenHomeState extends State<ScreenHome> {
                           return Container(
                             height: screenheight * 0.24,
                             width: MediaQuery.of(context).size.width * 0.97,
-                            child: Center(
-                              child: Text('NO ONGOING TRIP'),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
+                              border: Border.all(
+                                width: 2,
+                                color: Color(0xFF355952),
+                              ),
                             ),
+                            child:
+                                Image(image: AssetImage('assets/no trip.png')),
                           );
                         }
                       },
@@ -108,12 +114,11 @@ class _ScreenHomeState extends State<ScreenHome> {
                   ),
                   const SizedBox(height: 10),
                   Container(
-                      height: screenheight * 0.24,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: ValueListenableBuilder(
-                        valueListenable: upcomingTripsListNotifier,
-                        builder: (BuildContext ctx, List<TripModel> tripList,
-                            Widget? child) {
+                    child: ValueListenableBuilder(
+                      valueListenable: upcomingTripsListNotifier,
+                      builder: (BuildContext ctx, List<TripModel> tripList,
+                          Widget? child) {
+                        if (tripList.isNotEmpty) {
                           return ListView.builder(
                             itemCount: tripList.length,
                             itemBuilder: (ctx, index) {
@@ -125,6 +130,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                                   child: UpcomingWidget(
                                     date: data.startingDate,
                                     place: data.endingingPoint,
+                                    image: 'assets/upcoming.jpg',
                                   ),
                                   onTap: () {
                                     Navigator.push(
@@ -140,8 +146,25 @@ class _ScreenHomeState extends State<ScreenHome> {
                               );
                             },
                           );
-                        },
-                      )),
+                        } else {
+                          return Container(
+                            height: screenheight * 0.24,
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
+                              border: Border.all(
+                                width: 2,
+                                color: Color(0xFF355952),
+                              ),
+                            ),
+                            child: Image(
+                                image: AssetImage('assets/default_image.png')),
+                          );
+                        }
+                      },
+                    ),
+                  )
                 ],
               ),
             ),

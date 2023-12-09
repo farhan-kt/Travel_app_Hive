@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class OngoingWidget extends StatelessWidget {
   final String date;
   final String place;
+  final String image;
 
   const OngoingWidget({
     Key? key,
     required this.date,
     required this.place,
+    required this.image,
   }) : super(key: key);
 
   @override
@@ -24,10 +26,10 @@ class OngoingWidget extends StatelessWidget {
               width: 2,
               color: Color(0xFF355952),
             ),
-            // image: DecorationImage(
-            //   image: AssetImage(image),
-            //   fit: BoxFit.fill,
-            // ),
+            image: DecorationImage(
+              image: AssetImage(image),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
         Positioned(

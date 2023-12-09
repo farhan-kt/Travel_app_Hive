@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class UpcomingWidget extends StatelessWidget {
   final String date;
   final String place;
+  final String image;
 
   const UpcomingWidget({
     Key? key,
     required this.date,
     required this.place,
+    required this.image,
   }) : super(key: key);
 
   @override
@@ -20,10 +22,10 @@ class UpcomingWidget extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             border: Border.all(color: const Color(0xFF355952), width: 2),
-            // image: DecorationImage(
-            //   image: AssetImage(image),
-            //   fit: BoxFit.fill,
-            // ),
+            image: DecorationImage(
+              image: AssetImage(image),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
         Positioned(

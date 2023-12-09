@@ -221,7 +221,7 @@ class _ScreenAddState extends State<ScreenAdd> {
         _edate.isEmpty) {
       return;
     }
-    // print('$_sname $_ename  $_budgets  $_sdate  $_edate ');
+
     final _trip = TripModel(
       startingPoint: _sname,
       endingingPoint: _ename,
@@ -237,10 +237,10 @@ class _ScreenAddState extends State<ScreenAdd> {
       addUpcomingTrip(_trip);
     }
 
-    // _startingPoint.clear();
-    // _destinationPoint.clear();
-    // _budget.clear();
-    // _startingDate.clear();
-    // _endingDate.clear();
+    _startingPoint.clear();
+    _destinationPoint.clear();
+    _budget.clear();
+    _startingDate.clear();
+    _endingDate.clear();
   }
 }

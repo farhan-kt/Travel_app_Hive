@@ -63,9 +63,6 @@ class OngoingDetails extends StatelessWidget {
                 trailing: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    SizedBox(
-                      height: 9,
-                    ),
                     Text(
                       'Ending date',
                       style:
