@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
@@ -102,9 +104,15 @@ class _ScreenHomeState extends State<ScreenHome> {
                                 color: Color(0xFF355952),
                               ),
                             ),
-                            child: Image(
-                                image: AssetImage(
-                                    'assets/Animation - 1702115822228.json')),
+                            child: tripList.isNotEmpty
+                                ? Image.file(
+                                    File(tripList.first.image),
+                                  )
+                                : Container(
+                                    child: Image(
+                                        image: AssetImage(
+                                            'assets/Animation - 1702115822228.json')),
+                                  ),
                           );
                         }
                       },
