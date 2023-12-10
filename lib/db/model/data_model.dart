@@ -4,21 +4,24 @@ part 'data_model.g.dart';
 @HiveType(typeId: 1)
 class TripModel {
   @HiveField(0)
-  final String image;
+  int? id;
 
   @HiveField(1)
-  final String startingPoint;
+  final String image;
 
   @HiveField(2)
-  final String endingingPoint;
+  final String startingPoint;
 
   @HiveField(3)
-  final String budget;
+  final String endingingPoint;
 
   @HiveField(4)
-  final String startingDate;
+  final String budget;
 
   @HiveField(5)
+  final String startingDate;
+
+  @HiveField(6)
   final String endingingDate;
 
   TripModel(
@@ -27,5 +30,6 @@ class TripModel {
       required this.endingingPoint,
       required this.budget,
       required this.startingDate,
-      required this.endingingDate});
+      required this.endingingDate,
+      this.id});
 }

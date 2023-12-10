@@ -7,7 +7,8 @@ ValueNotifier<List<TripModel>> upcomingTripsListNotifier = ValueNotifier([]);
 
 Future<void> addOngoingTrip(TripModel value) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-  await tripDB.add(value);
+  final _onId = await tripDB.add(value);
+  value.id = _onId;
   ongoingTripsListNotifier.value.add(value);
 
   ongoingTripsListNotifier.notifyListeners();
@@ -15,7 +16,9 @@ Future<void> addOngoingTrip(TripModel value) async {
 
 Future<void> addUpcomingTrip(TripModel value) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-  await tripDB.add(value);
+  final _upId = await tripDB.add(value);
+  value.id = _upId;
+
   upcomingTripsListNotifier.value.add(value);
 
   upcomingTripsListNotifier.notifyListeners();
@@ -39,4 +42,9 @@ Future<void> getAllTrip() async {
 
   ongoingTripsListNotifier.notifyListeners();
   upcomingTripsListNotifier.notifyListeners();
+}
+
+Future<void> deleteStudent(int id) async {
+  final tripDB = await Hive.openBox<TripModel>('trip_db');
+  tripDB.delete(id);
 }

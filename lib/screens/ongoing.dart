@@ -3,17 +3,24 @@ import 'package:travel_app/db/model/data_model.dart';
 import 'package:travel_app/widgets/edit.dart';
 import 'package:travel_app/widgets/ongoingexp.dart';
 
-class OngoingDetails extends StatelessWidget {
-  const OngoingDetails({super.key, required TripModel trip});
+class OngoingDetails extends StatefulWidget {
+  final TripModel trip;
 
+  const OngoingDetails({Key? key, required this.trip}) : super(key: key);
+
+  @override
+  State<OngoingDetails> createState() => _OngoingDetailsState();
+}
+
+class _OngoingDetailsState extends State<OngoingDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF355952),
         centerTitle: true,
-        title: const Text(
-          'Ongoing Trip Name',
+        title: Text(
+          widget.trip.endingingPoint,
           style: TextStyle(color: Color(0xFFF3CD53)),
         ),
         actions: [
@@ -42,35 +49,39 @@ class OngoingDetails extends StatelessWidget {
                   width: 4,
                   color: const Color(0xFF355952),
                 ),
-                image: const DecorationImage(
-                    image: AssetImage('assets/ongoing.jpg'), fit: BoxFit.fill),
+                image: DecorationImage(
+                    image: AssetImage(widget.trip.budget), fit: BoxFit.fill),
               ),
               height: MediaQuery.of(context).size.height * 0.3,
               width: MediaQuery.of(context).size.width * double.infinity,
             ),
             const SizedBox(height: 30),
             Container(
-              decoration: const BoxDecoration(
-                  color: Color(0xFF355952),
-                  borderRadius: BorderRadius.all(Radius.circular(8))),
-              child: const ListTile(
-                textColor: Color(0xFFF3CD53),
-                title: Text('Starting date',
-                    style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.w800)),
-                subtitle: Text("29/11/2023",
-                    style: TextStyle(fontSize: 14, color: Colors.white)),
+              decoration: BoxDecoration(
+                color: const Color(0xFF355952),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+              ),
+              child: ListTile(
+                textColor: const Color(0xFFF3CD53),
+                title: const Text(
+                  'Starting date',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
+                ),
+                subtitle: Text(
+                  widget.trip.startingDate,
+                  style: const TextStyle(fontSize: 14, color: Colors.white),
+                ),
                 trailing: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
+                    const Text(
                       'Ending date',
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
                     ),
                     Text(
-                      '23/12/2023',
-                      style: TextStyle(fontSize: 14, color: Colors.white),
+                      widget.trip.endingingDate,
+                      style: const TextStyle(fontSize: 14, color: Colors.white),
                     ),
                   ],
                 ),
@@ -80,29 +91,32 @@ class OngoingDetails extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width * 0.8,
               height: MediaQuery.of(context).size.height * 0.1,
-              decoration: const BoxDecoration(
-                  color: Color(0xFF355952),
-                  borderRadius: BorderRadius.all(Radius.circular(8))),
-              child: const Padding(
+              decoration: BoxDecoration(
+                color: const Color(0xFF355952),
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+              ),
+              child: Padding(
                 padding: EdgeInsets.only(left: 20),
                 child: Row(
                   children: [
                     Text(
                       "TRIP BUDGET :",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                      ),
                     ),
                     SizedBox(
                       width: 10,
                     ),
                     Text(
-                      '₹ 2000',
+                      '₹ ${widget.trip.budget}',
                       style: TextStyle(
-                          color: Color(0xFFF3CD53),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18),
+                        color: Color(0xFFF3CD53),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                      ),
                     ),
                   ],
                 ),

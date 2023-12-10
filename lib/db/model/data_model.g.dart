@@ -17,30 +17,33 @@ class TripModelAdapter extends TypeAdapter<TripModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return TripModel(
-      image: fields[0] as String,
-      startingPoint: fields[1] as String,
-      endingingPoint: fields[2] as String,
-      budget: fields[3] as String,
-      startingDate: fields[4] as String,
-      endingingDate: fields[5] as String,
+      image: fields[1] as String,
+      startingPoint: fields[2] as String,
+      endingingPoint: fields[3] as String,
+      budget: fields[4] as String,
+      startingDate: fields[5] as String,
+      endingingDate: fields[6] as String,
+      id: fields[0] as int?,
     );
   }
 
   @override
   void write(BinaryWriter writer, TripModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
-      ..write(obj.image)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.startingPoint)
+      ..write(obj.image)
       ..writeByte(2)
-      ..write(obj.endingingPoint)
+      ..write(obj.startingPoint)
       ..writeByte(3)
-      ..write(obj.budget)
+      ..write(obj.endingingPoint)
       ..writeByte(4)
-      ..write(obj.startingDate)
+      ..write(obj.budget)
       ..writeByte(5)
+      ..write(obj.startingDate)
+      ..writeByte(6)
       ..write(obj.endingingDate);
   }
 
