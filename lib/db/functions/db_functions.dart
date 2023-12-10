@@ -1,17 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:travel_app/db/model/data_model.dart';
 
 ValueNotifier<List<TripModel>> ongoingTripsListNotifier = ValueNotifier([]);
 ValueNotifier<List<TripModel>> upcomingTripsListNotifier = ValueNotifier([]);
 
-void addOngoingTrip(TripModel value) {
+Future<void> addOngoingTrip(TripModel value) async {
+  final tripDB = await Hive.openBox<TripModel>('trip_db');
+  await tripDB.add(value);
   ongoingTripsListNotifier.value.add(value);
+
   ongoingTripsListNotifier.notifyListeners();
-  print(value.toString());
 }
 
-void addUpcomingTrip(TripModel value) {
+Future<void> addUpcomingTrip(TripModel value) async {
+  final tripDB = await Hive.openBox<TripModel>('trip_db');
+  await tripDB.add(value);
   upcomingTripsListNotifier.value.add(value);
+
   upcomingTripsListNotifier.notifyListeners();
-  print(value.toString());
+}
+
+Future<void> getAllTrip() async {
+  final tripDB = await Hive.openBox<TripModel>('trip_db');
+
+  final allTrips = tripDB.values.toList();
+  final now = DateTime.now();
+
+  ongoingTripsListNotifier.value = allTrips.where((trip) {
+    final tripStartDate = DateTime.parse(trip.startingDate);
+    return tripStartDate.isBefore(now);
+  }).toList();
+
+  upcomingTripsListNotifier.value = allTrips.where((trip) {
+    final tripStartDate = DateTime.parse(trip.startingDate);
+    return tripStartDate.isAfter(now);
+  }).toList();
+
+  ongoingTripsListNotifier.notifyListeners();
+  upcomingTripsListNotifier.notifyListeners();
 }

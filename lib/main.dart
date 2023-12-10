@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:travel_app/db/model/data_model.dart';
 import 'package:travel_app/screens/splash.dart';
 
 const SAVE_KEY = 'userLoggedin';
 
-void main() {
+Future<void> main() async {
+  await Hive.initFlutter();
+  if (!Hive.isAdapterRegistered(TripModelAdapter().typeId)) {
+    Hive.registerAdapter(TripModelAdapter());
+  }
   runApp(MyApp());
 }
 

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
 import 'package:travel_app/screens/ongoing.dart';
@@ -19,6 +20,8 @@ class ScreenHome extends StatefulWidget {
 class _ScreenHomeState extends State<ScreenHome> {
   @override
   Widget build(BuildContext context) {
+    getAllTrip();
+
     double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
       drawer: const NavBar(),
@@ -109,9 +112,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                                     File(tripList.first.image),
                                   )
                                 : Container(
-                                    child: Image(
-                                        image: AssetImage(
-                                            'assets/Animation - 1702115822228.json')),
+                                    child: Lottie.asset(
+                                        'assets/Animation - 1702115822228.json'),
                                   ),
                           );
                         }
@@ -163,16 +165,16 @@ class _ScreenHomeState extends State<ScreenHome> {
                           return Container(
                             height: screenheight * 0.24,
                             width: MediaQuery.of(context).size.width * 0.97,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
-                              border: Border.all(
-                                width: 2,
-                                color: Color(0xFF355952),
-                              ),
-                            ),
-                            child: Image(
-                                image: AssetImage('assets/default_image.png')),
+                            // decoration: BoxDecoration(
+                            //   borderRadius:
+                            //       BorderRadius.all(Radius.circular(8)),
+                            //   border: Border.all(
+                            //     width: 2,
+                            //     color: Color(0xFF355952),
+                            //   ),
+                            // ),
+                            child: Lottie.asset(
+                                'assets/Animation - 1702115822228.json'),
                           );
                         }
                       },
