@@ -6,10 +6,13 @@ import 'package:travel_app/screens/splash.dart';
 const SAVE_KEY = 'userLoggedin';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+
   if (!Hive.isAdapterRegistered(TripModelAdapter().typeId)) {
     Hive.registerAdapter(TripModelAdapter());
   }
+
   runApp(MyApp());
 }
 

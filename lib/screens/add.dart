@@ -139,6 +139,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                         lastDate: DateTime(2075));
                     if (Pickeddate != null) {
                       setState(() {
+                        print('Selected Date: ${Pickeddate}');
                         _startingDate.text =
                             DateFormat('dd-MM-yyyy').format(Pickeddate);
                       });

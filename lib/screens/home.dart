@@ -21,7 +21,6 @@ class _ScreenHomeState extends State<ScreenHome> {
   @override
   Widget build(BuildContext context) {
     getAllTrip();
-
     double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
       drawer: const NavBar(),
@@ -61,12 +60,13 @@ class _ScreenHomeState extends State<ScreenHome> {
                   ),
                   const SizedBox(height: 10),
                   Container(
-                    height: screenheight * 0.24,
+                    height: screenheight * 0.26,
                     width: MediaQuery.of(context).size.width * 0.97,
                     child: ValueListenableBuilder(
                       valueListenable: ongoingTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
                           Widget? child) {
+                        print('Build with ${tripList.length}');
                         if (tripList.isNotEmpty) {
                           return ListView.builder(
                             itemCount: tripList.isNotEmpty ? 1 : 0,
@@ -97,7 +97,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                           );
                         } else {
                           return Container(
-                            height: screenheight * 0.24,
+                            height: screenheight * 0.6,
                             width: MediaQuery.of(context).size.width * 0.97,
                             decoration: BoxDecoration(
                               borderRadius:
@@ -110,11 +110,11 @@ class _ScreenHomeState extends State<ScreenHome> {
                             child: tripList.isNotEmpty
                                 ? Image.file(
                                     File(tripList.first.image),
+                                    fit: BoxFit.cover,
                                   )
-                                : Container(
-                                    child: Lottie.asset(
-                                        'assets/Animation - 1702115822228.json'),
-                                  ),
+                                : Lottie.asset(
+                                    'assets/Animation - 1702115822228.json',
+                                    fit: BoxFit.fill),
                           );
                         }
                       },
@@ -127,12 +127,13 @@ class _ScreenHomeState extends State<ScreenHome> {
                   ),
                   const SizedBox(height: 10),
                   Container(
-                    height: screenheight * 0.24,
+                    height: screenheight * 0.26,
                     width: MediaQuery.of(context).size.width * 0.97,
                     child: ValueListenableBuilder(
                       valueListenable: upcomingTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
                           Widget? child) {
+                        print('Build with ${tripList.length}');
                         if (tripList.isNotEmpty) {
                           return ListView.builder(
                             itemCount: tripList.length,
@@ -165,21 +166,22 @@ class _ScreenHomeState extends State<ScreenHome> {
                           return Container(
                             height: screenheight * 0.24,
                             width: MediaQuery.of(context).size.width * 0.97,
-                            // decoration: BoxDecoration(
-                            //   borderRadius:
-                            //       BorderRadius.all(Radius.circular(8)),
-                            //   border: Border.all(
-                            //     width: 2,
-                            //     color: Color(0xFF355952),
-                            //   ),
-                            // ),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
+                              border: Border.all(
+                                width: 2,
+                                color: Color(0xFF355952),
+                              ),
+                            ),
                             child: Lottie.asset(
-                                'assets/Animation - 1702115822228.json'),
+                                'assets/Animation - 1702115822228.json',
+                                fit: BoxFit.fill),
                           );
                         }
                       },
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

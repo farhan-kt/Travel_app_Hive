@@ -26,6 +26,7 @@ class _DropDownState extends State<DropDown> {
             });
           },
           decoration: InputDecoration(
+            hintText: 'Category',
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.white),
