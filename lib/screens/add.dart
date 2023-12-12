@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
 import 'package:image_picker/image_picker.dart';
@@ -68,34 +69,22 @@ class _ScreenAddState extends State<ScreenAdd> {
                     width: screenwidth * double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
-                      border:
-                          Border.all(color: const Color(0xFF355952), width: 4),
+                      border: Border.all(color: Colors.grey, width: 3),
+                      image: selectedimage != null
+                          ? DecorationImage(
+                              image: FileImage(selectedimage!),
+                              fit: BoxFit.fill,
+                            )
+                          : null,
                     ),
-                    // child: const Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     Text(
-                    //       'ADD COVER PHOTO',
-                    //       style: TextStyle(
-                    //         fontWeight: FontWeight.bold,
-                    //         fontSize: 25,
-                    //         color: Color(0xFF355952),
-                    //       ),
-                    //     ),
-                    //     SizedBox(
-                    //       width: 20,
-                    //     ),
-                    //     Icon(
-                    //       Icons.add_a_photo,
-                    //       color: Color(0xFF355952),
-                    //     )
-                    //   ],
-                    // ),
-                    child: Image(
-                        image: selectedimage != null
-                            ? FileImage(selectedimage!)
-                            : const AssetImage('assets/ongoing.jpg')
-                                as ImageProvider),
+                    child: selectedimage == null
+                        ? Center(
+                            child: Lottie.asset(
+                              'assets/Animation - 1702364563832.json',
+                              fit: BoxFit.fill,
+                            ),
+                          )
+                        : null,
                   ),
                 ),
                 sizedbox,

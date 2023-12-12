@@ -21,6 +21,7 @@ class _ScreenHomeState extends State<ScreenHome> {
   @override
   Widget build(BuildContext context) {
     getAllTrip();
+
     double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
       drawer: const NavBar(),

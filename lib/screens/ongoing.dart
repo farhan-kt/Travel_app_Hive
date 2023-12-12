@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:travel_app/db/model/data_model.dart';
 import 'package:travel_app/widgets/edit.dart';
@@ -50,7 +52,9 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                   color: const Color(0xFF355952),
                 ),
                 image: DecorationImage(
-                    image: AssetImage(widget.trip.image), fit: BoxFit.fill),
+                  image: FileImage(File(widget.trip.image)),
+                  fit: BoxFit.fill,
+                ),
               ),
               height: MediaQuery.of(context).size.height * 0.3,
               width: MediaQuery.of(context).size.width * double.infinity,

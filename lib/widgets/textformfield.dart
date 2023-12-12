@@ -45,7 +45,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         labelText: widget.labelText,
         labelStyle: const TextStyle(color: Color(0xFF355952)),
         enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFF355952)),
+          borderSide: BorderSide(color: Colors.grey),
         ),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xFF355952)),
