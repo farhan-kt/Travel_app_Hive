@@ -61,6 +61,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
             ),
             const SizedBox(height: 30),
             Container(
+              width: MediaQuery.of(context).size.width * 0.9,
               decoration: BoxDecoration(
                 color: const Color(0xFF355952),
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -93,37 +94,37 @@ class _OngoingDetailsState extends State<OngoingDetails> {
             ),
             const SizedBox(height: 30),
             Container(
-              width: MediaQuery.of(context).size.width * 1,
+              // width: MediaQuery.of(context).size.width * 1,
+              width: MediaQuery.of(context).size.width * 0.9,
+
               height: MediaQuery.of(context).size.height * 0.09,
               decoration: BoxDecoration(
                 color: const Color(0xFF355952),
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
-              child: Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Row(
-                  children: [
-                    Text(
-                      "TRIP BUDGET :",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                      ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "TRIP BUDGET :",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 18,
                     ),
-                    SizedBox(
-                      width: 10,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    '₹ ${widget.trip.budget}',
+                    style: TextStyle(
+                      color: Color(0xFFF3CD53),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 18,
                     ),
-                    Text(
-                      '₹ ${widget.trip.budget}',
-                      style: TextStyle(
-                        color: Color(0xFFF3CD53),
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 20),

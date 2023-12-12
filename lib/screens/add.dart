@@ -80,7 +80,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                     child: selectedimage == null
                         ? Center(
                             child: Lottie.asset(
-                              'assets/Animation - 1702364563832.json',
+                              'assets/Animation - addimage.json',
                               fit: BoxFit.fill,
                             ),
                           )

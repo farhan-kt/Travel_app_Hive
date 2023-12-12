@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_app/main.dart';
 import 'package:travel_app/screens/bottombar.dart';
+import 'package:lottie/lottie.dart';
 
 class ScreenLogin extends StatefulWidget {
   const ScreenLogin({Key? key}) : super(key: key);
@@ -30,8 +31,8 @@ class _ScreenLoginState extends State<ScreenLogin> {
               SizedBox(
                 height: screenHeight * 0.4,
                 width: double.infinity,
-                child: Image.asset(
-                  'assets/login.jpg',
+                child: Lottie.asset(
+                  'assets/Animation - 1702389671540.json',
                   fit: BoxFit.fill,
                   width: screenWidth * 1,
                   height: screenHeight * 0.6,
@@ -126,10 +127,6 @@ class _ScreenLoginState extends State<ScreenLogin> {
                               ),
                               onPressed: () {
                                 checkLogin(context);
-                                // Navigator.pushReplacement(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) => ScreenBtm()));
                               },
                               child: Padding(
                                 padding: EdgeInsets.symmetric(

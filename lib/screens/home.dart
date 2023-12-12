@@ -114,7 +114,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                                     fit: BoxFit.cover,
                                   )
                                 : Lottie.asset(
-                                    'assets/Animation - 1702115822228.json',
+                                    'assets/Animation - 1702390293591.json',
                                     fit: BoxFit.fill),
                           );
                         }
