@@ -45,7 +45,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         labelText: widget.labelText,
         labelStyle: const TextStyle(color: Color(0xFF355952)),
         enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
+          borderSide: BorderSide(color: Color(0xFF355952)),
         ),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xFF355952)),
@@ -58,7 +58,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         suffixIcon: Icon(
           widget.suffixIcon,
-          color: Colors.black,
         ),
       ),
     );

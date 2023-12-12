@@ -105,7 +105,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                                   BorderRadius.all(Radius.circular(8)),
                               border: Border.all(
                                 width: 2,
-                                color: Color(0xFF355952),
+                                color: Colors.grey,
                               ),
                             ),
                             child: tripList.isNotEmpty
@@ -172,7 +172,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                                   BorderRadius.all(Radius.circular(8)),
                               border: Border.all(
                                 width: 2,
-                                color: Color(0xFF355952),
+                                color: Colors.grey,
                               ),
                             ),
                             child: Lottie.asset(

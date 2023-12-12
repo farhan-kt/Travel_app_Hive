@@ -49,7 +49,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
                 border: Border.all(
                   width: 4,
-                  color: const Color(0xFF355952),
+                  color: Colors.grey,
                 ),
                 image: DecorationImage(
                   image: FileImage(File(widget.trip.image)),
@@ -93,8 +93,8 @@ class _OngoingDetailsState extends State<OngoingDetails> {
             ),
             const SizedBox(height: 30),
             Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.1,
+              width: MediaQuery.of(context).size.width * 1,
+              height: MediaQuery.of(context).size.height * 0.09,
               decoration: BoxDecoration(
                 color: const Color(0xFF355952),
                 borderRadius: BorderRadius.all(Radius.circular(8)),

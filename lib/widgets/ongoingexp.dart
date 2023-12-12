@@ -9,9 +9,9 @@ class OngoingExp extends StatelessWidget {
     SizedBox sizedbox = const SizedBox(height: 20);
     return Container(
       height: MediaQuery.of(context).size.height * 0.2,
-      width: MediaQuery.of(context).size.width * 0.5,
+      width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xFFF3CD53), width: 4),
+        border: Border.all(color: Colors.grey, width: 4),
         color: const Color(0xFF355952),
         borderRadius: const BorderRadius.all(Radius.circular(8)),
       ),

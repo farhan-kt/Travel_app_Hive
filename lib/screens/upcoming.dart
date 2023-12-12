@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:travel_app/db/model/data_model.dart';
 import 'package:travel_app/screens/bottombar.dart';
@@ -14,9 +16,6 @@ class UpcomingDetails extends StatefulWidget {
 class _UpcomingDetailsState extends State<UpcomingDetails> {
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF355952),
@@ -52,17 +51,17 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
               Padding(
                 padding: const EdgeInsets.only(top: 30),
                 child: Container(
-                  height: screenHeight * 0.4,
-                  width: screenWidth * 0.9,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                     border:
                         Border.all(color: const Color(0xFFF3CD53), width: 4),
                     image: DecorationImage(
-                      image: AssetImage(widget.trip.image),
+                      image: FileImage(File(widget.trip.image)),
                       fit: BoxFit.fill,
                     ),
                   ),
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  width: MediaQuery.of(context).size.width * double.infinity,
                 ),
               ),
               const SizedBox(height: 30),
