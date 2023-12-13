@@ -104,7 +104,7 @@ class UpcomingWidget extends StatelessWidget {
           child: Text(
             place,
             style: const TextStyle(
-              color: Color.fromARGB(255, 36, 5, 5),
+              color: Color.fromARGB(255, 223, 19, 19),
               fontWeight: FontWeight.w900,
               fontSize: 14,
             ),
@@ -117,7 +117,7 @@ class UpcomingWidget extends StatelessWidget {
             children: [
               const Icon(
                 Icons.calendar_month_sharp,
-                color: Color.fromARGB(255, 153, 52, 52),
+                color: Color.fromARGB(255, 173, 37, 37),
                 size: 12,
               ),
               const SizedBox(width: 4),
@@ -125,7 +125,7 @@ class UpcomingWidget extends StatelessWidget {
                 date,
                 style: const TextStyle(
                   fontWeight: FontWeight.w900,
-                  color: Color.fromARGB(255, 174, 39, 39),
+                  color: Color.fromARGB(255, 173, 37, 37),
                   fontSize: 12,
                 ),
               ),

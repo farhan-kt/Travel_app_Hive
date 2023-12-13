@@ -108,6 +108,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
                         "TRIP BUDGET :",

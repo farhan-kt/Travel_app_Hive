@@ -41,7 +41,7 @@ class OngoingWidget extends StatelessWidget {
           child: Text(
             place,
             style: const TextStyle(
-              color: Color.fromARGB(255, 218, 77, 77),
+              color: Color.fromARGB(255, 223, 19, 19),
               fontWeight: FontWeight.w900,
               fontSize: 18,
             ),
@@ -54,7 +54,7 @@ class OngoingWidget extends StatelessWidget {
             children: [
               const Icon(
                 Icons.calendar_month_sharp,
-                color: Color.fromARGB(255, 246, 67, 67),
+                color: Color.fromARGB(255, 173, 37, 37),
                 size: 15,
               ),
               const SizedBox(width: 4),
@@ -62,7 +62,7 @@ class OngoingWidget extends StatelessWidget {
                 date,
                 style: const TextStyle(
                   fontWeight: FontWeight.w900,
-                  color: Color.fromARGB(255, 152, 32, 32),
+                  color: Color.fromARGB(255, 173, 37, 37),
                   fontSize: 15,
                 ),
               ),

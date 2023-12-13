@@ -43,7 +43,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                 child: Container(
                   height: screenHeight * 0.6,
                   width: double.infinity,
-                  color: Color(0xFF355952),
+                  color: const Color(0xFF355952),
                   child: Padding(
                     padding: const EdgeInsets.all(50),
                     child: SingleChildScrollView(
@@ -132,7 +132,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                 padding: EdgeInsets.symmetric(
                                     vertical: screenHeight * 0.03,
                                     horizontal: screenWidth * 0.05),
-                                child: Text(
+                                child: const Text(
                                   'LOGIN',
                                   style: TextStyle(
                                     color: Color(0xFF355952),
@@ -163,12 +163,12 @@ class _ScreenLoginState extends State<ScreenLogin> {
       if (_username == _password) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => ScreenBtm()),
+          MaterialPageRoute(builder: (context) => const ScreenBtm()),
         );
         final _sharedPrefs = await SharedPreferences.getInstance();
         await _sharedPrefs.setBool(SAVE_KEY, true);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
             'Username and password do not match',
             style: TextStyle(color: Color(0xFF355952)),

@@ -14,8 +14,6 @@ class _ScreenExpState extends State<ScreenExp> {
   Widget build(BuildContext context) {
     const sizedbox = SizedBox(height: 10);
     return Scaffold(
-      // backgroundColor: const Color.fromARGB(255, 170, 203, 120),
-
       appBar: AppBar(
           backgroundColor: const Color(0xFF355952),
           centerTitle: true,

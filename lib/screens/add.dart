@@ -239,11 +239,15 @@ class _ScreenAddState extends State<ScreenAdd> {
       addUpcomingTrip(_trip);
     }
 
-    // _startingPoint.clear();
-    // _destinationPoint.clear();
-    // _budget.clear();
-    // _startingDate.clear();
-    // _endingDate.clear();
+    _startingPoint.clear();
+    _destinationPoint.clear();
+    _budget.clear();
+    _startingDate.clear();
+    _endingDate.clear();
+
+    setState(() {
+      selectedimage = null;
+    });
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text(
         'Trip Added Successfully',

@@ -102,7 +102,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                             width: MediaQuery.of(context).size.width * 0.97,
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
+                                  const BorderRadius.all(Radius.circular(8)),
                               border: Border.all(
                                 width: 2,
                                 color: Colors.grey,
@@ -136,8 +136,10 @@ class _ScreenHomeState extends State<ScreenHome> {
                           Widget? child) {
                         print('Build with ${tripList.length}');
                         if (tripList.isNotEmpty) {
-                          return ListView.builder(
+                          return ListView.separated(
                             itemCount: tripList.length,
+                            separatorBuilder: (context, index) =>
+                                SizedBox(height: 8),
                             itemBuilder: (ctx, index) {
                               final data = tripList[index];
                               return Container(
@@ -169,14 +171,14 @@ class _ScreenHomeState extends State<ScreenHome> {
                             width: MediaQuery.of(context).size.width * 0.97,
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
+                                  const BorderRadius.all(Radius.circular(8)),
                               border: Border.all(
                                 width: 2,
                                 color: Colors.grey,
                               ),
                             ),
                             child: Lottie.asset(
-                                'assets/Animation - 1702115822228.json',
+                                'assets/Animation - 1702390293591.json',
                                 fit: BoxFit.fill),
                           );
                         }

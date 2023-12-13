@@ -23,7 +23,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
         centerTitle: true,
         title: Text(
           widget.trip.endingingPoint,
-          style: TextStyle(color: Color(0xFFF3CD53)),
+          style: const TextStyle(color: Color(0xFFF3CD53)),
         ),
         actions: [
           IconButton(
@@ -62,9 +62,9 @@ class _OngoingDetailsState extends State<OngoingDetails> {
             const SizedBox(height: 30),
             Container(
               width: MediaQuery.of(context).size.width * 0.9,
-              decoration: BoxDecoration(
-                color: const Color(0xFF355952),
-                borderRadius: const BorderRadius.all(Radius.circular(8)),
+              decoration: const BoxDecoration(
+                color: Color(0xFF355952),
+                borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
               child: ListTile(
                 textColor: const Color(0xFFF3CD53),
@@ -98,14 +98,14 @@ class _OngoingDetailsState extends State<OngoingDetails> {
               width: MediaQuery.of(context).size.width * 0.9,
 
               height: MediaQuery.of(context).size.height * 0.09,
-              decoration: BoxDecoration(
-                color: const Color(0xFF355952),
+              decoration: const BoxDecoration(
+                color: Color(0xFF355952),
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "TRIP BUDGET :",
                     style: TextStyle(
                       color: Colors.white,
@@ -113,12 +113,12 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                       fontSize: 18,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
                     '₹ ${widget.trip.budget}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Color(0xFFF3CD53),
                       fontWeight: FontWeight.w700,
                       fontSize: 18,
