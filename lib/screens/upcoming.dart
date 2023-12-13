@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
 import 'package:travel_app/screens/bottombar.dart';
 
@@ -37,7 +38,14 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              if (widget.trip.id != null) {
+                deleteTrip(widget.trip.id!);
+                Navigator.pop(context);
+              } else {
+                print('Trip id is null');
+              }
+            },
             icon: const Icon(Icons.delete),
             color: Colors.red,
           ),

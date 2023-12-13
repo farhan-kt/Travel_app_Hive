@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:travel_app/db/model/data_model.dart';
 
 ValueNotifier<List<TripModel>> ongoingTripsListNotifier = ValueNotifier([]);
 ValueNotifier<List<TripModel>> upcomingTripsListNotifier = ValueNotifier([]);
 
 Future<void> addOngoingTrip(TripModel value) async {
-  print('Before ongoing Box Opening');
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-  print('After ongoing Box Opening');
+
   final _onId = await tripDB.add(value);
   value.id = _onId;
   ongoingTripsListNotifier.value.add(value);
@@ -17,9 +17,8 @@ Future<void> addOngoingTrip(TripModel value) async {
 }
 
 Future<void> addUpcomingTrip(TripModel value) async {
-  print('Before upgoing Box Opening');
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-  print('After upgoing Box Opening');
+
   final _upId = await tripDB.add(value);
   value.id = _upId;
 
@@ -30,27 +29,32 @@ Future<void> addUpcomingTrip(TripModel value) async {
 
 Future<void> getAllTrip() async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
+  ongoingTripsListNotifier.value.clear();
+  upcomingTripsListNotifier.value.clear();
 
-  final allTrips = tripDB.values.toList();
-  final now = DateTime.now();
+  final List<TripModel> allTrips = tripDB.values.toList();
 
-  ongoingTripsListNotifier.value = allTrips.where((trip) {
-    final tripStartDate = DateTime.parse(trip.startingDate);
-    return tripStartDate.isBefore(now);
-  }).toList();
+  for (TripModel trip in allTrips) {
+    if (isTripOngoing(trip)) {
+      ongoingTripsListNotifier.value.add(trip);
+    } else {
+      upcomingTripsListNotifier.value.add(trip);
+    }
+  }
+
   ongoingTripsListNotifier.notifyListeners();
-
-  upcomingTripsListNotifier.value = allTrips.where((trip) {
-    final tripStartDate = DateTime.parse(trip.startingDate);
-    return tripStartDate.isAfter(now);
-  }).toList();
-
   upcomingTripsListNotifier.notifyListeners();
 }
 
-Future<void> deleteStudent(int id) async {
+bool isTripOngoing(TripModel trip) {
+  DateTime startingDateTime = DateFormat('dd-MM-yyyy').parse(trip.startingDate);
+  return startingDateTime.isBefore(DateTime.now());
+}
+
+Future<void> deleteTrip(int id) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
   tripDB.delete(id);
+  getAllTrip();
 }
 
 // import 'dart:async';
