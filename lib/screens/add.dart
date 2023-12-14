@@ -7,6 +7,8 @@ import 'package:lottie/lottie.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:travel_app/screens/bottombar.dart';
+
 import 'package:travel_app/widgets/textformfield.dart';
 
 class ScreenAdd extends StatefulWidget {
@@ -112,67 +114,76 @@ class _ScreenAddState extends State<ScreenAdd> {
                   maxLength: 8,
                 ),
                 sizedbox,
-                CustomTextFormField(
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[0-9/]')),
-                  ],
-                  labelText: 'Enter starting Date',
-                  suffixIcon: Icons.calendar_today_rounded,
-                  controller: _startingDate,
-                  validator: (value) => customValidator(value),
-                  onTap: () async {
-                    DateTime? Pickeddate = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime(2075));
-                    if (Pickeddate != null) {
-                      setState(() {
-                        print('Selected Date: ${Pickeddate}');
-                        _startingDate.text =
-                            DateFormat('dd-MM-yyyy').format(Pickeddate);
-                      });
-                    }
-                  },
-                  maxLength: 10,
-                ),
-                sizedbox,
-                CustomTextFormField(
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[0-9/]')),
-                  ],
-                  labelText: 'Enter ending Date',
-                  suffixIcon: Icons.calendar_today_rounded,
-                  controller: _endingDate,
-                  validator: (value) => customValidator(value),
-                  onTap: () async {
-                    DateTime? pickedDate = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2075),
-                    );
-                    if (pickedDate != null) {
-                      if (_startingDate.text.isNotEmpty) {
-                        DateTime startingDateTime =
-                            DateFormat('dd-MM-yyyy').parse(_startingDate.text);
-                        if (pickedDate.isAfter(startingDateTime)) {
-                          setState(() {
-                            _endingDate.text =
-                                DateFormat('dd-MM-yyyy').format(pickedDate);
-                          });
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                  'Ending date must be after starting date'),
-                            ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextFormField(
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9/]')),
+                        ],
+                        labelText: 'Enter starting Date',
+                        suffixIcon: Icons.calendar_today_rounded,
+                        controller: _startingDate,
+                        validator: (value) => customValidator(value),
+                        onTap: () async {
+                          DateTime? Pickeddate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2000),
+                              lastDate: DateTime(2075));
+                          if (Pickeddate != null) {
+                            setState(() {
+                              print('Selected Date: ${Pickeddate}');
+                              _startingDate.text =
+                                  DateFormat('dd-MM-yyyy').format(Pickeddate);
+                            });
+                          }
+                        },
+                        maxLength: 10,
+                      ),
+                    ),
+                    SizedBox(width: 15),
+                    Expanded(
+                      child: CustomTextFormField(
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9/]')),
+                        ],
+                        labelText: 'Enter ending Date',
+                        suffixIcon: Icons.calendar_today_rounded,
+                        controller: _endingDate,
+                        validator: (value) => customValidator(value),
+                        onTap: () async {
+                          DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2075),
                           );
-                        }
-                      }
-                    }
-                  },
-                  maxLength: 10,
+                          if (pickedDate != null) {
+                            if (_startingDate.text.isNotEmpty) {
+                              DateTime startingDateTime =
+                                  DateFormat('dd-MM-yyyy')
+                                      .parse(_startingDate.text);
+                              if (pickedDate.isAfter(startingDateTime)) {
+                                setState(() {
+                                  _endingDate.text = DateFormat('dd-MM-yyyy')
+                                      .format(pickedDate);
+                                });
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                        'Ending date must be after starting date'),
+                                  ),
+                                );
+                              }
+                            }
+                          }
+                        },
+                        maxLength: 10,
+                      ),
+                    ),
+                  ],
                 ),
                 sizedbox,
                 Center(
@@ -254,6 +265,11 @@ class _ScreenAddState extends State<ScreenAdd> {
       ),
       behavior: SnackBarBehavior.floating,
     ));
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => ScreenBtm()),
+      (route) => false,
+    );
   }
 
   fromgallery() async {

@@ -7,9 +7,11 @@ import 'package:travel_app/widgets/edit.dart';
 import 'package:travel_app/widgets/ongoingexp.dart';
 
 class OngoingDetails extends StatefulWidget {
+  final int id;
   final TripModel trip;
 
-  const OngoingDetails({Key? key, required this.trip}) : super(key: key);
+  const OngoingDetails({Key? key, required this.trip, required this.id})
+      : super(key: key);
 
   @override
   State<OngoingDetails> createState() => _OngoingDetailsState();
@@ -32,7 +34,13 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                 showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) {
-                      return const Edit();
+                      return Edit(
+                        des: widget.trip.endingingPoint,
+                        endDate: widget.trip.endingingDate,
+                        budget: widget.trip.budget,
+                        strt: widget.trip.startingPoint,
+                        id: widget.id,
+                      );
                     });
               },
               icon: const Icon(Icons.edit)),

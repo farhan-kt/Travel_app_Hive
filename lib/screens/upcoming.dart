@@ -42,6 +42,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
               if (widget.trip.id != null) {
                 deleteTrip(widget.trip.id!);
                 Navigator.pop(context);
+                getAllTrip();
               } else {
                 print('Trip id is null');
               }
