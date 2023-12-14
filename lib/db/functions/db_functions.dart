@@ -58,18 +58,10 @@ Future<void> deleteTrip(int id) async {
   getAllTrip();
 }
 
-Future<void> editTrip(int id) async {
+Future<void> editTrip(int id, TripModel editTripsValues) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-  final editTripsValues = TripModel(
-      image: '',
-      startingPoint: startingController.text,
-      endingingPoint: destinyController.text,
-      budget: budgetController.text,
-      startingDate: '',
-      endingingDate: endDateController.text);
   await tripDB.putAt(id, editTripsValues);
-
+  print(editTripsValues);
   await getAllTrip();
-
   ongoingTripsListNotifier.notifyListeners();
 }

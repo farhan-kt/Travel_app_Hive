@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
+import 'package:travel_app/db/model/data_model.dart';
 
 final startingController = TextEditingController();
 final destinyController = TextEditingController();
@@ -122,9 +123,8 @@ class _EditState extends State<Edit> {
                       ),
                       onPressed: () {
                         setState(() {
-                          editTrip(widget.id);
+                          updated();
                         });
-
                         Navigator.pop(context);
                       },
                       child: const Text(
@@ -137,5 +137,28 @@ class _EditState extends State<Edit> {
             ),
           ),
         ));
+  }
+
+  updated() {
+    final starting = startingController.text;
+    final destiny = destinyController.text;
+    final enddate = endDateController.text;
+    final budget = budgetController.text;
+    if (starting.isEmpty ||
+        destiny.isEmpty ||
+        enddate.isEmpty ||
+        budget.isEmpty) {
+      return;
+    } else {
+      final updated = TripModel(
+        image: '',
+        startingPoint: starting,
+        endingingPoint: destiny,
+        budget: budget,
+        startingDate: '',
+        endingingDate: enddate,
+      );
+      editTrip(widget.id, updated);
+    }
   }
 }
