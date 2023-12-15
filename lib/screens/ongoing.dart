@@ -41,6 +41,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                         budget: widget.trip.budget,
                         strt: widget.trip.startingPoint,
                         id: widget.id,
+                        trip: widget.trip,
                       );
                     });
               },
@@ -111,9 +112,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
             ),
             const SizedBox(height: 30),
             Container(
-              // width: MediaQuery.of(context).size.width * 1,
               width: MediaQuery.of(context).size.width * 0.9,
-
               height: MediaQuery.of(context).size.height * 0.09,
               decoration: const BoxDecoration(
                 color: Color(0xFF355952),

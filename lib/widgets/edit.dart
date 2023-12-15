@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
-
-final startingController = TextEditingController();
-final destinyController = TextEditingController();
-final endDateController = TextEditingController();
-final budgetController = TextEditingController();
 
 class Edit extends StatefulWidget {
   final String strt;
@@ -13,13 +9,15 @@ class Edit extends StatefulWidget {
   final String endDate;
   final String budget;
   final int id;
+  final TripModel trip;
   const Edit({
     super.key,
+    required this.strt,
     required this.des,
     required this.endDate,
     required this.budget,
     required this.id,
-    required this.strt,
+    required this.trip,
   });
 
   @override
@@ -27,6 +25,11 @@ class Edit extends StatefulWidget {
 }
 
 class _EditState extends State<Edit> {
+  final startingController = TextEditingController();
+  final destinyController = TextEditingController();
+  final endDateController = TextEditingController();
+  final budgetController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -38,7 +41,6 @@ class _EditState extends State<Edit> {
 
   @override
   Widget build(BuildContext context) {
-    getAllTrip();
     return Container(
         height: MediaQuery.of(context).size.height * 0.4,
         width: MediaQuery.of(context).size.width * 1,
@@ -96,6 +98,20 @@ class _EditState extends State<Edit> {
                       borderSide: BorderSide(color: Colors.white),
                     ),
                   ),
+                  onTap: () async {
+                    DateTime? Pickeddate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2000),
+                        lastDate: DateTime(2075));
+                    if (Pickeddate != null) {
+                      setState(() {
+                        print('Selected Date: ${Pickeddate}');
+                        endDateController.text =
+                            DateFormat('dd-MM-yyyy').format(Pickeddate);
+                      });
+                    }
+                  },
                 ),
                 const SizedBox(
                   height: 10,
@@ -140,25 +156,34 @@ class _EditState extends State<Edit> {
   }
 
   updated() {
-    final starting = startingController.text;
-    final destiny = destinyController.text;
-    final enddate = endDateController.text;
-    final budget = budgetController.text;
+    final starting = startingController.text.trim();
+    final destiny = destinyController.text.trim();
+    final enddate = endDateController.text.trim();
+    final budget = budgetController.text.trim();
     if (starting.isEmpty ||
         destiny.isEmpty ||
         enddate.isEmpty ||
         budget.isEmpty) {
       return;
     } else {
+      final existingImage = widget.trip.image;
+      final existingStartingDate = widget.trip.startingDate;
+
       final updated = TripModel(
-        image: '',
-        startingPoint: starting,
-        endingingPoint: destiny,
-        budget: budget,
-        startingDate: '',
-        endingingDate: enddate,
-      );
+          image: existingImage,
+          startingPoint: starting,
+          endingingPoint: destiny,
+          budget: budget,
+          startingDate: existingStartingDate,
+          endingingDate: enddate);
+
       editTrip(widget.id, updated);
+
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Updated Successfully'),
+        behavior: SnackBarBehavior.floating,
+      ));
+      getAllTrip();
     }
   }
 }

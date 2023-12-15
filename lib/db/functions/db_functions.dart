@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:travel_app/db/model/data_model.dart';
-import 'package:travel_app/widgets/edit.dart';
 
 ValueNotifier<List<TripModel>> ongoingTripsListNotifier = ValueNotifier([]);
 ValueNotifier<List<TripModel>> upcomingTripsListNotifier = ValueNotifier([]);
@@ -42,7 +41,6 @@ Future<void> getAllTrip() async {
       upcomingTripsListNotifier.value.add(trip);
     }
   }
-
   ongoingTripsListNotifier.notifyListeners();
   upcomingTripsListNotifier.notifyListeners();
 }
@@ -58,10 +56,10 @@ Future<void> deleteTrip(int id) async {
   getAllTrip();
 }
 
-Future<void> editTrip(int id, TripModel editTripsValues) async {
+Future<void> editTrip(int id, TripModel value) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-  await tripDB.putAt(id, editTripsValues);
-  print(editTripsValues);
-  await getAllTrip();
+  await tripDB.putAt(id, value);
+  print(value);
+
   ongoingTripsListNotifier.notifyListeners();
 }
