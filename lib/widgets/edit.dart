@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
+import 'package:travel_app/screens/ongoing.dart';
 
 class Edit extends StatefulWidget {
   final String strt;
@@ -138,9 +139,7 @@ class _EditState extends State<Edit> {
                             const Color(0xFFF3CD53)),
                       ),
                       onPressed: () {
-                        setState(() {
-                          updated();
-                        });
+                        updated();
                         Navigator.pop(context);
                       },
                       child: const Text(
@@ -155,11 +154,44 @@ class _EditState extends State<Edit> {
         ));
   }
 
-  updated() {
+  // Future<void> updated() async {
+  //   final starting = startingController.text.trim();
+  //   final destiny = destinyController.text.trim();
+  //   final enddate = endDateController.text.trim();
+  //   final budget = budgetController.text.trim();
+  //   if (starting.isEmpty ||
+  //       destiny.isEmpty ||
+  //       enddate.isEmpty ||
+  //       budget.isEmpty) {
+  //     return;
+  //   } else {
+  //     final existingImage = widget.trip.image;
+  //     final existingStartingDate = widget.trip.startingDate;
+
+  //     final updated = TripModel(
+  //         image: existingImage,
+  //         startingPoint: starting,
+  //         endingingPoint: destiny,
+  //         budget: budget,
+  //         startingDate: existingStartingDate,
+  //         endingingDate: enddate);
+
+  //     editTrip(widget.id, updated);
+
+  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //       content: Text('Updated Successfully'),
+  //       behavior: SnackBarBehavior.floating,
+  //     ));
+  //     getAllTrip();
+  //   }
+  // }
+
+  Future<void> updated() async {
     final starting = startingController.text.trim();
     final destiny = destinyController.text.trim();
     final enddate = endDateController.text.trim();
     final budget = budgetController.text.trim();
+
     if (starting.isEmpty ||
         destiny.isEmpty ||
         enddate.isEmpty ||
@@ -170,20 +202,32 @@ class _EditState extends State<Edit> {
       final existingStartingDate = widget.trip.startingDate;
 
       final updated = TripModel(
-          image: existingImage,
-          startingPoint: starting,
-          endingingPoint: destiny,
-          budget: budget,
-          startingDate: existingStartingDate,
-          endingingDate: enddate);
+        image: existingImage,
+        startingPoint: starting,
+        endingingPoint: destiny,
+        budget: budget,
+        startingDate: existingStartingDate,
+        endingingDate: enddate,
+      );
 
-      editTrip(widget.id, updated);
+      await editTrip(widget.id, updated);
 
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Updated Successfully'),
         behavior: SnackBarBehavior.floating,
       ));
-      getAllTrip();
+
+      await getAllTrip();
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => OngoingDetails(
+            id: widget.id,
+            trip: updated,
+          ),
+        ),
+      );
     }
   }
 }

@@ -58,8 +58,17 @@ Future<void> deleteTrip(int id) async {
 
 Future<void> editTrip(int id, TripModel value) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
+  ongoingTripsListNotifier.value.clear();
+
+  final List<TripModel> allTrips = tripDB.values.toList();
+
+  for (TripModel trip in allTrips) {
+    if (isTripOngoing(trip)) {
+      ongoingTripsListNotifier.value.add(trip);
+    }
+  }
+
   await tripDB.putAt(id, value);
-  print(value);
 
   ongoingTripsListNotifier.notifyListeners();
 }
