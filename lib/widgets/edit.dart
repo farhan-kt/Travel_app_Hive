@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
-import 'package:travel_app/screens/ongoing.dart';
 
 class Edit extends StatefulWidget {
   final String strt;
@@ -34,12 +33,14 @@ class _EditState extends State<Edit> {
   @override
   void initState() {
     super.initState();
+
     startingController.text = widget.strt;
     destinyController.text = widget.des;
     endDateController.text = widget.endDate;
     budgetController.text = widget.budget;
   }
 
+  int editedTripId = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -154,38 +155,6 @@ class _EditState extends State<Edit> {
         ));
   }
 
-  // Future<void> updated() async {
-  //   final starting = startingController.text.trim();
-  //   final destiny = destinyController.text.trim();
-  //   final enddate = endDateController.text.trim();
-  //   final budget = budgetController.text.trim();
-  //   if (starting.isEmpty ||
-  //       destiny.isEmpty ||
-  //       enddate.isEmpty ||
-  //       budget.isEmpty) {
-  //     return;
-  //   } else {
-  //     final existingImage = widget.trip.image;
-  //     final existingStartingDate = widget.trip.startingDate;
-
-  //     final updated = TripModel(
-  //         image: existingImage,
-  //         startingPoint: starting,
-  //         endingingPoint: destiny,
-  //         budget: budget,
-  //         startingDate: existingStartingDate,
-  //         endingingDate: enddate);
-
-  //     editTrip(widget.id, updated);
-
-  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //       content: Text('Updated Successfully'),
-  //       behavior: SnackBarBehavior.floating,
-  //     ));
-  //     getAllTrip();
-  //   }
-  // }
-
   Future<void> updated() async {
     final starting = startingController.text.trim();
     final destiny = destinyController.text.trim();
@@ -202,6 +171,7 @@ class _EditState extends State<Edit> {
       final existingStartingDate = widget.trip.startingDate;
 
       final updated = TripModel(
+        id: widget.id,
         image: existingImage,
         startingPoint: starting,
         endingingPoint: destiny,
@@ -218,16 +188,18 @@ class _EditState extends State<Edit> {
       ));
 
       await getAllTrip();
+      setState(() {});
+      Navigator.pop(context);
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => OngoingDetails(
-            id: widget.id,
-            trip: updated,
-          ),
-        ),
-      );
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => OngoingDetails(
+      //       id: widget.id,
+      //       trip: updated,
+      //     ),
+      //   ),
+      // );
     }
   }
 }

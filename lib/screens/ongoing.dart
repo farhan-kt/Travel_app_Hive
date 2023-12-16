@@ -48,8 +48,8 @@ class _OngoingDetailsState extends State<OngoingDetails> {
               icon: const Icon(Icons.edit)),
           IconButton(
               onPressed: () {
-                if (widget.trip.id != null) {
-                  deleteTrip(widget.trip.id!);
+                if (widget.id != null) {
+                  deleteTrip(widget.id!);
                   Navigator.pop(context);
                 } else {
                   print('Trip id is null');

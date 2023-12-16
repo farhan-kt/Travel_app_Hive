@@ -51,22 +51,23 @@ bool isTripOngoing(TripModel trip) {
 }
 
 Future<void> deleteTrip(int id) async {
+  print('object');
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-  tripDB.delete(id);
+  tripDB.deleteAt(id);
   getAllTrip();
 }
 
 Future<void> editTrip(int id, TripModel value) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-  ongoingTripsListNotifier.value.clear();
+  // ongoingTripsListNotifier.value.clear();
 
-  final List<TripModel> allTrips = tripDB.values.toList();
+  // final List<TripModel> allTrips = tripDB.values.toList();
 
-  for (TripModel trip in allTrips) {
-    if (isTripOngoing(trip)) {
-      ongoingTripsListNotifier.value.add(trip);
-    }
-  }
+  // for (TripModel trip in allTrips) {
+  //   if (isTripOngoing(trip)) {
+  //     ongoingTripsListNotifier.value.add(trip);
+  //   }
+  // }
 
   await tripDB.putAt(id, value);
 
