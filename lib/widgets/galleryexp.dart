@@ -26,7 +26,7 @@ class GalleryExp extends StatelessWidget {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
-                    color: Colors.white),
+                    color: Color.fromARGB(255, 255, 255, 255)),
               ),
               Text(
                 ' ₹ 1000',

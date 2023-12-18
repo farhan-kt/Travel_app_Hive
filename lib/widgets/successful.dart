@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class SuccessfulWidget extends StatelessWidget {
@@ -31,32 +33,32 @@ class SuccessfulWidget extends StatelessWidget {
               width: 2,
               color: const Color(0xFF355952),
             ),
-            image: const DecorationImage(
-              image: AssetImage('assets/wayanad.jpg'),
+            image: DecorationImage(
+              image: FileImage(File(image)),
               fit: BoxFit.fill,
             ),
           ),
         ),
         Positioned(
           left: screenWidth * 0.028,
-          top: screenHeight * 0.22,
+          top: screenHeight * 0.17,
           child: Text(
             place,
             style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w500,
+              color: Color.fromARGB(255, 223, 19, 19),
+              fontWeight: FontWeight.w900,
               fontSize: 18,
             ),
           ),
         ),
         Positioned(
-          top: screenHeight * 0.25,
+          top: screenHeight * 0.20,
           left: screenWidth * 0.03,
           child: Row(
             children: [
               const Icon(
                 Icons.calendar_month_sharp,
-                color: Colors.white,
+                color: Color.fromARGB(255, 173, 37, 37),
                 size: 13,
               ),
               const SizedBox(width: 4),
@@ -64,20 +66,20 @@ class SuccessfulWidget extends StatelessWidget {
                 date,
                 style: const TextStyle(
                   fontWeight: FontWeight.w900,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 173, 37, 37),
                   fontSize: 13,
                 ),
               ),
               Text(
                 ' - ',
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 223, 19, 19),
                   fontSize: 13,
                 ),
               ),
               const Icon(
                 Icons.calendar_month_sharp,
-                color: Colors.white,
+                color: Color.fromARGB(255, 173, 37, 37),
                 size: 13,
               ),
               const SizedBox(width: 4),
@@ -85,7 +87,7 @@ class SuccessfulWidget extends StatelessWidget {
                 end_date,
                 style: const TextStyle(
                   fontWeight: FontWeight.w900,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 173, 37, 37),
                   fontSize: 13,
                 ),
               ),

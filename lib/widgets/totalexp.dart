@@ -24,7 +24,6 @@ class _TotalExpState extends State<TotalExp> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Row(mainAxisAlignment: MainAxisAlignment.center, children: [

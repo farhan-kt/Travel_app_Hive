@@ -22,7 +22,7 @@ class TripModel {
   final String startingDate;
 
   @HiveField(6)
-  final String endingingDate;
+  final String endingDate;
 
   TripModel(
       {required this.image,
@@ -30,6 +30,6 @@ class TripModel {
       required this.endingingPoint,
       required this.budget,
       required this.startingDate,
-      required this.endingingDate,
+      required this.endingDate,
       this.id});
 }

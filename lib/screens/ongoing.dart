@@ -37,7 +37,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                     builder: (BuildContext context) {
                       return Edit(
                         des: widget.trip.endingingPoint,
-                        endDate: widget.trip.endingingDate,
+                        endDate: widget.trip.endingDate,
                         budget: widget.trip.budget,
                         strt: widget.trip.startingPoint,
                         id: widget.id,
@@ -103,7 +103,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                           TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
                     ),
                     Text(
-                      widget.trip.endingingDate,
+                      widget.trip.endingDate,
                       style: const TextStyle(fontSize: 14, color: Colors.white),
                     ),
                   ],

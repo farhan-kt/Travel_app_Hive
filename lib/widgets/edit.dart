@@ -177,7 +177,7 @@ class _EditState extends State<Edit> {
         endingingPoint: destiny,
         budget: budget,
         startingDate: existingStartingDate,
-        endingingDate: enddate,
+        endingDate: enddate,
       );
 
       await editTrip(widget.id, updated);

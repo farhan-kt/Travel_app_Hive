@@ -101,7 +101,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                             fontSize: 15, fontWeight: FontWeight.w900),
                       ),
                       Text(
-                        widget.trip.endingingDate,
+                        widget.trip.endingDate,
                         style:
                             const TextStyle(fontSize: 14, color: Colors.white),
                       ),

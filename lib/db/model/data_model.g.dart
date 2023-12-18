@@ -22,7 +22,7 @@ class TripModelAdapter extends TypeAdapter<TripModel> {
       endingingPoint: fields[3] as String,
       budget: fields[4] as String,
       startingDate: fields[5] as String,
-      endingingDate: fields[6] as String,
+      endingDate: fields[6] as String,
       id: fields[0] as int?,
     );
   }
@@ -44,7 +44,7 @@ class TripModelAdapter extends TypeAdapter<TripModel> {
       ..writeByte(5)
       ..write(obj.startingDate)
       ..writeByte(6)
-      ..write(obj.endingingDate);
+      ..write(obj.endingDate);
   }
 
   @override

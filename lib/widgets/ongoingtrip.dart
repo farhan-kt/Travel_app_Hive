@@ -29,8 +29,7 @@ class OngoingWidget extends StatelessWidget {
               color: Color(0xFF355952),
             ),
             image: DecorationImage(
-              image: FileImage(
-                  File(image)), // Use FileImage to load from file path
+              image: FileImage(File(image)),
               fit: BoxFit.fill,
             ),
           ),

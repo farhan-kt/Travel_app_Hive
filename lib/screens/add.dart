@@ -240,7 +240,7 @@ class _ScreenAddState extends State<ScreenAdd> {
       endingingPoint: _ename,
       budget: _budgets,
       startingDate: _sdate,
-      endingingDate: _edate,
+      endingDate: _edate,
     );
 
     DateTime startingDateTime = DateFormat('dd-MM-yyyy').parse(_sdate);
