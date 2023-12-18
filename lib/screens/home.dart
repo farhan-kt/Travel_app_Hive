@@ -158,6 +158,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                                       MaterialPageRoute(
                                         builder: (context) => UpcomingDetails(
                                           trip: data,
+                                          id: index,
                                         ),
                                       ),
                                     );

@@ -7,8 +7,10 @@ import 'package:travel_app/screens/bottombar.dart';
 
 class UpcomingDetails extends StatefulWidget {
   final TripModel trip;
+  final int id;
 
-  const UpcomingDetails({Key? key, required this.trip}) : super(key: key);
+  const UpcomingDetails({Key? key, required this.trip, required this.id})
+      : super(key: key);
 
   @override
   State<UpcomingDetails> createState() => _UpcomingDetailsState();
@@ -40,7 +42,8 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
           IconButton(
             onPressed: () {
               if (widget.trip.id != null) {
-                deleteTrip(widget.trip.id!);
+                deleteTrip(widget.id!);
+                print('trip deleted');
                 Navigator.pop(context);
                 getAllTrip();
               } else {
