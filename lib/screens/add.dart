@@ -244,7 +244,12 @@ class _ScreenAddState extends State<ScreenAdd> {
     );
 
     DateTime startingDateTime = DateFormat('dd-MM-yyyy').parse(_sdate);
-    if (startingDateTime.isBefore(DateTime.now())) {
+    DateTime endingDateTime = DateFormat('dd-MM-yyyy').parse(_edate);
+    DateTime now = DateTime.now();
+
+    if (endingDateTime.isBefore(now)) {
+      addSuccessTrip(_trip);
+    } else if (startingDateTime.isBefore(now) && endingDateTime.isAfter(now)) {
       addOngoingTrip(_trip);
     } else {
       addUpcomingTrip(_trip);
@@ -259,12 +264,14 @@ class _ScreenAddState extends State<ScreenAdd> {
     setState(() {
       selectedimage = null;
     });
+
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text(
         'Trip Added Successfully',
       ),
       behavior: SnackBarBehavior.floating,
     ));
+
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => ScreenBtm()),

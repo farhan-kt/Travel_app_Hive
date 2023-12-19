@@ -42,7 +42,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
           IconButton(
             onPressed: () {
               if (widget.trip.id != null) {
-                deleteTrip(widget.id!);
+                deleteTrip(widget.trip.id!);
                 print('trip deleted');
                 Navigator.pop(context);
                 getAllTrip();
