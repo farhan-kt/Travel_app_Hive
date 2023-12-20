@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
+import 'package:travel_app/helper/colors.dart';
 
 class Edit extends StatefulWidget {
   final String strt;
@@ -40,13 +41,12 @@ class _EditState extends State<Edit> {
     budgetController.text = widget.budget;
   }
 
-  int editedTripId = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
         height: MediaQuery.of(context).size.height * 0.4,
         width: MediaQuery.of(context).size.width * 1,
-        color: const Color(0xFF355952),
+        color: GreenColor.green,
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: SingleChildScrollView(
@@ -58,7 +58,7 @@ class _EditState extends State<Edit> {
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
                     labelText: 'Change StartingPoint',
-                    labelStyle: TextStyle(color: Color(0xFFF3CD53)),
+                    labelStyle: TextStyle(color: YellowColor.yellow),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
                     ),
@@ -75,7 +75,7 @@ class _EditState extends State<Edit> {
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
                     labelText: 'Change Destination',
-                    labelStyle: TextStyle(color: Color(0xFFF3CD53)),
+                    labelStyle: TextStyle(color: YellowColor.yellow),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
                     ),
@@ -92,7 +92,7 @@ class _EditState extends State<Edit> {
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
                     labelText: 'Change Ending Date',
-                    labelStyle: TextStyle(color: Color(0xFFF3CD53)),
+                    labelStyle: TextStyle(color: YellowColor.yellow),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
                     ),
@@ -123,7 +123,7 @@ class _EditState extends State<Edit> {
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
                     labelText: 'Add Budget',
-                    labelStyle: TextStyle(color: Color(0xFFF3CD53)),
+                    labelStyle: TextStyle(color: YellowColor.yellow),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
                     ),
@@ -137,7 +137,7 @@ class _EditState extends State<Edit> {
                   child: ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color(0xFFF3CD53)),
+                            YellowColor.yellow),
                       ),
                       onPressed: () {
                         updated();

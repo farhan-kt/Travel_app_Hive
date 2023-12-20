@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/screens/add.dart';
 import 'package:travel_app/screens/expence.dart';
 import 'package:travel_app/screens/gallery.dart';
@@ -27,7 +28,7 @@ class _ScreenBtmState extends State<ScreenBtm> {
     return Scaffold(
       body: _screens[_currentSelectedIndex],
       bottomNavigationBar: Container(
-        color: Color(0xFF355952),
+        color: GreenColor.green,
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: GNav(
@@ -36,7 +37,7 @@ class _ScreenBtmState extends State<ScreenBtm> {
                 _currentSelectedIndex = newIndex;
               });
             },
-            backgroundColor: Color(0xFF355952),
+            backgroundColor: GreenColor.green,
             color: Colors.white,
             activeColor: Colors.black,
             tabBackgroundColor: Color.fromARGB(255, 223, 203, 138),

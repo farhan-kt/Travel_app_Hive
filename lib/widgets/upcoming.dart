@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 
+import 'package:travel_app/helper/colors.dart';
+
 class UpcomingWidget extends StatelessWidget {
   final String date;
   final String place;
@@ -22,7 +24,7 @@ class UpcomingWidget extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
-            border: Border.all(color: const Color(0xFF355952), width: 2),
+            border: Border.all(color: GreenColor.green, width: 2),
             image: DecorationImage(
               image: FileImage(File(image)),
               fit: BoxFit.fill,

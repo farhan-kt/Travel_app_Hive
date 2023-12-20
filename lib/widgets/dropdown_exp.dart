@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/helper/colors.dart';
 
 class DropDown extends StatefulWidget {
   const DropDown({super.key});
@@ -17,7 +18,7 @@ class _DropDownState extends State<DropDown> {
       child: Container(
         height: 50,
         child: DropdownButtonFormField(
-          iconEnabledColor: Color(0xFFF3CD53),
+          iconEnabledColor: YellowColor.yellow,
           dropdownColor: Color.fromARGB(255, 102, 155, 144),
           value: dropdownValue,
           onChanged: (String? newValue) {
@@ -39,19 +40,19 @@ class _DropDownState extends State<DropDown> {
             DropdownMenuItem<String>(
                 value: "FOOD",
                 child:
-                    Text('FOOD', style: TextStyle(color: Color(0xFFF3CD53)))),
+                    Text('FOOD', style: TextStyle(color: YellowColor.yellow))),
             DropdownMenuItem<String>(
                 value: "TRAVEL",
-                child:
-                    Text('TRAVEL', style: TextStyle(color: Color(0xFFF3CD53)))),
+                child: Text('TRAVEL',
+                    style: TextStyle(color: YellowColor.yellow))),
             DropdownMenuItem<String>(
                 value: "HOTEL",
                 child:
-                    Text('HOTEL', style: TextStyle(color: Color(0xFFF3CD53)))),
+                    Text('HOTEL', style: TextStyle(color: YellowColor.yellow))),
             DropdownMenuItem<String>(
                 value: "OTHERS",
-                child:
-                    Text('OTHERS', style: TextStyle(color: Color(0xFFF3CD53)))),
+                child: Text('OTHERS',
+                    style: TextStyle(color: YellowColor.yellow))),
           ],
         ),
       ),

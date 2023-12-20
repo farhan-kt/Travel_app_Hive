@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
+import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/widgets/galleryexp.dart';
 import 'package:travel_app/widgets/successful.dart';
 
@@ -19,11 +20,11 @@ class _ScreenGalleryState extends State<ScreenGallery> {
     double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Color(0xFF355952),
+          backgroundColor: GreenColor.green,
           centerTitle: true,
           title: const Text('SUCCESSFUL TRIPS',
               style: TextStyle(
-                  fontWeight: FontWeight.bold, color: Color(0xFFF3CD53))),
+                  fontWeight: FontWeight.bold, color: YellowColor.yellow)),
           automaticallyImplyLeading: false),
       body: ListView(
         children: [
@@ -41,7 +42,7 @@ class _ScreenGalleryState extends State<ScreenGallery> {
                       valueListenable: successTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
                           Widget? child) {
-                        print('Build with ${tripList.length}');
+                        print('Build Success with ${tripList.length}');
                         if (tripList.isNotEmpty) {
                           return ListView.separated(
                             itemCount: tripList.length,

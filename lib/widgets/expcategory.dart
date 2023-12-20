@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/helper/colors.dart';
 
 class Expenses extends StatelessWidget {
   final String money;
@@ -18,7 +19,7 @@ class Expenses extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Color(0xFFF3CD53), width: 3),
+        border: Border.all(color: YellowColor.yellow, width: 3),
       ),
       child: Padding(
         padding: const EdgeInsets.all(10),

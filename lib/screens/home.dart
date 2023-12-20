@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
+import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/screens/ongoing.dart';
 import 'package:travel_app/screens/upcoming.dart';
 import 'package:travel_app/widgets/navbar.dart';
@@ -19,18 +20,22 @@ class ScreenHome extends StatefulWidget {
 
 class _ScreenHomeState extends State<ScreenHome> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     getAllTrip();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
       drawer: const NavBar(),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF355952),
+        backgroundColor: GreenColor.green,
         centerTitle: true,
         title: const Text('HOME',
             style: TextStyle(
-                color: Color(0xFFF3CD53), fontWeight: FontWeight.bold)),
+                color: YellowColor.yellow, fontWeight: FontWeight.bold)),
       ),
       body: ListView(
         children: [
@@ -47,7 +52,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                       hintText: 'Search for trips...',
                       hintStyle: const TextStyle(color: Color(0xFFF3CD53)),
                       filled: true,
-                      fillColor: const Color(0xFF355952),
+                      fillColor: GreenColor.green,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                         borderSide: BorderSide.none,
@@ -67,7 +72,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                       valueListenable: ongoingTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
                           Widget? child) {
-                        print('Build with ${tripList.length}');
+                        print('Build Ongoing with ${tripList.length}');
                         if (tripList.isNotEmpty) {
                           return ListView.builder(
                             itemCount: tripList.isNotEmpty ? 1 : 0,
@@ -135,7 +140,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                       valueListenable: upcomingTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
                           Widget? child) {
-                        print('Build with ${tripList.length}');
+                        print('Build Upcoming with ${tripList.length}');
                         if (tripList.isNotEmpty) {
                           return ListView.separated(
                             itemCount: tripList.length,

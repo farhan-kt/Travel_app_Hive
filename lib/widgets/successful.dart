@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:travel_app/helper/colors.dart';
 
 class SuccessfulWidget extends StatelessWidget {
   final String date;
@@ -31,7 +32,7 @@ class SuccessfulWidget extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             border: Border.all(
               width: 2,
-              color: const Color(0xFF355952),
+              color: GreenColor.green,
             ),
             image: DecorationImage(
               image: FileImage(File(image)),

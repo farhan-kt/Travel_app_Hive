@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/widgets/dropdown_exp.dart';
 
 class TotalExp extends StatefulWidget {
@@ -17,7 +18,7 @@ class _TotalExpState extends State<TotalExp> {
       height: MediaQuery.of(context).size.height * 0.25,
       width: MediaQuery.of(context).size.width * 0.7,
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFFF3CD53), width: 4),
+        border: Border.all(color: YellowColor.yellow, width: 4),
         color: Colors.white,
         borderRadius: const BorderRadius.all(Radius.circular(8)),
       ),
@@ -71,7 +72,7 @@ class _TotalExpState extends State<TotalExp> {
                           context: context,
                           builder: (BuildContext context) {
                             return Container(
-                              color: const Color(0xFF355952),
+                              color: GreenColor.green,
                               height: MediaQuery.of(context).size.height * 0.35,
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
@@ -87,13 +88,13 @@ class _TotalExpState extends State<TotalExp> {
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w900,
                                                 fontSize: 20,
-                                                color: Color(0xFFF3CD53))),
+                                                color: YellowColor.yellow)),
                                         ElevatedButton(
                                             style: ButtonStyle(
                                               backgroundColor:
                                                   MaterialStateProperty.all<
                                                           Color>(
-                                                      const Color(0xFFF3CD53)),
+                                                      YellowColor.yellow),
                                             ),
                                             onPressed: () {},
                                             child: const Text(
@@ -117,7 +118,7 @@ class _TotalExpState extends State<TotalExp> {
                                         decoration: const InputDecoration(
                                           labelText: 'Amount ₹',
                                           labelStyle: TextStyle(
-                                              color: Color(0xFFF3CD53)),
+                                              color: YellowColor.yellow),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide:
                                                 BorderSide(color: Colors.white),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/helper/colors.dart';
 
 class AppInfo extends StatelessWidget {
   const AppInfo({super.key});
@@ -8,8 +9,11 @@ class AppInfo extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.teal[100],
       appBar: AppBar(
-        backgroundColor: Color(0xFF355952),
-        title: const Text('App Info'),
+        backgroundColor: GreenColor.green,
+        title: const Text(
+          'App Info',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: const Padding(
         padding: EdgeInsets.all(8),

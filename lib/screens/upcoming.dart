@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
-import 'package:travel_app/screens/bottombar.dart';
+import 'package:travel_app/helper/colors.dart';
+import 'package:travel_app/widgets/bottombar.dart';
 
 class UpcomingDetails extends StatefulWidget {
   final TripModel trip;
@@ -21,7 +22,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF355952),
+        backgroundColor: GreenColor.green,
         leading: IconButton(
           onPressed: () {
             Navigator.pushAndRemoveUntil(
@@ -36,14 +37,14 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
         title: Text(
           widget.trip.endingingPoint,
           style:
-              TextStyle(color: Color(0xFFF3CD53), fontWeight: FontWeight.bold),
+              TextStyle(color: YellowColor.yellow, fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
             onPressed: () {
               if (widget.trip.id != null) {
-                deleteTrip(widget.trip.id!);
-                print('trip deleted');
+                deleteTrip(widget.id!);
+                print('upcoming trip is deleted');
                 Navigator.pop(context);
                 getAllTrip();
               } else {
@@ -65,8 +66,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
-                    border:
-                        Border.all(color: const Color(0xFFF3CD53), width: 4),
+                    border: Border.all(color: YellowColor.yellow, width: 4),
                     image: DecorationImage(
                       image: FileImage(File(widget.trip.image)),
                       fit: BoxFit.fill,
@@ -79,11 +79,11 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
               const SizedBox(height: 30),
               Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFF355952),
+                  color: GreenColor.green,
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                 ),
                 child: ListTile(
-                  textColor: const Color(0xFFF3CD53),
+                  textColor: YellowColor.yellow,
                   title: const Text(
                     'Starting date',
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
@@ -114,7 +114,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: MediaQuery.of(context).size.height * 0.1,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF355952),
+                  color: GreenColor.green,
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                 ),
                 child: Padding(
@@ -136,7 +136,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                       Text(
                         '₹ ${widget.trip.budget}',
                         style: const TextStyle(
-                          color: Color(0xFFF3CD53),
+                          color: YellowColor.yellow,
                           fontWeight: FontWeight.w700,
                           fontSize: 18,
                         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/helper/colors.dart';
 
 class GalleryExp extends StatelessWidget {
   const GalleryExp({super.key});
@@ -6,7 +7,7 @@ class GalleryExp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFF355952),
+      color: GreenColor.green,
       height: MediaQuery.of(context).size.height * 0.3,
       width: MediaQuery.of(context).size.width * 1,
       child: Center(
@@ -14,8 +15,8 @@ class GalleryExp extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.1,
           width: MediaQuery.of(context).size.width * 0.8,
           decoration: BoxDecoration(
-            border: Border.all(color: const Color(0xFFF3CD53), width: 4),
-            color: const Color(0xFF355952),
+            border: Border.all(color: YellowColor.yellow, width: 4),
+            color: GreenColor.green,
             borderRadius: const BorderRadius.all(Radius.circular(8)),
           ),
           child: const Row(
@@ -33,7 +34,7 @@ class GalleryExp extends StatelessWidget {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
-                    color: Color(0xFFF3CD53)),
+                    color: YellowColor.yellow),
               ),
             ],
           ),

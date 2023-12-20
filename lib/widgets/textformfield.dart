@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:travel_app/helper/colors.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final String labelText;
@@ -43,18 +44,18 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       style: const TextStyle(color: Colors.black),
       decoration: InputDecoration(
         labelText: widget.labelText,
-        labelStyle: const TextStyle(color: Color(0xFF355952)),
+        labelStyle: const TextStyle(color: GreenColor.green),
         enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFF355952)),
+          borderSide: BorderSide(color: GreenColor.green),
         ),
         focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFF355952)),
+          borderSide: BorderSide(color: GreenColor.green),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFF355952)),
+          borderSide: BorderSide(color: GreenColor.green),
         ),
         suffixIcon: Icon(
           widget.suffixIcon,

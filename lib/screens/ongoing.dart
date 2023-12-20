@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
+import 'package:travel_app/helper/colors.dart';
 
 import 'package:travel_app/widgets/edit.dart';
 import 'package:travel_app/widgets/ongoingexp.dart';
@@ -23,11 +24,11 @@ class _OngoingDetailsState extends State<OngoingDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF355952),
+        backgroundColor: GreenColor.green,
         centerTitle: true,
         title: Text(
           widget.trip.endingingPoint,
-          style: const TextStyle(color: Color(0xFFF3CD53)),
+          style: const TextStyle(color: YellowColor.yellow),
         ),
         actions: [
           IconButton(
@@ -49,7 +50,8 @@ class _OngoingDetailsState extends State<OngoingDetails> {
           IconButton(
               onPressed: () {
                 if (widget.id != null) {
-                  deleteTrip(widget.trip.id!);
+                  deleteTrip(widget.id!);
+                  print('Ongoing Trip is deleted');
                   Navigator.pop(context);
                 } else {
                   print('Trip id is null');
@@ -81,11 +83,11 @@ class _OngoingDetailsState extends State<OngoingDetails> {
             Container(
               width: MediaQuery.of(context).size.width * 0.9,
               decoration: const BoxDecoration(
-                color: Color(0xFF355952),
+                color: GreenColor.green,
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
               child: ListTile(
-                textColor: const Color(0xFFF3CD53),
+                textColor: YellowColor.yellow,
                 title: const Text(
                   'Starting date',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
@@ -115,7 +117,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
               width: MediaQuery.of(context).size.width * 0.9,
               height: MediaQuery.of(context).size.height * 0.09,
               decoration: const BoxDecoration(
-                color: Color(0xFF355952),
+                color: GreenColor.green,
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
               child: Row(
@@ -135,7 +137,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                   Text(
                     '₹ ${widget.trip.budget}',
                     style: const TextStyle(
-                      color: Color(0xFFF3CD53),
+                      color: YellowColor.yellow,
                       fontWeight: FontWeight.w700,
                       fontSize: 18,
                     ),

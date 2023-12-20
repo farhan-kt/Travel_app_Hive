@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/widgets/expcategory.dart';
 
 class OngoingExp extends StatelessWidget {
@@ -12,7 +13,7 @@ class OngoingExp extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey, width: 4),
-        color: const Color(0xFF355952),
+        color: GreenColor.green,
         borderRadius: const BorderRadius.all(Radius.circular(8)),
       ),
       child: InkWell(
@@ -23,7 +24,7 @@ class OngoingExp extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                    color: const Color(0xFF355952),
+                    color: GreenColor.green,
                     height: MediaQuery.of(context).size.height * 0.5,
                     child: SingleChildScrollView(
                       child: Column(
@@ -36,7 +37,7 @@ class OngoingExp extends StatelessWidget {
                                   child: const Text(
                                     'TOTAL EXPENCES',
                                     style: TextStyle(
-                                        color: Color(0xFFF3CD53),
+                                        color: YellowColor.yellow,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20),
                                   ))),
@@ -76,7 +77,7 @@ class OngoingExp extends StatelessWidget {
                               width: MediaQuery.of(context).size.width * 0.8,
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: Color(0xFFF3CD53), width: 4),
+                                    color: YellowColor.yellow, width: 4),
                                 color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(8)),
@@ -87,7 +88,7 @@ class OngoingExp extends StatelessWidget {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
-                                      color: Color(0xFF355952)),
+                                      color: GreenColor.green),
                                 ),
                               ),
                             ),
@@ -122,7 +123,7 @@ class OngoingExp extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 20,
-                      color: Color(0xFFF3CD53)),
+                      color: YellowColor.yellow),
                 ),
                 SizedBox(
                   height: 20,

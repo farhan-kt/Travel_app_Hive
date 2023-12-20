@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/main.dart';
-import 'package:travel_app/screens/bottombar.dart';
+import 'package:travel_app/widgets/bottombar.dart';
 import 'package:lottie/lottie.dart';
 
 class ScreenLogin extends StatefulWidget {
@@ -43,7 +44,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                 child: Container(
                   height: screenHeight * 0.6,
                   width: double.infinity,
-                  color: const Color(0xFF355952),
+                  color: GreenColor.green,
                   child: Padding(
                     padding: const EdgeInsets.all(50),
                     child: SingleChildScrollView(
@@ -57,7 +58,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                               child: Text(
                             'LOGIN',
                             style: TextStyle(
-                                color: Color(0xFFF3CD53),
+                                color: YellowColor.yellow,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 40),
                           )),
@@ -73,7 +74,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             style: const TextStyle(color: Colors.white),
                             decoration: const InputDecoration(
                               labelText: 'NAME',
-                              labelStyle: TextStyle(color: Color(0xFFF3CD53)),
+                              labelStyle: TextStyle(color: YellowColor.yellow),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white),
                               ),
@@ -104,7 +105,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             style: const TextStyle(color: Colors.white),
                             decoration: const InputDecoration(
                               labelText: 'PASSWORD',
-                              labelStyle: TextStyle(color: Color(0xFFF3CD53)),
+                              labelStyle: TextStyle(color: YellowColor.yellow),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white),
                               ),
@@ -135,7 +136,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                 child: const Text(
                                   'LOGIN',
                                   style: TextStyle(
-                                    color: Color(0xFF355952),
+                                    color: GreenColor.green,
                                     fontWeight: FontWeight.w900,
                                     fontSize: 20,
                                   ),
@@ -171,11 +172,11 @@ class _ScreenLoginState extends State<ScreenLogin> {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
             'Username and password do not match',
-            style: TextStyle(color: Color(0xFF355952)),
+            style: TextStyle(color: GreenColor.green),
           ),
           margin: EdgeInsets.all(8),
           duration: Duration(seconds: 3),
-          backgroundColor: Color(0xFFF3CD53),
+          backgroundColor: YellowColor.yellow,
           behavior: SnackBarBehavior.floating,
         ));
       }

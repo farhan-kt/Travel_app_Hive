@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/widgets/expcategory.dart';
 import 'package:travel_app/widgets/totalexp.dart';
 
@@ -15,11 +16,11 @@ class _ScreenExpState extends State<ScreenExp> {
     const sizedbox = SizedBox(height: 10);
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: const Color(0xFF355952),
+          backgroundColor: GreenColor.green,
           centerTitle: true,
           title: const Text('ONGOING EXPENSES',
               style: TextStyle(
-                  fontWeight: FontWeight.bold, color: Color(0xFFF3CD53))),
+                  fontWeight: FontWeight.bold, color: YellowColor.yellow)),
           automaticallyImplyLeading: false),
       body: Container(
         decoration: BoxDecoration(
@@ -39,8 +40,7 @@ class _ScreenExpState extends State<ScreenExp> {
                   width: MediaQuery.of(context).size.width * 0.8,
                   height: MediaQuery.of(context).size.height * 0.1,
                   decoration: BoxDecoration(
-                    border:
-                        Border.all(color: const Color(0xFFF3CD53), width: 4),
+                    border: Border.all(color: YellowColor.yellow, width: 4),
                     color: Colors.white,
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                   ),
@@ -55,7 +55,7 @@ class _ScreenExpState extends State<ScreenExp> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w900,
                                   fontSize: 25,
-                                  color: Color(0xFF355952))),
+                                  color: GreenColor.green)),
                         ),
                       ],
                     ),

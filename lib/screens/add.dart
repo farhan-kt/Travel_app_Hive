@@ -7,7 +7,8 @@ import 'package:lottie/lottie.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:travel_app/screens/bottombar.dart';
+import 'package:travel_app/helper/colors.dart';
+import 'package:travel_app/widgets/bottombar.dart';
 
 import 'package:travel_app/widgets/textformfield.dart';
 
@@ -45,12 +46,12 @@ class _ScreenAddState extends State<ScreenAdd> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF355952),
+        backgroundColor: GreenColor.green,
         centerTitle: true,
         title: const Text(
           'ADD TRIP DETAILS',
           style:
-              TextStyle(color: Color(0xFFF3CD53), fontWeight: FontWeight.bold),
+              TextStyle(color: YellowColor.yellow, fontWeight: FontWeight.bold),
         ),
         automaticallyImplyLeading: false,
       ),
@@ -189,7 +190,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                 Center(
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      backgroundColor: const Color(0xFF355952),
+                      backgroundColor: GreenColor.green,
                     ),
                     onPressed: () {
                       if (Formkey2.currentState!.validate()) {
@@ -204,7 +205,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                       child: const Text(
                         'ADD TRIP',
                         style: TextStyle(
-                          color: Color(0xFFF3CD53),
+                          color: YellowColor.yellow,
                           fontWeight: FontWeight.w900,
                         ),
                       ),
@@ -243,27 +244,7 @@ class _ScreenAddState extends State<ScreenAdd> {
       endingDate: _edate,
     );
 
-    DateTime startingDateTime = DateFormat('dd-MM-yyyy').parse(_sdate);
-    DateTime endingDateTime = DateFormat('dd-MM-yyyy').parse(_edate);
-    DateTime now = DateTime.now();
-
-    if (endingDateTime.isBefore(now)) {
-      addSuccessTrip(_trip);
-    } else if (startingDateTime.isBefore(now) && endingDateTime.isAfter(now)) {
-      addOngoingTrip(_trip);
-    } else {
-      addUpcomingTrip(_trip);
-    }
-
-    _startingPoint.clear();
-    _destinationPoint.clear();
-    _budget.clear();
-    _startingDate.clear();
-    _endingDate.clear();
-
-    setState(() {
-      selectedimage = null;
-    });
+    await addTrip(_trip);
 
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text(
