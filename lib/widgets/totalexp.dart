@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:travel_app/db/functions/exp_functions.dart';
+import 'package:travel_app/db/model/expense_model.dart';
+
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/widgets/dropdown_exp.dart';
 
 class TotalExp extends StatefulWidget {
   const TotalExp({super.key});
@@ -10,7 +14,12 @@ class TotalExp extends StatefulWidget {
 }
 
 class _TotalExpState extends State<TotalExp> {
-  final _amountController = TextEditingController();
+  final _foodController = TextEditingController();
+  final _travelController = TextEditingController();
+  final _hotelController = TextEditingController();
+  final _othersController = TextEditingController();
+
+  String dropdownValue = "FOOD";
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +82,7 @@ class _TotalExpState extends State<TotalExp> {
                           builder: (BuildContext context) {
                             return Container(
                               color: GreenColor.green,
-                              height: MediaQuery.of(context).size.height * 0.35,
+                              height: MediaQuery.of(context).size.height * 0.4,
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Column(
@@ -96,7 +105,10 @@ class _TotalExpState extends State<TotalExp> {
                                                           Color>(
                                                       YellowColor.yellow),
                                             ),
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              print('obvjkhcvject');
+                                              onAddExpClicked();
+                                            },
                                             child: const Text(
                                               'ADD',
                                               style: TextStyle(
@@ -111,26 +123,145 @@ class _TotalExpState extends State<TotalExp> {
                                           left: 15,
                                           right: 15,
                                           bottom: 15),
-                                      child: TextFormField(
-                                        controller: _amountController,
-                                        style: const TextStyle(
-                                            color: Colors.white),
-                                        decoration: const InputDecoration(
-                                          labelText: 'Amount ₹',
-                                          labelStyle: TextStyle(
-                                              color: YellowColor.yellow),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextFormField(
+                                                  controller: _foodController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  inputFormatters: [
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
+                                                  maxLength: 7,
+                                                  style: const TextStyle(
+                                                      color: Colors.white),
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    labelText: 'FOOD',
+                                                    labelStyle: TextStyle(
+                                                        color:
+                                                            YellowColor.yellow),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.white),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(width: 10),
+                                              Expanded(
+                                                child: TextFormField(
+                                                  controller: _travelController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  inputFormatters: [
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
+                                                  maxLength: 7,
+                                                  style: const TextStyle(
+                                                      color: Colors.white),
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    labelText: 'TRAVEL',
+                                                    labelStyle: TextStyle(
+                                                        color:
+                                                            YellowColor.yellow),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.white),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: TextFormField(
+                                                  controller: _hotelController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  inputFormatters: [
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
+                                                  maxLength: 7,
+                                                  style: const TextStyle(
+                                                      color: Colors.white),
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    labelText: 'HOTEL',
+                                                    labelStyle: TextStyle(
+                                                        color:
+                                                            YellowColor.yellow),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.white),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(width: 10),
+                                              Expanded(
+                                                child: TextFormField(
+                                                  controller: _othersController,
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  inputFormatters: [
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                  ],
+                                                  maxLength: 7,
+                                                  style: const TextStyle(
+                                                      color: Colors.white),
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    labelText: 'OTHERS',
+                                                    labelStyle: TextStyle(
+                                                        color:
+                                                            YellowColor.yellow),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.white),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
+                                        ],
                                       ),
                                     ),
-                                    const DropDown()
                                   ],
                                 ),
                               ),
@@ -147,5 +278,35 @@ class _TotalExpState extends State<TotalExp> {
         ),
       ),
     );
+  }
+
+  Future<void> onAddExpClicked() async {
+    final _food = _foodController.text.trim();
+    final _travel = _travelController.text.trim();
+    final _hotel = _hotelController.text.trim();
+    final _others = _othersController.text.trim();
+
+    if (_food.isEmpty && _travel.isEmpty && _hotel.isEmpty && _others.isEmpty) {
+      return;
+    }
+
+    final _amount = ExpenseModel(
+      food: _food,
+      travel: _travel,
+      hotel: _hotel,
+      others: _others,
+    );
+
+    await addExp(_amount);
+
+    _foodController.clear();
+    _travelController.clear();
+    _hotelController.clear();
+    _othersController.clear();
+
+    ExpenseListNotifier.value.add(_amount);
+    ExpenseListNotifier.notifyListeners();
+
+    getAllExp();
   }
 }

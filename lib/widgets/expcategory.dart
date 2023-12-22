@@ -27,7 +27,7 @@ class Expenses extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(money,
+            Text(money.isEmpty ? '₹ 0' : money,
                 style:
                     const TextStyle(fontWeight: FontWeight.w900, fontSize: 17)),
             const SizedBox(height: 13),
