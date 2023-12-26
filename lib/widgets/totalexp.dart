@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:travel_app/db/functions/exp_functions.dart';
 import 'package:travel_app/db/model/expense_model.dart';
-
 import 'package:travel_app/helper/colors.dart';
 
 class TotalExp extends StatefulWidget {
@@ -106,8 +104,8 @@ class _TotalExpState extends State<TotalExp> {
                                                       YellowColor.yellow),
                                             ),
                                             onPressed: () {
-                                              print('obvjkhcvject');
                                               onAddExpClicked();
+                                              Navigator.pop(context);
                                             },
                                             child: const Text(
                                               'ADD',
@@ -298,14 +296,6 @@ class _TotalExpState extends State<TotalExp> {
     );
 
     await addExp(_amount);
-
-    _foodController.clear();
-    _travelController.clear();
-    _hotelController.clear();
-    _othersController.clear();
-
-    ExpenseListNotifier.value.add(_amount);
-    ExpenseListNotifier.notifyListeners();
 
     getAllExp();
   }
