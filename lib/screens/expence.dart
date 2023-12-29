@@ -20,13 +20,10 @@ class _ScreenExpState extends State<ScreenExp> {
   @override
   void initState() {
     super.initState();
-    // Initialize the ongoingBudget when the widget is first created
     if (ongoingTripsListNotifier.value.isNotEmpty) {
-      // If there is an ongoing trip, use its budget
       ongoingBudget = ongoingTripsListNotifier.value.first.budget;
     } else {
-      // If there is no ongoing trip, set a default value for ongoingBudget
-      ongoingBudget = '0'; // Replace '0' with your default value
+      ongoingBudget = '₹ 0';
     }
   }
 
