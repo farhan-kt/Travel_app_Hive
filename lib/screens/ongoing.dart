@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
+import 'package:travel_app/db/functions/exp_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
 import 'package:travel_app/helper/colors.dart';
 
@@ -52,6 +53,8 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                 if (widget.id != null) {
                   deleteTrip(widget.id!);
                   print('Ongoing Trip is deleted');
+                  deleteAllExp();
+                  print('Ongoing Exp is deleted');
                   Navigator.pop(context);
                 } else {
                   print('Trip id is null');

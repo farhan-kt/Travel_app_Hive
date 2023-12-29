@@ -17,8 +17,6 @@ class _TotalExpState extends State<TotalExp> {
   final _hotelController = TextEditingController();
   final _othersController = TextEditingController();
 
-  String dropdownValue = "FOOD";
-
   @override
   Widget build(BuildContext context) {
     return Container(

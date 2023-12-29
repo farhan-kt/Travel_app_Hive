@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:travel_app/db/functions/db_functions.dart';
+import 'package:travel_app/db/functions/exp_functions.dart';
 import 'package:travel_app/screens/appinfo.dart';
 import 'package:travel_app/screens/login.dart';
 
-class NavBar extends StatelessWidget {
+class NavBar extends StatefulWidget {
   const NavBar({Key? key});
 
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -36,6 +43,21 @@ class NavBar extends StatelessWidget {
             },
             trailing: const Icon(
               Icons.info_outline,
+            ),
+          ),
+          ListTile(
+            title: const Text('Clear Data'),
+            onTap: () {
+              setState(() {
+                deleteAllTrip();
+                Navigator.pop(context);
+              });
+
+              deleteAllExp();
+            },
+            trailing: const Icon(
+              Icons.delete,
+              color: Colors.red,
             ),
           ),
           ListTile(

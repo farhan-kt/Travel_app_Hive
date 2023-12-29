@@ -4,6 +4,7 @@ import 'package:travel_app/db/model/expense_model.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/widgets/expcategory.dart';
 import 'package:travel_app/widgets/totalexp.dart';
+import 'package:travel_app/screens/home.dart';
 
 class ScreenExp extends StatefulWidget {
   const ScreenExp({super.key});
@@ -107,8 +108,7 @@ class _ScreenExpState extends State<ScreenExp> {
                     }
                     return Expanded(
                       child: ListView.builder(
-                          // itemCount: expe.isNotEmpty ? 1 : 0,
-                          itemCount: expe.length,
+                          itemCount: expe.isNotEmpty ? 1 : 0,
                           itemBuilder: (context, index) {
                             final data = expe[index];
                             return Column(

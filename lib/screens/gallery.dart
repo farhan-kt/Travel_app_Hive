@@ -36,7 +36,7 @@ class _ScreenGalleryState extends State<ScreenGallery> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    height: screenheight * 0.26,
+                    height: screenheight * 0.75,
                     width: MediaQuery.of(context).size.width * 0.97,
                     child: ValueListenableBuilder(
                       valueListenable: successTripsListNotifier,
@@ -44,33 +44,38 @@ class _ScreenGalleryState extends State<ScreenGallery> {
                           Widget? child) {
                         print('Build Success with ${tripList.length}');
                         if (tripList.isNotEmpty) {
-                          return ListView.separated(
-                            itemCount: tripList.length,
-                            separatorBuilder: (context, index) =>
-                                SizedBox(height: 8),
-                            itemBuilder: (ctx, index) {
-                              final data = tripList[index];
-                              return Container(
-                                height: screenheight * 0.24,
-                                width: MediaQuery.of(context).size.width * 0.97,
-                                child: InkWell(
-                                  child: SuccessfulWidget(
-                                    date: data.startingDate,
-                                    place: data.endingingPoint,
-                                    image: data.image,
-                                    end_date: data.endingDate,
+                          return Expanded(
+                            child: ListView.separated(
+                              itemCount: tripList.length,
+                              separatorBuilder: (context, index) =>
+                                  SizedBox(height: 8),
+                              itemBuilder: (ctx, index) {
+                                final data = tripList[index];
+                                return Container(
+                                  height: screenheight * 0.24,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.97,
+                                  child: InkWell(
+                                    child: SuccessfulWidget(
+                                      date: data.startingDate,
+                                      place: data.endingingPoint,
+                                      image: data.image,
+                                      end_date: data.endingDate,
+                                    ),
+                                    onTap: () {
+                                      showModalBottomSheet(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return GalleryWidget(
+                                            trip: data,
+                                          );
+                                        },
+                                      );
+                                    },
                                   ),
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return GalleryExp();
-                                      },
-                                    );
-                                  },
-                                ),
-                              );
-                            },
+                                );
+                              },
+                            ),
                           );
                         } else {
                           return Container(

@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/widgets/expcategory.dart';
 
-class OngoingExp extends StatelessWidget {
+class OngoingExp extends StatefulWidget {
   const OngoingExp({super.key});
 
+  @override
+  State<OngoingExp> createState() => _OngoingExpState();
+}
+
+class _OngoingExpState extends State<OngoingExp> {
   @override
   Widget build(BuildContext context) {
     SizedBox sizedbox = const SizedBox(height: 20);

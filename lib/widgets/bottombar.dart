@@ -18,13 +18,12 @@ class _ScreenBtmState extends State<ScreenBtm> {
   final _screens = [
     const ScreenHome(),
     const ScreenAdd(),
-    const ScreenExp(),
+    ScreenExp(),
     const ScreenGallery()
   ];
 
   @override
   Widget build(BuildContext context) {
-    // var screenWidth = MediaQuery.of(context).size;
     return Scaffold(
       body: _screens[_currentSelectedIndex],
       bottomNavigationBar: Container(

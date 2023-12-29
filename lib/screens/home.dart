@@ -46,19 +46,6 @@ class _ScreenHomeState extends State<ScreenHome> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextFormField(
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      hintText: 'Search for trips...',
-                      hintStyle: const TextStyle(color: Color(0xFFF3CD53)),
-                      filled: true,
-                      fillColor: GreenColor.green,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
                   const SizedBox(height: 20),
                   const Text(
                     'ONGOING TRIP',
@@ -127,7 +114,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 50),
                   const Text(
                     'UPCOMING TRIP',
                     style: TextStyle(fontWeight: FontWeight.w900),

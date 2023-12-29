@@ -18,3 +18,10 @@ void getAllExp() async {
   ExpenseListNotifier.value.addAll(expDB.values);
   ExpenseListNotifier.notifyListeners();
 }
+
+Future<void> deleteAllExp() async {
+  final expDB = await Hive.openBox<ExpenseModel>('exp_db');
+  await expDB.clear();
+  print('All entries deleted');
+  getAllExp();
+}
