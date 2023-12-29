@@ -6,7 +6,6 @@ ValueNotifier<List<ExpenseModel>> ExpenseListNotifier = ValueNotifier([]);
 
 Future<void> addExp(ExpenseModel value) async {
   final expDB = await Hive.openBox<ExpenseModel>('exp_db');
-
   await expDB.add(value);
   ExpenseListNotifier.value.add(value);
   ExpenseListNotifier.notifyListeners();

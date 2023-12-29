@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/functions/exp_functions.dart';
 import 'package:travel_app/db/model/expense_model.dart';
 import 'package:travel_app/helper/colors.dart';
+import 'package:travel_app/widgets/bottombar.dart';
 import 'package:travel_app/widgets/expcategory.dart';
 import 'package:travel_app/widgets/totalexp.dart';
-import 'package:travel_app/screens/home.dart';
 
 class ScreenExp extends StatefulWidget {
   const ScreenExp({super.key});
@@ -14,6 +15,21 @@ class ScreenExp extends StatefulWidget {
 }
 
 class _ScreenExpState extends State<ScreenExp> {
+  late String ongoingBudget;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the ongoingBudget when the widget is first created
+    if (ongoingTripsListNotifier.value.isNotEmpty) {
+      // If there is an ongoing trip, use its budget
+      ongoingBudget = ongoingTripsListNotifier.value.first.budget;
+    } else {
+      // If there is no ongoing trip, set a default value for ongoingBudget
+      ongoingBudget = '0'; // Replace '0' with your default value
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     getAllExp();
@@ -25,6 +41,15 @@ class _ScreenExpState extends State<ScreenExp> {
           title: const Text('ONGOING EXPENSES',
               style: TextStyle(
                   fontWeight: FontWeight.bold, color: YellowColor.yellow)),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ScreenBtm()),
+                  (route) => false);
+            },
+          ),
           automaticallyImplyLeading: false),
       body: Container(
         decoration: const BoxDecoration(
@@ -65,8 +90,8 @@ class _ScreenExpState extends State<ScreenExp> {
                 ),
               ),
               sizedbox,
-              const Center(
-                child: TotalExp(),
+              Center(
+                child: TotalExp(ongoingBudget: ongoingBudget),
               ),
               const SizedBox(height: 20),
               ValueListenableBuilder(

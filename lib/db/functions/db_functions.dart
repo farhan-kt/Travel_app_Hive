@@ -9,22 +9,24 @@ ValueNotifier<List<TripModel>> successTripsListNotifier = ValueNotifier([]);
 
 Future<void> addTrip(TripModel value) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-
   final _id = await tripDB.add(value);
   value.id = _id;
-
   DateTime startingDateTime =
       DateFormat('dd-MM-yyyy').parse(value.startingDate);
   DateTime endingDateTime = DateFormat('dd-MM-yyyy').parse(value.endingDate);
   DateTime now = DateTime.now();
-
+// ongoingList Added
   if (startingDateTime.isBefore(now) && endingDateTime.isAfter(now)) {
     ongoingTripsListNotifier.value.add(value);
     ongoingTripsListNotifier.notifyListeners();
-  } else if (startingDateTime.isAfter(now)) {
+  }
+  // upcomingList Added
+  else if (startingDateTime.isAfter(now)) {
     upcomingTripsListNotifier.value.add(value);
     upcomingTripsListNotifier.notifyListeners();
-  } else if (endingDateTime.isBefore(now)) {
+  }
+  // SuccessfulList Added
+  else if (endingDateTime.isBefore(now)) {
     successTripsListNotifier.value.add(value);
     successTripsListNotifier.notifyListeners();
   }
@@ -71,7 +73,6 @@ Future<void> deleteTrip(int id) async {
 
 Future<void> editTrip(int id, TripModel value) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-
   await tripDB.putAt(id, value);
 }
 
