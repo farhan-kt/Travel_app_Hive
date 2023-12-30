@@ -22,8 +22,8 @@ class _OngoingExpState extends State<OngoingExp> {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ScreenExp()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const ScreenExp()));
         },
         child: const Padding(
           padding: EdgeInsets.all(8.0),

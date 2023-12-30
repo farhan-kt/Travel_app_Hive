@@ -17,7 +17,7 @@ Future<void> main() async {
     Hive.registerAdapter(ExpenseModelAdapter());
   }
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

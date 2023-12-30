@@ -23,7 +23,7 @@ class UpcomingWidget extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
             border: Border.all(color: GreenColor.green, width: 2),
             image: DecorationImage(
               image: FileImage(File(image)),

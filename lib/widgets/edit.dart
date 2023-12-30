@@ -190,16 +190,6 @@ class _EditState extends State<Edit> {
       await getAllTrip();
       setState(() {});
       Navigator.pop(context);
-
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => OngoingDetails(
-      //       id: widget.id,
-      //       trip: updated,
-      //     ),
-      //   ),
-      // );
     }
   }
 }

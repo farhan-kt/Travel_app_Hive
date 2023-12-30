@@ -12,7 +12,7 @@ class CustomTextFormField extends StatefulWidget {
   final VoidCallback? onTap;
   final int? maxLength;
 
-  CustomTextFormField({
+  const CustomTextFormField({
     Key? key,
     required this.labelText,
     required this.suffixIcon,
@@ -51,10 +51,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: GreenColor.green),
         ),
-        errorBorder: OutlineInputBorder(
+        errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red),
         ),
-        focusedErrorBorder: OutlineInputBorder(
+        focusedErrorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: GreenColor.green),
         ),
         suffixIcon: Icon(

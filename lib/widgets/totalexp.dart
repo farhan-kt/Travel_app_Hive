@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:travel_app/db/functions/exp_functions.dart';
 import 'package:travel_app/db/model/expense_model.dart';
 import 'package:travel_app/helper/colors.dart';
+import 'package:travel_app/widgets/expedit.dart';
 
 class TotalExp extends StatefulWidget {
   final String ongoingBudget;
@@ -17,7 +18,7 @@ class _TotalExpState extends State<TotalExp> {
   final _travelController = TextEditingController();
   final _hotelController = TextEditingController();
   final _othersController = TextEditingController();
-
+  double bbbbb = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,35 +35,29 @@ class _TotalExpState extends State<TotalExp> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(
+                const Text(
                   "TRIP BUDGET :",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
                   widget.ongoingBudget,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.red,
                       fontWeight: FontWeight.w700,
                       fontSize: 18),
                 ),
               ]),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'TOTAL EXPENCES : ',
                     style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
                   ),
-                  Text(
-                    '₹ 1800',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.w900,
-                        fontSize: 18),
-                  ),
+                  Text('$bbbbb')
                 ],
               ),
               Row(
@@ -105,7 +100,19 @@ class _TotalExpState extends State<TotalExp> {
                                                         YellowColor.yellow),
                                               ),
                                               onPressed: () {
+                                                // if (ExpenseListNotifier
+                                                //     .value.isEmpty) {
                                                 onAddExpClicked();
+                                                total();
+                                                // } else {
+                                                //   showModalBottomSheet(
+                                                //     context: context,
+                                                //     builder:
+                                                //         (BuildContext context) {
+                                                //       return ExpEdit();
+                                                //     },
+                                                //   );
+                                                // }
                                                 Navigator.pop(context);
                                               },
                                               child: const Text(
@@ -310,5 +317,32 @@ class _TotalExpState extends State<TotalExp> {
     await addExp(_amount);
 
     getAllExp();
+  }
+
+  // total() {
+  //   final a = ExpenseListNotifier.value;
+
+  //   for (var x in a) {
+  //     bbbbb += double.parse(x.food);
+  //     bbbbb += double.parse(x.hotel);
+  //     bbbbb += double.parse(x.travel);
+  //     bbbbb += double.parse(x.others);
+  //   }
+  // }
+  void total() {
+    double totalAmount = 0; // Initialize totalAmount as a double with value 0
+
+    for (var expense in ExpenseListNotifier.value) {
+      // Parse each expense amount and add it to totalAmount
+      totalAmount += double.parse(expense.food);
+      totalAmount += double.parse(expense.travel);
+      totalAmount += double.parse(expense.hotel);
+      totalAmount += double.parse(expense.others);
+    }
+
+    setState(() {
+      bbbbb =
+          totalAmount; // Update the state variable bbbbb with the total amount
+    });
   }
 }

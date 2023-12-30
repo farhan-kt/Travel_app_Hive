@@ -130,9 +130,11 @@ class _ScreenExpState extends State<ScreenExp> {
                     }
                     return Expanded(
                       child: ListView.builder(
-                          itemCount: expe.isNotEmpty ? 1 : 0,
+                          // itemCount: expe.isNotEmpty ? 1 : 0,
+                          itemCount: 1,
                           itemBuilder: (context, index) {
-                            final data = expe[index];
+                            final revesedindex = expe.length - 1 - index;
+                            final data = expe[revesedindex];
                             return Column(
                               children: [
                                 Row(

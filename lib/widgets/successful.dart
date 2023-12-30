@@ -71,9 +71,9 @@ class SuccessfulWidget extends StatelessWidget {
                   fontSize: 13,
                 ),
               ),
-              Text(
+              const Text(
                 ' - ',
-                style: const TextStyle(
+                style: TextStyle(
                   color: Color.fromARGB(255, 223, 19, 19),
                   fontSize: 13,
                 ),
