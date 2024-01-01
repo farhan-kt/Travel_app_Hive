@@ -31,7 +31,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
     return Scaffold(
       body: Center(
         child: Image(
-          image: AssetImage('assets/splash.jpeg'),
+          image: const AssetImage('assets/splash.jpeg'),
           height: MediaQuery.of(context).size.height * 1,
           width: MediaQuery.of(context).size.width * 1,
           fit: BoxFit.fill,
@@ -47,7 +47,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
       gotoLogin();
     } else {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => ScreenBtm()));
+          context, MaterialPageRoute(builder: (context) => const ScreenBtm()));
     }
   }
 }

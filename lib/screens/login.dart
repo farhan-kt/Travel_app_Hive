@@ -6,7 +6,7 @@ import 'package:travel_app/widgets/bottombar.dart';
 import 'package:lottie/lottie.dart';
 
 class ScreenLogin extends StatefulWidget {
-  const ScreenLogin({Key? key}) : super(key: key);
+  const ScreenLogin({super.key});
 
   @override
   State<ScreenLogin> createState() => _ScreenLoginState();
@@ -159,15 +159,15 @@ class _ScreenLoginState extends State<ScreenLogin> {
 
   void checkLogin(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
-      final _username = _nameController.text;
-      final _password = _passwordController.text;
-      if (_username == _password) {
+      final username = _nameController.text;
+      final password = _passwordController.text;
+      if (username == password) {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const ScreenBtm()),
         );
-        final _sharedPrefs = await SharedPreferences.getInstance();
-        await _sharedPrefs.setBool(SAVE_KEY, true);
+        final sharedPrefs = await SharedPreferences.getInstance();
+        await sharedPrefs.setBool(SAVE_KEY, true);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(

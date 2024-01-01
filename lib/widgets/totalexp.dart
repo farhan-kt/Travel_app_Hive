@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:travel_app/db/functions/exp_functions.dart';
 import 'package:travel_app/db/model/expense_model.dart';
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/widgets/expedit.dart';
 
 class TotalExp extends StatefulWidget {
   final String ongoingBudget;
@@ -18,7 +17,32 @@ class _TotalExpState extends State<TotalExp> {
   final _travelController = TextEditingController();
   final _hotelController = TextEditingController();
   final _othersController = TextEditingController();
-  double bbbbb = 0;
+  late String foodamt;
+  late String travelamt;
+  late String hotelamt;
+  late String othersamt;
+
+  @override
+  void initState() {
+    super.initState();
+    if (ExpenseListNotifier.value.isNotEmpty) {
+      for (final expense in ExpenseListNotifier.value) {
+        if (expense.food.isNotEmpty) {
+          _foodController.text = expense.food;
+        }
+        if (expense.travel.isNotEmpty) {
+          _travelController.text = expense.travel;
+        }
+        if (expense.hotel.isNotEmpty) {
+          _hotelController.text = expense.hotel;
+        }
+        if (expense.others.isNotEmpty) {
+          _othersController.text = expense.others;
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,16 +74,6 @@ class _TotalExpState extends State<TotalExp> {
                       fontSize: 18),
                 ),
               ]),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'TOTAL EXPENCES : ',
-                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
-                  ),
-                  Text('$bbbbb')
-                ],
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -100,19 +114,7 @@ class _TotalExpState extends State<TotalExp> {
                                                         YellowColor.yellow),
                                               ),
                                               onPressed: () {
-                                                // if (ExpenseListNotifier
-                                                //     .value.isEmpty) {
                                                 onAddExpClicked();
-                                                total();
-                                                // } else {
-                                                //   showModalBottomSheet(
-                                                //     context: context,
-                                                //     builder:
-                                                //         (BuildContext context) {
-                                                //       return ExpEdit();
-                                                //     },
-                                                //   );
-                                                // }
                                                 Navigator.pop(context);
                                               },
                                               child: const Text(
@@ -298,51 +300,24 @@ class _TotalExpState extends State<TotalExp> {
   }
 
   Future<void> onAddExpClicked() async {
-    final _food = _foodController.text.trim();
-    final _travel = _travelController.text.trim();
-    final _hotel = _hotelController.text.trim();
-    final _others = _othersController.text.trim();
+    final food = _foodController.text.trim();
+    final travel = _travelController.text.trim();
+    final hotel = _hotelController.text.trim();
+    final others = _othersController.text.trim();
 
-    if (_food.isEmpty && _travel.isEmpty && _hotel.isEmpty && _others.isEmpty) {
+    if (food.isEmpty && travel.isEmpty && hotel.isEmpty && others.isEmpty) {
       return;
     }
 
-    final _amount = ExpenseModel(
-      food: _food,
-      travel: _travel,
-      hotel: _hotel,
-      others: _others,
+    final amount = ExpenseModel(
+      food: food,
+      travel: travel,
+      hotel: hotel,
+      others: others,
     );
 
-    await addExp(_amount);
+    await addExp(amount);
 
     getAllExp();
-  }
-
-  // total() {
-  //   final a = ExpenseListNotifier.value;
-
-  //   for (var x in a) {
-  //     bbbbb += double.parse(x.food);
-  //     bbbbb += double.parse(x.hotel);
-  //     bbbbb += double.parse(x.travel);
-  //     bbbbb += double.parse(x.others);
-  //   }
-  // }
-  void total() {
-    double totalAmount = 0; // Initialize totalAmount as a double with value 0
-
-    for (var expense in ExpenseListNotifier.value) {
-      // Parse each expense amount and add it to totalAmount
-      totalAmount += double.parse(expense.food);
-      totalAmount += double.parse(expense.travel);
-      totalAmount += double.parse(expense.hotel);
-      totalAmount += double.parse(expense.others);
-    }
-
-    setState(() {
-      bbbbb =
-          totalAmount; // Update the state variable bbbbb with the total amount
-    });
   }
 }

@@ -88,7 +88,9 @@ class _ScreenExpState extends State<ScreenExp> {
               ),
               sizedbox,
               Center(
-                child: TotalExp(ongoingBudget: ongoingBudget),
+                child: TotalExp(
+                  ongoingBudget: ongoingBudget,
+                ),
               ),
               const SizedBox(height: 20),
               ValueListenableBuilder(
@@ -130,7 +132,6 @@ class _ScreenExpState extends State<ScreenExp> {
                     }
                     return Expanded(
                       child: ListView.builder(
-                          // itemCount: expe.isNotEmpty ? 1 : 0,
                           itemCount: 1,
                           itemBuilder: (context, index) {
                             final revesedindex = expe.length - 1 - index;

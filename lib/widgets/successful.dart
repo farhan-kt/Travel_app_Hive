@@ -9,13 +9,13 @@ class SuccessfulWidget extends StatelessWidget {
   final String place;
   final String image;
 
-  SuccessfulWidget({
-    Key? key,
+  const SuccessfulWidget({
+    super.key,
     required this.date,
     required this.place,
     required this.image,
     required this.end_date,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

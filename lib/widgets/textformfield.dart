@@ -13,7 +13,7 @@ class CustomTextFormField extends StatefulWidget {
   final int? maxLength;
 
   const CustomTextFormField({
-    Key? key,
+    super.key,
     required this.labelText,
     required this.suffixIcon,
     required this.controller,
@@ -22,7 +22,7 @@ class CustomTextFormField extends StatefulWidget {
     this.inputFormatters,
     this.maxLength,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();

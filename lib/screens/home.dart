@@ -52,20 +52,19 @@ class _ScreenHomeState extends State<ScreenHome> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10),
-                  Container(
+                  SizedBox(
                     height: screenheight * 0.26,
                     width: MediaQuery.of(context).size.width * 0.97,
                     child: ValueListenableBuilder(
                       valueListenable: ongoingTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
                           Widget? child) {
-                        print('Build Ongoing with ${tripList.length}');
                         if (tripList.isNotEmpty) {
                           return ListView.builder(
                             itemCount: tripList.isNotEmpty ? 1 : 0,
                             itemBuilder: (ctx, index) {
                               final data = tripList[index];
-                              return Container(
+                              return SizedBox(
                                 height: screenheight * 0.24,
                                 width: MediaQuery.of(context).size.width * 0.97,
                                 child: InkWell(
@@ -120,22 +119,21 @@ class _ScreenHomeState extends State<ScreenHome> {
                     style: TextStyle(fontWeight: FontWeight.w900),
                   ),
                   const SizedBox(height: 10),
-                  Container(
+                  SizedBox(
                     height: screenheight * 0.26,
                     width: MediaQuery.of(context).size.width * 0.97,
                     child: ValueListenableBuilder(
                       valueListenable: upcomingTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
                           Widget? child) {
-                        print('Build Upcoming with ${tripList.length}');
                         if (tripList.isNotEmpty) {
                           return ListView.separated(
                             itemCount: tripList.length,
                             separatorBuilder: (context, index) =>
-                                SizedBox(height: 8),
+                                const SizedBox(height: 8),
                             itemBuilder: (ctx, index) {
                               final data = tripList[index];
-                              return Container(
+                              return SizedBox(
                                 height: screenheight * 0.24,
                                 width: MediaQuery.of(context).size.width * 0.97,
                                 child: InkWell(

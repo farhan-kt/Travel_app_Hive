@@ -11,8 +11,7 @@ class OngoingDetails extends StatefulWidget {
   final int id;
   final TripModel trip;
 
-  const OngoingDetails({Key? key, required this.trip, required this.id})
-      : super(key: key);
+  const OngoingDetails({super.key, required this.trip, required this.id});
 
   @override
   State<OngoingDetails> createState() => _OngoingDetailsState();
@@ -50,12 +49,8 @@ class _OngoingDetailsState extends State<OngoingDetails> {
               onPressed: () {
                 if (widget.id != null) {
                   deleteTrip(widget.id!);
-                  print('Ongoing Trip is deleted');
                   deleteAllExp();
-                  print('Ongoing Exp is deleted');
                   Navigator.pop(context);
-                } else {
-                  print('Trip id is null');
                 }
               },
               icon: const Icon(Icons.delete, color: Colors.red))

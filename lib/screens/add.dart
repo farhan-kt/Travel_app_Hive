@@ -11,7 +11,7 @@ import 'package:travel_app/widgets/bottombar.dart';
 import 'package:travel_app/widgets/textformfield.dart';
 
 class ScreenAdd extends StatefulWidget {
-  const ScreenAdd({Key? key}) : super(key: key);
+  const ScreenAdd({super.key});
 
   @override
   State<ScreenAdd> createState() => _ScreenAddState();
@@ -132,7 +132,6 @@ class _ScreenAddState extends State<ScreenAdd> {
                               lastDate: DateTime(2075));
                           if (Pickeddate != null) {
                             setState(() {
-                              print('Selected Date: ${Pickeddate}');
                               _startingDate.text =
                                   DateFormat('dd-MM-yyyy').format(Pickeddate);
                             });
@@ -141,7 +140,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                         maxLength: 10,
                       ),
                     ),
-                    SizedBox(width: 15),
+                    const SizedBox(width: 15),
                     Expanded(
                       child: CustomTextFormField(
                         inputFormatters: [
@@ -219,30 +218,30 @@ class _ScreenAddState extends State<ScreenAdd> {
   }
 
   Future<void> onaddTripClicked() async {
-    final _sname = _startingPoint.text.trim();
-    final _ename = _destinationPoint.text.trim();
-    final _budgets = _budget.text.trim();
-    final _sdate = _startingDate.text.trim();
-    final _edate = _endingDate.text.trim();
+    final sname = _startingPoint.text.trim();
+    final ename = _destinationPoint.text.trim();
+    final budgets = _budget.text.trim();
+    final sdate = _startingDate.text.trim();
+    final edate = _endingDate.text.trim();
 
-    if (_sname.isEmpty ||
-        _ename.isEmpty ||
-        _budgets.isEmpty ||
-        _sdate.isEmpty ||
-        _edate.isEmpty) {
+    if (sname.isEmpty ||
+        ename.isEmpty ||
+        budgets.isEmpty ||
+        sdate.isEmpty ||
+        edate.isEmpty) {
       return;
     }
 
-    final _trip = TripModel(
+    final trip = TripModel(
       image: selectedimage!.path,
-      startingPoint: _sname,
-      endingingPoint: _ename,
-      budget: _budgets,
-      startingDate: _sdate,
-      endingDate: _edate,
+      startingPoint: sname,
+      endingingPoint: ename,
+      budget: budgets,
+      startingDate: sdate,
+      endingDate: edate,
     );
 
-    await addTrip(_trip);
+    await addTrip(trip);
 
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text(
@@ -253,16 +252,14 @@ class _ScreenAddState extends State<ScreenAdd> {
 
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => ScreenBtm()),
+      MaterialPageRoute(builder: (context) => const ScreenBtm()),
       (route) => false,
     );
   }
 
   fromgallery() async {
-    print("Entering fromgallery function");
     final returnedimage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
-
     setState(() {
       selectedimage = File(returnedimage!.path);
     });

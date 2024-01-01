@@ -3,7 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:travel_app/db/functions/db_functions.dart';
 import 'package:travel_app/db/model/data_model.dart';
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/widgets/galleryexp.dart';
+import 'package:travel_app/widgets/gallerybottomsheet.dart';
 import 'package:travel_app/widgets/successful.dart';
 
 class ScreenGallery extends StatefulWidget {
@@ -35,23 +35,22 @@ class _ScreenGalleryState extends State<ScreenGallery> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
+                  SizedBox(
                     height: screenheight * 0.75,
                     width: MediaQuery.of(context).size.width * 0.97,
                     child: ValueListenableBuilder(
                       valueListenable: successTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
                           Widget? child) {
-                        print('Build Success with ${tripList.length}');
                         if (tripList.isNotEmpty) {
                           return Expanded(
                             child: ListView.separated(
                               itemCount: tripList.length,
                               separatorBuilder: (context, index) =>
-                                  SizedBox(height: 8),
+                                  const SizedBox(height: 8),
                               itemBuilder: (ctx, index) {
                                 final data = tripList[index];
-                                return Container(
+                                return SizedBox(
                                   height: screenheight * 0.24,
                                   width:
                                       MediaQuery.of(context).size.width * 0.97,

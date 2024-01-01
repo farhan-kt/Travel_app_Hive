@@ -108,7 +108,6 @@ class _EditState extends State<Edit> {
                         lastDate: DateTime(2075));
                     if (Pickeddate != null) {
                       setState(() {
-                        print('Selected Date: ${Pickeddate}');
                         endDateController.text =
                             DateFormat('dd-MM-yyyy').format(Pickeddate);
                       });

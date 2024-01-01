@@ -9,11 +9,11 @@ class OngoingWidget extends StatelessWidget {
   final String image;
 
   const OngoingWidget({
-    Key? key,
+    super.key,
     required this.date,
     required this.place,
     required this.image,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

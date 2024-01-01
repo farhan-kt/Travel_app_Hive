@@ -9,11 +9,11 @@ class UpcomingWidget extends StatelessWidget {
   final String image;
 
   const UpcomingWidget({
-    Key? key,
+    super.key,
     required this.date,
     required this.place,
     required this.image,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

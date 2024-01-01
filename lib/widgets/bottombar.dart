@@ -18,7 +18,7 @@ class _ScreenBtmState extends State<ScreenBtm> {
   final _screens = [
     const ScreenHome(),
     const ScreenAdd(),
-    ScreenExp(),
+    const ScreenExp(),
     const ScreenGallery()
   ];
 
@@ -39,8 +39,8 @@ class _ScreenBtmState extends State<ScreenBtm> {
             backgroundColor: GreenColor.green,
             color: Colors.white,
             activeColor: Colors.black,
-            tabBackgroundColor: Color.fromARGB(255, 223, 203, 138),
-            padding: EdgeInsets.all(16),
+            tabBackgroundColor: const Color.fromARGB(255, 223, 203, 138),
+            padding: const EdgeInsets.all(16),
             gap: 10,
             tabs: const [
               GButton(

@@ -21,7 +21,6 @@ void getAllExp() async {
 Future<void> deleteAllExp() async {
   final expDB = await Hive.openBox<ExpenseModel>('exp_db');
   await expDB.clear();
-  print('All entries deleted');
   getAllExp();
 }
 

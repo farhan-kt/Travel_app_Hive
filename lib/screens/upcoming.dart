@@ -10,8 +10,7 @@ class UpcomingDetails extends StatefulWidget {
   final TripModel trip;
   final int id;
 
-  const UpcomingDetails({Key? key, required this.trip, required this.id})
-      : super(key: key);
+  const UpcomingDetails({super.key, required this.trip, required this.id});
 
   @override
   State<UpcomingDetails> createState() => _UpcomingDetailsState();
@@ -36,19 +35,16 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
         centerTitle: true,
         title: Text(
           widget.trip.endingingPoint,
-          style:
-              TextStyle(color: YellowColor.yellow, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+              color: YellowColor.yellow, fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
             onPressed: () {
               if (widget.trip.id != null) {
                 deleteTrip(widget.id!);
-                print('upcoming trip is deleted');
                 Navigator.pop(context);
                 getAllTrip();
-              } else {
-                print('Trip id is null');
               }
             },
             icon: const Icon(Icons.delete),
@@ -78,9 +74,9 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
               ),
               const SizedBox(height: 30),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: GreenColor.green,
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
                 ),
                 child: ListTile(
                   textColor: YellowColor.yellow,
@@ -113,9 +109,9 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
               Container(
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: MediaQuery.of(context).size.height * 0.1,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: GreenColor.green,
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20),

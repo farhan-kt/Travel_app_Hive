@@ -59,15 +59,9 @@ Future<void> getAllTrip() async {
   successTripsListNotifier.notifyListeners();
 }
 
-bool isTripOngoing(TripModel trip) {
-  DateTime startingDateTime = DateFormat('dd-MM-yyyy').parse(trip.startingDate);
-  return startingDateTime.isBefore(DateTime.now());
-}
-
 Future<void> deleteTrip(int id) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
   await tripDB.deleteAt(id);
-  print('deleted');
   getAllTrip();
 }
 
