@@ -167,7 +167,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
           MaterialPageRoute(builder: (context) => const ScreenBtm()),
         );
         final sharedPrefs = await SharedPreferences.getInstance();
-        await sharedPrefs.setBool(SAVE_KEY, true);
+        await sharedPrefs.setBool(saveKey, true);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(

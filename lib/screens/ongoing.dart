@@ -44,14 +44,12 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                       );
                     });
               },
-              icon: const Icon(Icons.edit)),
+              icon: const Icon(Icons.edit, color: Colors.white)),
           IconButton(
               onPressed: () {
-                if (widget.id != null) {
-                  deleteTrip(widget.id!);
-                  deleteAllExp();
-                  Navigator.pop(context);
-                }
+                deleteTrip(widget.id);
+                deleteAllExp();
+                Navigator.pop(context);
               },
               icon: const Icon(Icons.delete, color: Colors.red))
         ],

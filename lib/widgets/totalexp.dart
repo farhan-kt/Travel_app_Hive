@@ -21,8 +21,8 @@ class _TotalExpState extends State<TotalExp> {
   @override
   void initState() {
     super.initState();
-    if (ExpenseListNotifier.value.isNotEmpty) {
-      for (final expense in ExpenseListNotifier.value) {
+    if (expenseListNotifier.value.isNotEmpty) {
+      for (final expense in expenseListNotifier.value) {
         if (expense.food.isNotEmpty) {
           _foodController.text = expense.food;
         }
@@ -89,7 +89,7 @@ class _TotalExpState extends State<TotalExp> {
                   width: 10,
                 ),
                 ValueListenableBuilder<List<ExpenseModel>>(
-                  valueListenable: ExpenseListNotifier,
+                  valueListenable: expenseListNotifier,
                   builder: (context, expenses, child) {
                     return Text(
                       calculateTotal(),

@@ -95,7 +95,7 @@ class _ScreenExpState extends State<ScreenExp> {
               ),
               const SizedBox(height: 20),
               ValueListenableBuilder(
-                  valueListenable: ExpenseListNotifier,
+                  valueListenable: expenseListNotifier,
                   builder: (BuildContext context, List<ExpenseModel> expe,
                       Widget? child) {
                     if (expe.isEmpty) {

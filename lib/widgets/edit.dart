@@ -101,15 +101,15 @@ class _EditState extends State<Edit> {
                     ),
                   ),
                   onTap: () async {
-                    DateTime? Pickeddate = await showDatePicker(
+                    DateTime? pickedDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(),
                         firstDate: DateTime(2000),
                         lastDate: DateTime(2075));
-                    if (Pickeddate != null) {
+                    if (pickedDate != null) {
                       setState(() {
                         endDateController.text =
-                            DateFormat('dd-MM-yyyy').format(Pickeddate);
+                            DateFormat('dd-MM-yyyy').format(pickedDate);
                       });
                     }
                   },

@@ -5,7 +5,7 @@ import 'package:travel_app/helper/colors.dart';
 
 class SuccessfulWidget extends StatelessWidget {
   final String date;
-  final String end_date;
+  final String endDate;
   final String place;
   final String image;
 
@@ -14,7 +14,7 @@ class SuccessfulWidget extends StatelessWidget {
     required this.date,
     required this.place,
     required this.image,
-    required this.end_date,
+    required this.endDate,
   });
 
   @override
@@ -85,7 +85,7 @@ class SuccessfulWidget extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               Text(
-                end_date,
+                endDate,
                 style: const TextStyle(
                   fontWeight: FontWeight.w900,
                   color: Color.fromARGB(255, 173, 37, 37),

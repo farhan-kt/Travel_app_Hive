@@ -59,7 +59,7 @@ class _ScreenGalleryState extends State<ScreenGallery> {
                                       date: data.startingDate,
                                       place: data.endingingPoint,
                                       image: data.image,
-                                      end_date: data.endingDate,
+                                      endDate: data.endingDate,
                                     ),
                                     onTap: () {
                                       showModalBottomSheet(

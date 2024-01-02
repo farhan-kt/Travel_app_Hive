@@ -4,7 +4,7 @@ import 'package:travel_app/model/trip_model/data_model.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/screens/splash.dart';
 
-const SAVE_KEY = 'userLoggedin';
+const saveKey = 'userLoggedin';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -18,7 +18,7 @@ class ScreenAdd extends StatefulWidget {
   State<ScreenAdd> createState() => _ScreenAddState();
 }
 
-final Formkey2 = GlobalKey<FormState>();
+final formKey2 = GlobalKey<FormState>();
 
 class _ScreenAddState extends State<ScreenAdd> {
   final _startingPoint = TextEditingController();
@@ -58,7 +58,7 @@ class _ScreenAddState extends State<ScreenAdd> {
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Form(
-            key: Formkey2,
+            key: formKey2,
             child: Column(
               children: [
                 const SizedBox(height: 10),
@@ -126,15 +126,15 @@ class _ScreenAddState extends State<ScreenAdd> {
                         controller: _startingDate,
                         validator: (value) => customValidator(value),
                         onTap: () async {
-                          DateTime? Pickeddate = await showDatePicker(
+                          DateTime? pickedDate = await showDatePicker(
                               context: context,
                               initialDate: DateTime.now(),
                               firstDate: DateTime(2000),
                               lastDate: DateTime(2075));
-                          if (Pickeddate != null) {
+                          if (pickedDate != null) {
                             setState(() {
                               _startingDate.text =
-                                  DateFormat('dd-MM-yyyy').format(Pickeddate);
+                                  DateFormat('dd-MM-yyyy').format(pickedDate);
                             });
                           }
                         },
@@ -191,7 +191,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                       backgroundColor: GreenColor.green,
                     ),
                     onPressed: () {
-                      if (Formkey2.currentState!.validate()) {
+                      if (formKey2.currentState!.validate()) {
                         onaddTripClicked();
                       }
                     },

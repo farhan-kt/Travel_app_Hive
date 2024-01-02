@@ -79,8 +79,8 @@ class _NavBarState extends State<NavBar> {
   }
 
   signOut(BuildContext ctx) async {
-    final _sharedPrefs = await SharedPreferences.getInstance();
-    await _sharedPrefs.clear();
+    final logoutSharedPref = await SharedPreferences.getInstance();
+    await logoutSharedPref.clear();
     Navigator.of(ctx).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => const ScreenLogin()),
         (route) => false);
