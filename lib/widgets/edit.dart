@@ -139,7 +139,7 @@ class _EditState extends State<Edit> {
                             YellowColor.yellow),
                       ),
                       onPressed: () {
-                        updated();
+                        updated(context);
                         Navigator.pop(context);
                       },
                       child: const Text(
@@ -154,7 +154,7 @@ class _EditState extends State<Edit> {
         ));
   }
 
-  Future<void> updated() async {
+  Future<void> updated(BuildContext context) async {
     final starting = startingController.text.trim();
     final destiny = destinyController.text.trim();
     final enddate = endDateController.text.trim();

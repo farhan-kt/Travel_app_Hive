@@ -23,9 +23,3 @@ Future<void> deleteAllExp() async {
   await expDB.clear();
   getAllExp();
 }
-
-Future<void> editExp(ExpenseModel value) async {
-  final expDB = await Hive.openBox<ExpenseModel>('exp_db');
-  await expDB.clear();
-  await expDB.add(value);
-}
