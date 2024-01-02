@@ -17,7 +17,9 @@ class _ScreenGalleryState extends State<ScreenGallery> {
   @override
   Widget build(BuildContext context) {
     getAllTrip();
-    double screenheight = MediaQuery.of(context).size.height;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
           backgroundColor: GreenColor.green,
@@ -36,8 +38,8 @@ class _ScreenGalleryState extends State<ScreenGallery> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: screenheight * 0.75,
-                    width: MediaQuery.of(context).size.width * 0.97,
+                    height: screenHeight * 0.75,
+                    width: screenWidth * 0.97,
                     child: ValueListenableBuilder(
                       valueListenable: successTripsListNotifier,
                       builder: (BuildContext ctx, List<TripModel> tripList,
@@ -51,9 +53,8 @@ class _ScreenGalleryState extends State<ScreenGallery> {
                               itemBuilder: (ctx, index) {
                                 final data = tripList[index];
                                 return SizedBox(
-                                  height: screenheight * 0.24,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.97,
+                                  height: screenHeight * 0.24,
+                                  width: screenWidth * 0.97,
                                   child: InkWell(
                                     child: SuccessfulWidget(
                                       date: data.startingDate,
@@ -78,8 +79,8 @@ class _ScreenGalleryState extends State<ScreenGallery> {
                           );
                         } else {
                           return Container(
-                            height: screenheight * 0.24,
-                            width: MediaQuery.of(context).size.width * 0.97,
+                            height: screenHeight * 0.24,
+                            width: screenWidth * 0.97,
                             decoration: BoxDecoration(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(8)),

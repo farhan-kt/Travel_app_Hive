@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:travel_app/functions/db_functions.dart';
 import 'package:travel_app/functions/exp_functions.dart';
 
@@ -54,13 +55,13 @@ class _ScreenExpState extends State<ScreenExp> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            Lottie.asset('assets/expenses.json'),
             sizedbox,
             Center(
               child: TotalExp(
                 ongoingBudget: ongoingBudget,
               ),
             ),
-            // const SizedBox(height: 10),
             ValueListenableBuilder(
                 valueListenable: expenseListNotifier,
                 builder: (BuildContext context, List<ExpenseModel> expe,
