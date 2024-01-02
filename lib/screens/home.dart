@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:travel_app/db/functions/db_functions.dart';

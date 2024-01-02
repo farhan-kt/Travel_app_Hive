@@ -82,7 +82,7 @@ class _NavBarState extends State<NavBar> {
     final _sharedPrefs = await SharedPreferences.getInstance();
     await _sharedPrefs.clear();
     Navigator.of(ctx).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => ScreenLogin()),
+        MaterialPageRoute(builder: (context) => const ScreenLogin()),
         (route) => false);
   }
 }

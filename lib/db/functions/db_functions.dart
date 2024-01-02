@@ -73,6 +73,5 @@ Future<void> editTrip(int id, TripModel value) async {
 Future<void> deleteAllTrip() async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
   await tripDB.clear();
-  print('All trip deleted');
   getAllTrip();
 }

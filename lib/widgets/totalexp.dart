@@ -45,6 +45,16 @@ class _TotalExpState extends State<TotalExp> {
 
   @override
   Widget build(BuildContext context) {
+    String calculateTotal() {
+      int foodTotal = int.tryParse(_foodController.text) ?? 0;
+      int travelTotal = int.tryParse(_travelController.text) ?? 0;
+      int hotelTotal = int.tryParse(_hotelController.text) ?? 0;
+      int othersTotal = int.tryParse(_othersController.text) ?? 0;
+
+      int total = foodTotal + travelTotal + hotelTotal + othersTotal;
+      return total.toString();
+    }
+
     return Container(
         height: MediaQuery.of(context).size.height * 0.25,
         width: MediaQuery.of(context).size.width * 0.7,
@@ -72,6 +82,28 @@ class _TotalExpState extends State<TotalExp> {
                       color: Colors.red,
                       fontWeight: FontWeight.w700,
                       fontSize: 18),
+                ),
+              ]),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                const Text(
+                  "TOTAL EXPENSES :",
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                ValueListenableBuilder<List<ExpenseModel>>(
+                  valueListenable: ExpenseListNotifier,
+                  builder: (context, expenses, child) {
+                    return Text(
+                      calculateTotal(),
+                      style: const TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                      ),
+                    );
+                  },
                 ),
               ]),
               Row(
@@ -317,7 +349,6 @@ class _TotalExpState extends State<TotalExp> {
     );
 
     await addExp(amount);
-
     getAllExp();
   }
 }

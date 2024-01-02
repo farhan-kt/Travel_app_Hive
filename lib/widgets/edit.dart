@@ -185,9 +185,7 @@ class _EditState extends State<Edit> {
         content: Text('Updated Successfully'),
         behavior: SnackBarBehavior.floating,
       ));
-
       await getAllTrip();
-      setState(() {});
       Navigator.pop(context);
     }
   }
