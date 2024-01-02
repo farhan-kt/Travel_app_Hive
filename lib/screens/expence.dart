@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/db/functions/db_functions.dart';
-import 'package:travel_app/db/functions/exp_functions.dart';
-import 'package:travel_app/db/model/expense_model.dart';
+import 'package:travel_app/functions/db_functions.dart';
+import 'package:travel_app/functions/exp_functions.dart';
+
 import 'package:travel_app/helper/colors.dart';
+import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/widgets/bottombar.dart';
 import 'package:travel_app/widgets/expcategory.dart';
 import 'package:travel_app/widgets/totalexp.dart';

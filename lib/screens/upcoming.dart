@@ -1,9 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:travel_app/db/functions/db_functions.dart';
-import 'package:travel_app/db/model/data_model.dart';
+import 'package:travel_app/functions/db_functions.dart';
 import 'package:travel_app/helper/colors.dart';
+import 'package:travel_app/model/trip_model/data_model.dart';
 import 'package:travel_app/widgets/bottombar.dart';
 
 class UpcomingDetails extends StatefulWidget {

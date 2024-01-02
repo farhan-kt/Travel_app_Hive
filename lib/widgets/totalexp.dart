@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:travel_app/db/functions/exp_functions.dart';
-import 'package:travel_app/db/model/expense_model.dart';
+import 'package:travel_app/functions/exp_functions.dart';
 import 'package:travel_app/helper/colors.dart';
+import 'package:travel_app/model/expense_model/expense_model.dart';
 
 class TotalExp extends StatefulWidget {
   final String ongoingBudget;
@@ -17,10 +17,6 @@ class _TotalExpState extends State<TotalExp> {
   final _travelController = TextEditingController();
   final _hotelController = TextEditingController();
   final _othersController = TextEditingController();
-  late String foodamt;
-  late String travelamt;
-  late String hotelamt;
-  late String othersamt;
 
   @override
   void initState() {

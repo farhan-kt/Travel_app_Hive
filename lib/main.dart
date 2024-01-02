@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:travel_app/db/model/data_model.dart';
-import 'package:travel_app/db/model/expense_model.dart';
+import 'package:travel_app/model/trip_model/data_model.dart';
+import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/screens/splash.dart';
 
 const SAVE_KEY = 'userLoggedin';
@@ -16,7 +16,6 @@ Future<void> main() async {
   if (!Hive.isAdapterRegistered(ExpenseModelAdapter().typeId)) {
     Hive.registerAdapter(ExpenseModelAdapter());
   }
-
   runApp(const MyApp());
 }
 

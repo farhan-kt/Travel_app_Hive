@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:travel_app/db/functions/db_functions.dart';
-import 'package:travel_app/db/functions/exp_functions.dart';
+import 'package:travel_app/functions/db_functions.dart';
+import 'package:travel_app/functions/exp_functions.dart';
 import 'package:travel_app/screens/appinfo.dart';
 import 'package:travel_app/screens/login.dart';
 

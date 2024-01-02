@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:travel_app/db/model/data_model.dart';
+import 'package:travel_app/model/trip_model/data_model.dart';
 
 ValueNotifier<List<TripModel>> ongoingTripsListNotifier = ValueNotifier([]);
 ValueNotifier<List<TripModel>> upcomingTripsListNotifier = ValueNotifier([]);
@@ -9,8 +9,8 @@ ValueNotifier<List<TripModel>> successTripsListNotifier = ValueNotifier([]);
 
 Future<void> addTrip(TripModel value) async {
   final tripDB = await Hive.openBox<TripModel>('trip_db');
-  final _id = await tripDB.add(value);
-  value.id = _id;
+  final tripid = await tripDB.add(value);
+  value.id = tripid;
   DateTime startingDateTime =
       DateFormat('dd-MM-yyyy').parse(value.startingDate);
   DateTime endingDateTime = DateFormat('dd-MM-yyyy').parse(value.endingDate);
