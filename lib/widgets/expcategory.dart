@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/helper/colors.dart';
 
 class Expenses extends StatelessWidget {
   final String money;
@@ -13,37 +12,44 @@ class Expenses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height * 0.15,
       width: MediaQuery.of(context).size.width * 0.37,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: YellowColor.yellow, width: 3),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(money.isEmpty ? '₹ 0' : money,
-                style:
-                    const TextStyle(fontWeight: FontWeight.w900, fontSize: 17)),
-            const SizedBox(height: 13),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(category,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w900, fontSize: 16)),
-                Icon(
-                  icons,
-                  size: 23,
-                )
-              ],
-            )
-          ],
+      child: Card(
+        elevation: 10,
+        color: const Color.fromARGB(255, 75, 120, 111),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(money.isEmpty ? '₹ 0' : money,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 17,
+                      color: Colors.white)),
+              const SizedBox(height: 13),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(category,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 16,
+                          color: Colors.white)),
+                  Icon(
+                    icons,
+                    size: 23,
+                    color: Colors.white,
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

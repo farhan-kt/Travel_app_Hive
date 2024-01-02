@@ -49,132 +49,98 @@ class _ScreenExpState extends State<ScreenExp> {
             },
           ),
           automaticallyImplyLeading: false),
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/expBG.jpg"),
-            fit: BoxFit.fill,
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const SizedBox(height: 5),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.1,
-                decoration: BoxDecoration(
-                  border: Border.all(color: YellowColor.yellow, width: 4),
-                  color: Colors.white,
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 30),
-                        child: Text('TOTAL EXPENSES',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w900,
-                                fontSize: 25,
-                                color: GreenColor.green)),
-                      ),
-                    ],
-                  ),
-                ),
+      body: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            sizedbox,
+            Center(
+              child: TotalExp(
+                ongoingBudget: ongoingBudget,
               ),
-              sizedbox,
-              Center(
-                child: TotalExp(
-                  ongoingBudget: ongoingBudget,
-                ),
-              ),
-              const SizedBox(height: 20),
-              ValueListenableBuilder(
-                  valueListenable: expenseListNotifier,
-                  builder: (BuildContext context, List<ExpenseModel> expe,
-                      Widget? child) {
-                    if (expe.isEmpty) {
-                      return const Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Expenses(
-                                  money: '₹ 0',
-                                  category: 'FOOD',
-                                  icons: Icons.food_bank),
-                              Expenses(
-                                  money: '₹ 0',
-                                  category: 'TRAVEL',
-                                  icons: Icons.airport_shuttle),
-                            ],
-                          ),
-                          SizedBox(height: 30),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Expenses(
-                                  money: '₹ 0',
-                                  category: 'HOTEL',
-                                  icons: Icons.hotel),
-                              Expenses(
-                                  money: '₹ 0',
-                                  category: 'OTHERS',
-                                  icons: Icons.menu_rounded),
-                            ],
-                          )
-                        ],
-                      );
-                    }
-                    return Expanded(
-                      child: ListView.builder(
-                          itemCount: 1,
-                          itemBuilder: (context, index) {
-                            final revesedindex = expe.length - 1 - index;
-                            final data = expe[revesedindex];
-                            return Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Expenses(
-                                        money: data.food,
-                                        category: 'FOOD',
-                                        icons: Icons.food_bank),
-                                    Expenses(
-                                        money: data.travel,
-                                        category: 'TRAVEL',
-                                        icons: Icons.airport_shuttle),
-                                  ],
-                                ),
-                                const SizedBox(height: 30),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Expenses(
-                                        money: data.hotel,
-                                        category: 'HOTEL',
-                                        icons: Icons.hotel),
-                                    Expenses(
-                                        money: data.others,
-                                        category: 'OTHERS',
-                                        icons: Icons.menu_rounded),
-                                  ],
-                                )
-                              ],
-                            );
-                          }),
+            ),
+            // const SizedBox(height: 10),
+            ValueListenableBuilder(
+                valueListenable: expenseListNotifier,
+                builder: (BuildContext context, List<ExpenseModel> expe,
+                    Widget? child) {
+                  if (expe.isEmpty) {
+                    return const Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Expenses(
+                                money: '₹ 0',
+                                category: 'FOOD',
+                                icons: Icons.food_bank),
+                            Expenses(
+                                money: '₹ 0',
+                                category: 'TRAVEL',
+                                icons: Icons.airport_shuttle),
+                          ],
+                        ),
+                        SizedBox(height: 30),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Expenses(
+                                money: '₹ 0',
+                                category: 'HOTEL',
+                                icons: Icons.hotel),
+                            Expenses(
+                                money: '₹ 0',
+                                category: 'OTHERS',
+                                icons: Icons.menu_rounded),
+                          ],
+                        )
+                      ],
                     );
-                  })
-            ],
-          ),
+                  }
+                  return Expanded(
+                    child: ListView.builder(
+                        itemCount: 1,
+                        itemBuilder: (context, index) {
+                          final revesedindex = expe.length - 1 - index;
+                          final data = expe[revesedindex];
+                          return Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Expenses(
+                                      money: data.food,
+                                      category: 'FOOD',
+                                      icons: Icons.food_bank),
+                                  Expenses(
+                                      money: data.travel,
+                                      category: 'TRAVEL',
+                                      icons: Icons.airport_shuttle),
+                                ],
+                              ),
+                              const SizedBox(height: 30),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Expenses(
+                                      money: data.hotel,
+                                      category: 'HOTEL',
+                                      icons: Icons.hotel),
+                                  Expenses(
+                                      money: data.others,
+                                      category: 'OTHERS',
+                                      icons: Icons.menu_rounded),
+                                ],
+                              )
+                            ],
+                          );
+                        }),
+                  );
+                })
+          ],
         ),
       ),
     );
