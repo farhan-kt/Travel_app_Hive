@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:travel_app/helper/colors.dart';
 
 class UpcomingWidget extends StatelessWidget {
