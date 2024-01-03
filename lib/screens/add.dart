@@ -1,10 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:travel_app/functions/db_functions.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/trip_model/data_model.dart';

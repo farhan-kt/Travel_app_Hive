@@ -20,6 +20,8 @@ class OngoingDetails extends StatefulWidget {
 class _OngoingDetailsState extends State<OngoingDetails> {
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: GreenColor.green,
@@ -70,12 +72,12 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                   fit: BoxFit.fill,
                 ),
               ),
-              height: MediaQuery.of(context).size.height * 0.3,
-              width: MediaQuery.of(context).size.width * double.infinity,
+              height: screenHeight * 0.3,
+              width: screenWidth * double.infinity,
             ),
             const SizedBox(height: 30),
             Container(
-              width: MediaQuery.of(context).size.width * 0.9,
+              width: screenWidth * 0.9,
               decoration: const BoxDecoration(
                 color: GreenColor.green,
                 borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -108,8 +110,8 @@ class _OngoingDetailsState extends State<OngoingDetails> {
             ),
             const SizedBox(height: 30),
             Container(
-              width: MediaQuery.of(context).size.width * 0.9,
-              height: MediaQuery.of(context).size.height * 0.09,
+              width: screenWidth * 0.9,
+              height: screenHeight * 0.09,
               decoration: const BoxDecoration(
                 color: GreenColor.green,
                 borderRadius: BorderRadius.all(Radius.circular(8)),

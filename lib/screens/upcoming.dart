@@ -18,6 +18,7 @@ class UpcomingDetails extends StatefulWidget {
 class _UpcomingDetailsState extends State<UpcomingDetails> {
   @override
   Widget build(BuildContext context) {
+    Size mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: GreenColor.green,
@@ -67,8 +68,8 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                       fit: BoxFit.fill,
                     ),
                   ),
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  width: MediaQuery.of(context).size.width * double.infinity,
+                  height: mediaQuery.height * 0.3,
+                  width: mediaQuery.width * double.infinity,
                 ),
               ),
               const SizedBox(height: 30),
@@ -106,8 +107,8 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
               ),
               const SizedBox(height: 30),
               Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.1,
+                width: mediaQuery.width * 0.8,
+                height: mediaQuery.height * 0.1,
                 decoration: const BoxDecoration(
                   color: GreenColor.green,
                   borderRadius: BorderRadius.all(Radius.circular(8)),

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_app/main.dart';
@@ -28,12 +30,13 @@ class _ScreenSplashState extends State<ScreenSplash> {
 
   @override
   Widget build(BuildContext context) {
+    Size mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
         child: Image(
           image: const AssetImage('assets/splash.jpeg'),
-          height: MediaQuery.of(context).size.height * 1,
-          width: MediaQuery.of(context).size.width * 1,
+          height: mediaQuery.height * 1,
+          width: mediaQuery.width * 1,
           fit: BoxFit.fill,
         ),
       ),

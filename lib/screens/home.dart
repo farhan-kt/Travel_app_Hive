@@ -26,7 +26,8 @@ class _ScreenHomeState extends State<ScreenHome> {
 
   @override
   Widget build(BuildContext context) {
-    double screenheight = MediaQuery.of(context).size.height;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: const NavBar(),
       appBar: AppBar(
@@ -50,8 +51,8 @@ class _ScreenHomeState extends State<ScreenHome> {
               ),
               const SizedBox(height: 10),
               SizedBox(
-                height: screenheight * 0.26,
-                width: MediaQuery.of(context).size.width * 0.97,
+                height: screenHeight * 0.26,
+                width: screenWidth * 0.97,
                 child: ValueListenableBuilder(
                   valueListenable: ongoingTripsListNotifier,
                   builder: (BuildContext ctx, List<TripModel> tripList,
@@ -62,7 +63,7 @@ class _ScreenHomeState extends State<ScreenHome> {
                         itemBuilder: (ctx, index) {
                           final data = tripList[index];
                           return SizedBox(
-                            height: screenheight * 0.24,
+                            height: screenHeight * 0.24,
                             width: MediaQuery.of(context).size.width * 0.97,
                             child: InkWell(
                               child: OngoingWidget(
@@ -87,8 +88,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                       );
                     } else {
                       return Container(
-                        height: screenheight * 0.6,
-                        width: MediaQuery.of(context).size.width * 0.97,
+                        height: screenHeight * 0.6,
+                        width: screenWidth * 0.97,
                         decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8)),
@@ -117,8 +118,8 @@ class _ScreenHomeState extends State<ScreenHome> {
               ),
               const SizedBox(height: 10),
               SizedBox(
-                height: screenheight * 0.26,
-                width: MediaQuery.of(context).size.width * 0.97,
+                height: screenHeight * 0.26,
+                width: screenWidth * 0.97,
                 child: ValueListenableBuilder(
                   valueListenable: upcomingTripsListNotifier,
                   builder: (BuildContext ctx, List<TripModel> tripList,
@@ -131,8 +132,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                         itemBuilder: (ctx, index) {
                           final data = tripList[index];
                           return SizedBox(
-                            height: screenheight * 0.24,
-                            width: MediaQuery.of(context).size.width * 0.97,
+                            height: screenHeight * 0.24,
+                            width: screenWidth * 0.97,
                             child: InkWell(
                               child: UpcomingWidget(
                                 date: data.startingDate,
@@ -156,8 +157,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                       );
                     } else {
                       return Container(
-                        height: screenheight * 0.24,
-                        width: MediaQuery.of(context).size.width * 0.97,
+                        height: screenHeight * 0.24,
+                        width: screenWidth * 0.97,
                         decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8)),

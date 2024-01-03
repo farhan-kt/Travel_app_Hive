@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:travel_app/functions/db_functions.dart';
 import 'package:travel_app/functions/exp_functions.dart';
-
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/widgets/bottombar.dart';
@@ -31,8 +30,10 @@ class _ScreenExpState extends State<ScreenExp> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    const sizedBox = SizedBox(height: 15);
     getAllExp();
-    const sizedbox = SizedBox(height: 10);
     return Scaffold(
       appBar: AppBar(
           backgroundColor: GreenColor.green,
@@ -55,13 +56,14 @@ class _ScreenExpState extends State<ScreenExp> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Lottie.asset('assets/expenses.json'),
-            sizedbox,
+            Lottie.asset('assets/expenses.json',
+                width: screenWidth * 0.25, height: screenHeight * 0.15),
             Center(
               child: TotalExp(
                 ongoingBudget: ongoingBudget,
               ),
             ),
+            sizedBox,
             ValueListenableBuilder(
                 valueListenable: expenseListNotifier,
                 builder: (BuildContext context, List<ExpenseModel> expe,
