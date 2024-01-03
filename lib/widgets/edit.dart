@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:travel_app/functions/db_functions.dart';
@@ -43,9 +45,10 @@ class _EditState extends State<Edit> {
 
   @override
   Widget build(BuildContext context) {
+    Size mediaQuery = MediaQuery.of(context).size;
     return Container(
-        height: MediaQuery.of(context).size.height * 0.4,
-        width: MediaQuery.of(context).size.width * 1,
+        height: mediaQuery.height * 0.4,
+        width: mediaQuery.width * 1,
         color: GreenColor.green,
         child: Padding(
           padding: const EdgeInsets.all(12),

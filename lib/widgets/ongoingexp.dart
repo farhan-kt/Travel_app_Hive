@@ -12,9 +12,10 @@ class OngoingExp extends StatefulWidget {
 class _OngoingExpState extends State<OngoingExp> {
   @override
   Widget build(BuildContext context) {
+    Size mediaQuery = MediaQuery.of(context).size;
     return Container(
-      height: MediaQuery.of(context).size.height * 0.2,
-      width: MediaQuery.of(context).size.width * 0.9,
+      height: mediaQuery.height * 0.15,
+      width: mediaQuery.width * 0.5,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey, width: 4),
         color: GreenColor.green,
@@ -32,21 +33,12 @@ class _OngoingExpState extends State<OngoingExp> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                SizedBox(height: 5),
                 Text('TRIP EXPENCES',
                     style: TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 18,
                         color: Colors.white)),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  '₹ 1000',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 20,
-                      color: YellowColor.yellow),
-                ),
                 SizedBox(
                   height: 20,
                 ),

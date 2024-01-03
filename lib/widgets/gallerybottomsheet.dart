@@ -13,10 +13,11 @@ class GalleryWidget extends StatefulWidget {
 class _GalleryWidgetState extends State<GalleryWidget> {
   @override
   Widget build(BuildContext context) {
+    Size mediaQuery = MediaQuery.of(context).size;
     return Container(
       color: GreenColor.green,
-      height: MediaQuery.of(context).size.height * 0.3,
-      width: MediaQuery.of(context).size.width * 1,
+      height: mediaQuery.height * 0.3,
+      width: mediaQuery.width * 1,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -29,8 +30,8 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: mediaQuery.height * 0.1,
+                  width: mediaQuery.width * 0.8,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                   ),
@@ -68,8 +69,8 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: mediaQuery.height * 0.1,
+                  width: mediaQuery.width * 0.8,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                   ),

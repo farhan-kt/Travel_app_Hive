@@ -8,7 +8,7 @@ import 'package:travel_app/screens/ongoing.dart';
 import 'package:travel_app/screens/upcoming.dart';
 import 'package:travel_app/widgets/navbar.dart';
 import 'package:travel_app/widgets/ongoingtrip.dart';
-import 'package:travel_app/widgets/upcoming.dart';
+import 'package:travel_app/widgets/upcomingcontainer.dart';
 
 class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});

@@ -12,9 +12,10 @@ class Expenses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size mediaQuery = MediaQuery.of(context).size;
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.15,
-      width: MediaQuery.of(context).size.width * 0.37,
+      height: mediaQuery.height * 0.15,
+      width: mediaQuery.width * 0.37,
       child: Card(
         elevation: 10,
         color: const Color.fromARGB(255, 75, 120, 111),

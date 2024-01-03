@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:travel_app/helper/colors.dart';
 
-class CustomTextFormField extends StatefulWidget {
+class CustomTextFormField extends StatelessWidget {
   final String labelText;
   final IconData suffixIcon;
   final TextEditingController controller;
@@ -25,25 +25,19 @@ class CustomTextFormField extends StatefulWidget {
   });
 
   @override
-  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
-}
-
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onTap: widget.onTap,
-      validator: widget.validator,
-      controller: widget.controller,
-      keyboardType: widget.keyboardType,
+      onTap: onTap,
+      validator: validator,
+      controller: controller,
+      keyboardType: keyboardType,
       inputFormatters: [
-        if (widget.maxLength != null)
-          LengthLimitingTextInputFormatter(widget.maxLength),
-        ...?widget.inputFormatters,
+        if (maxLength != null) LengthLimitingTextInputFormatter(maxLength),
+        ...?inputFormatters,
       ],
       style: const TextStyle(color: Colors.black),
       decoration: InputDecoration(
-        labelText: widget.labelText,
+        labelText: labelText,
         labelStyle: const TextStyle(color: GreenColor.green),
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: GreenColor.green),
@@ -58,7 +52,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           borderSide: BorderSide(color: GreenColor.green),
         ),
         suffixIcon: Icon(
-          widget.suffixIcon,
+          suffixIcon,
         ),
       ),
     );
