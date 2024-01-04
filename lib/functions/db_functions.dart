@@ -56,6 +56,7 @@ Future<void> getAllTrip() async {
       upcomingTripsListNotifier.value.add(trip);
     }
   }
+
   ongoingTripsListNotifier.notifyListeners();
   upcomingTripsListNotifier.notifyListeners();
   successTripsListNotifier.notifyListeners();

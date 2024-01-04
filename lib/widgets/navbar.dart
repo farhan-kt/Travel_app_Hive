@@ -50,12 +50,35 @@ class _NavBarState extends State<NavBar> {
           ListTile(
             title: const Text('Clear Data'),
             onTap: () {
-              setState(() {
-                deleteAllTrip();
-                Navigator.pop(context);
-              });
-
-              deleteAllExp();
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Clear Data'),
+                    content:
+                        const Text('Are you sure you want to clear all data ?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('CANCEL'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            deleteAllTrip();
+                            deleteAllExp();
+                          });
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                        child: const Text('CLEAR'),
+                      ),
+                    ],
+                  );
+                },
+              );
             },
             trailing: const Icon(
               Icons.delete,
