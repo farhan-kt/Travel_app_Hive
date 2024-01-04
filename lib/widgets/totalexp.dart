@@ -19,8 +19,7 @@ class _TotalExpState extends State<TotalExp> {
   final _othersController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
     if (expenseListNotifier.value.isNotEmpty) {
       for (final expense in expenseListNotifier.value) {
         if (expense.food.isNotEmpty) {
@@ -37,20 +36,7 @@ class _TotalExpState extends State<TotalExp> {
         }
       }
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
     Size mediaQuery = MediaQuery.of(context).size;
-    String calculateTotal() {
-      int foodTotal = int.tryParse(_foodController.text) ?? 0;
-      int travelTotal = int.tryParse(_travelController.text) ?? 0;
-      int hotelTotal = int.tryParse(_hotelController.text) ?? 0;
-      int othersTotal = int.tryParse(_othersController.text) ?? 0;
-
-      int total = foodTotal + travelTotal + hotelTotal + othersTotal;
-      return total.toString();
-    }
 
     return Container(
       height: mediaQuery.height * 0.25,
@@ -243,5 +229,15 @@ class _TotalExpState extends State<TotalExp> {
 
     await addExp(amount);
     getAllExp();
+  }
+
+  String calculateTotal() {
+    int foodTotal = int.tryParse(_foodController.text) ?? 0;
+    int travelTotal = int.tryParse(_travelController.text) ?? 0;
+    int hotelTotal = int.tryParse(_hotelController.text) ?? 0;
+    int othersTotal = int.tryParse(_othersController.text) ?? 0;
+
+    int total = foodTotal + travelTotal + hotelTotal + othersTotal;
+    return total.toString();
   }
 }
