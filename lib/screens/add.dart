@@ -40,9 +40,9 @@ class _ScreenAddState extends State<ScreenAdd> {
 
   @override
   Widget build(BuildContext context) {
-    double screenheight = MediaQuery.of(context).size.height;
-    double screenwidth = MediaQuery.of(context).size.width;
-    var sizedbox = const SizedBox(height: 10);
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    var sizedBox = const SizedBox(height: 10);
 
     return Scaffold(
       appBar: AppBar(
@@ -68,8 +68,8 @@ class _ScreenAddState extends State<ScreenAdd> {
                     fromgallery();
                   },
                   child: Container(
-                    height: screenheight * 0.3,
-                    width: screenwidth * double.infinity,
+                    height: screenHeight * 0.3,
+                    width: screenWidth * double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
                       border: Border.all(color: Colors.grey, width: 3),
@@ -90,19 +90,19 @@ class _ScreenAddState extends State<ScreenAdd> {
                         : null,
                   ),
                 ),
-                sizedbox,
+                sizedBox,
                 CustomTextFormField(
                     labelText: 'Enter starting Point',
                     suffixIcon: Icons.location_on,
                     controller: _startingPoint,
                     validator: (value) => customValidator(value)),
-                sizedbox,
+                sizedBox,
                 CustomTextFormField(
                     labelText: 'Enter Destination',
                     suffixIcon: Icons.location_on,
                     controller: _destinationPoint,
                     validator: (value) => customValidator(value)),
-                sizedbox,
+                sizedBox,
                 CustomTextFormField(
                   keyboardType: TextInputType.number,
                   inputFormatters: [
@@ -114,7 +114,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                   validator: (value) => customValidator(value),
                   maxLength: 8,
                 ),
-                sizedbox,
+                sizedBox,
                 Row(
                   children: [
                     Expanded(
@@ -185,7 +185,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                     ),
                   ],
                 ),
-                sizedbox,
+                sizedBox,
                 Center(
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
@@ -198,8 +198,8 @@ class _ScreenAddState extends State<ScreenAdd> {
                     },
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: screenheight * 0.03,
-                        horizontal: screenwidth * 0.05,
+                        vertical: screenHeight * 0.03,
+                        horizontal: screenWidth * 0.05,
                       ),
                       child: const Text(
                         'ADD TRIP',
