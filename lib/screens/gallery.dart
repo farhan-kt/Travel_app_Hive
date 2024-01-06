@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:travel_app/functions/db_functions.dart';
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/model/trip_model/data_model.dart';
+import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/widgets/gallerybottomsheet.dart';
 import 'package:travel_app/widgets/successful.dart';
 

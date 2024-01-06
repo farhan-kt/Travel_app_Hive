@@ -1,5 +1,5 @@
 import 'package:hive_flutter/adapters.dart';
-part 'data_model.g.dart';
+part 'trip_model.g.dart';
 
 @HiveType(typeId: 1)
 class TripModel {

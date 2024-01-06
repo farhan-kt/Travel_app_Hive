@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:travel_app/model/trip_model/data_model.dart';
+import 'package:travel_app/model/trip_model/trip_model.dart';
 
 ValueNotifier<List<TripModel>> ongoingTripsListNotifier = ValueNotifier([]);
 ValueNotifier<List<TripModel>> upcomingTripsListNotifier = ValueNotifier([]);

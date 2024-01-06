@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:travel_app/model/trip_model/data_model.dart';
+import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/screens/splash.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/functions/db_functions.dart';
 import 'package:travel_app/functions/exp_functions.dart';
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/model/trip_model/data_model.dart';
+import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/widgets/edit.dart';
 import 'package:travel_app/widgets/ongoingexp.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/model/trip_model/data_model.dart';
+import 'package:travel_app/model/trip_model/trip_model.dart';
 
 class GalleryWidget extends StatefulWidget {
   final TripModel trip;
