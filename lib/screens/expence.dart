@@ -16,6 +16,30 @@ class ScreenExp extends StatefulWidget {
 }
 
 class _ScreenExpState extends State<ScreenExp> {
+  int calculateTotalFoodAmount(List<ExpenseModel> expenses) {
+    return expenses
+        .map((expense) => int.tryParse(expense.food) ?? 0)
+        .reduce((value, element) => value + element);
+  }
+
+  int calculateTotalTravelAmount(List<ExpenseModel> expenses) {
+    return expenses
+        .map((expense) => int.tryParse(expense.travel) ?? 0)
+        .reduce((value, element) => value + element);
+  }
+
+  int calculateTotalHotelAmount(List<ExpenseModel> expenses) {
+    return expenses
+        .map((expense) => int.tryParse(expense.hotel) ?? 0)
+        .reduce((value, element) => value + element);
+  }
+
+  int calculateTotalOthersAmount(List<ExpenseModel> expenses) {
+    return expenses
+        .map((expense) => int.tryParse(expense.others) ?? 0)
+        .reduce((value, element) => value + element);
+  }
+
   late String ongoingBudget;
 
   @override
@@ -103,44 +127,54 @@ class _ScreenExpState extends State<ScreenExp> {
                   }
                   return Expanded(
                     child: ListView.builder(
-                        itemCount: 1,
-                        itemBuilder: (context, index) {
-                          final revesedindex = expe.length - 1 - index;
-                          final data = expe[revesedindex];
-                          return Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Expenses(
-                                      money: data.food,
-                                      category: 'FOOD',
-                                      icons: Icons.food_bank),
-                                  Expenses(
-                                      money: data.travel,
-                                      category: 'TRAVEL',
-                                      icons: Icons.airport_shuttle),
-                                ],
-                              ),
-                              const SizedBox(height: 30),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Expenses(
-                                      money: data.hotel,
-                                      category: 'HOTEL',
-                                      icons: Icons.hotel),
-                                  Expenses(
-                                      money: data.others,
-                                      category: 'OTHERS',
-                                      icons: Icons.menu_rounded),
-                                ],
-                              )
-                            ],
-                          );
-                        }),
+                      itemCount: 1,
+                      itemBuilder: (context, index) {
+                        final revesedindex = expe.length - 1 - index;
+                        final data = expe[revesedindex];
+                        final totalFoodAmount = calculateTotalFoodAmount(expe);
+                        final totalTravelAmount =
+                            calculateTotalTravelAmount(expe);
+                        final totalHotelAmount =
+                            calculateTotalHotelAmount(expe);
+                        final totalOthersAmount =
+                            calculateTotalOthersAmount(expe);
+                        return Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Expenses(
+                                  money: totalFoodAmount.toString(),
+                                  category: 'FOOD',
+                                  icons: Icons.food_bank,
+                                ),
+                                Expenses(
+                                  money: totalTravelAmount.toString(),
+                                  category: 'TRAVEL',
+                                  icons: Icons.airport_shuttle,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 30),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Expenses(
+                                  money: totalHotelAmount.toString(),
+                                  category: 'HOTEL',
+                                  icons: Icons.hotel,
+                                ),
+                                Expenses(
+                                  money: totalOthersAmount.toString(),
+                                  category: 'OTHERS',
+                                  icons: Icons.menu_rounded,
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                   );
                 })
           ],

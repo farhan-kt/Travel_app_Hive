@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:travel_app/functions/exp_functions.dart';
 import 'package:travel_app/helper/colors.dart';
@@ -19,23 +21,14 @@ class _TotalExpState extends State<TotalExp> {
   final _othersController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    calculateTotal();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (expenseListNotifier.value.isNotEmpty) {
-      for (final expense in expenseListNotifier.value) {
-        if (expense.food.isNotEmpty) {
-          _foodController.text = expense.food;
-        }
-        if (expense.travel.isNotEmpty) {
-          _travelController.text = expense.travel;
-        }
-        if (expense.hotel.isNotEmpty) {
-          _hotelController.text = expense.hotel;
-        }
-        if (expense.others.isNotEmpty) {
-          _othersController.text = expense.others;
-        }
-      }
-    }
     Size mediaQuery = MediaQuery.of(context).size;
 
     return Container(
@@ -220,22 +213,60 @@ class _TotalExpState extends State<TotalExp> {
       return;
     }
 
+    int foodAmount = int.tryParse(food) ?? 0;
+    int travelAmount = int.tryParse(travel) ?? 0;
+    int hotelAmount = int.tryParse(hotel) ?? 0;
+    int othersAmount = int.tryParse(others) ?? 0;
+
+    if (expenseListNotifier.value.isNotEmpty) {
+      for (final expense in expenseListNotifier.value) {
+        if (expense.food.isNotEmpty) {
+          foodAmount += int.tryParse(expense.food) ?? 0;
+        }
+        if (expense.travel.isNotEmpty) {
+          travelAmount += int.tryParse(expense.travel) ?? 0;
+        }
+        if (expense.hotel.isNotEmpty) {
+          hotelAmount += int.tryParse(expense.hotel) ?? 0;
+        }
+        if (expense.others.isNotEmpty) {
+          othersAmount += int.tryParse(expense.others) ?? 0;
+        }
+      }
+    }
+
+    _foodController.text = foodAmount.toString();
+    _travelController.text = travelAmount.toString();
+    _hotelController.text = hotelAmount.toString();
+    _othersController.text = othersAmount.toString();
+
     final amount = ExpenseModel(
       food: food,
       travel: travel,
       hotel: hotel,
       others: others,
+      total: calculateTotal(),
     );
-
     await addExp(amount);
     getAllExp();
+    _foodController.clear();
+    _travelController.clear();
+    _hotelController.clear();
+    _othersController.clear();
   }
 
   String calculateTotal() {
-    int foodTotal = int.tryParse(_foodController.text) ?? 0;
-    int travelTotal = int.tryParse(_travelController.text) ?? 0;
-    int hotelTotal = int.tryParse(_hotelController.text) ?? 0;
-    int othersTotal = int.tryParse(_othersController.text) ?? 0;
+    int foodTotal = 0;
+    int travelTotal = 0;
+    int hotelTotal = 0;
+    int othersTotal = 0;
+
+    for (final expense in expenseListNotifier.value) {
+      foodTotal += int.tryParse(expense.food) ?? 0;
+      travelTotal += int.tryParse(expense.travel) ?? 0;
+      hotelTotal += int.tryParse(expense.hotel) ?? 0;
+      othersTotal += int.tryParse(expense.others) ?? 0;
+    }
 
     int total = foodTotal + travelTotal + hotelTotal + othersTotal;
     return total.toString();
