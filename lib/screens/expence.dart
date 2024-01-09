@@ -129,8 +129,6 @@ class _ScreenExpState extends State<ScreenExp> {
                     child: ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
-                        final revesedindex = expe.length - 1 - index;
-                        final data = expe[revesedindex];
                         final totalFoodAmount = calculateTotalFoodAmount(expe);
                         final totalTravelAmount =
                             calculateTotalTravelAmount(expe);

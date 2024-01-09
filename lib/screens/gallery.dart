@@ -6,14 +6,9 @@ import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/widgets/gallerybottomsheet.dart';
 import 'package:travel_app/widgets/successful.dart';
 
-class ScreenGallery extends StatefulWidget {
+class ScreenGallery extends StatelessWidget {
   const ScreenGallery({super.key});
 
-  @override
-  State<ScreenGallery> createState() => _ScreenGalleryState();
-}
-
-class _ScreenGalleryState extends State<ScreenGallery> {
   @override
   Widget build(BuildContext context) {
     getAllTrip();

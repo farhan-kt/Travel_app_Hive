@@ -24,7 +24,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
     await Future.delayed(const Duration(seconds: 1));
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const ScreenLogin()),
+      MaterialPageRoute(builder: (context) => ScreenLogin()),
     );
   }
 

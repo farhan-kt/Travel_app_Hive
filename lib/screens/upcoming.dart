@@ -5,17 +5,12 @@ import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/widgets/bottombar.dart';
 
-class UpcomingDetails extends StatefulWidget {
+class UpcomingDetails extends StatelessWidget {
   final TripModel trip;
   final int id;
 
   const UpcomingDetails({super.key, required this.trip, required this.id});
 
-  @override
-  State<UpcomingDetails> createState() => _UpcomingDetailsState();
-}
-
-class _UpcomingDetailsState extends State<UpcomingDetails> {
   @override
   Widget build(BuildContext context) {
     Size mediaQuery = MediaQuery.of(context).size;
@@ -34,15 +29,15 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
         ),
         centerTitle: true,
         title: Text(
-          widget.trip.endingingPoint,
+          trip.endingingPoint,
           style: const TextStyle(
               color: YellowColor.yellow, fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
             onPressed: () {
-              if (widget.trip.id != null) {
-                deleteTrip(widget.id);
+              if (trip.id != null) {
+                deleteTrip(id);
                 Navigator.pop(context);
                 getAllTrip();
               }
@@ -64,7 +59,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                     border: Border.all(color: YellowColor.yellow, width: 4),
                     image: DecorationImage(
-                      image: FileImage(File(widget.trip.image)),
+                      image: FileImage(File(trip.image)),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -85,7 +80,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
                   ),
                   subtitle: Text(
-                    widget.trip.startingDate,
+                    trip.startingDate,
                     style: const TextStyle(fontSize: 14, color: Colors.white),
                   ),
                   trailing: Column(
@@ -97,7 +92,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                             fontSize: 15, fontWeight: FontWeight.w900),
                       ),
                       Text(
-                        widget.trip.endingDate,
+                        trip.endingDate,
                         style:
                             const TextStyle(fontSize: 14, color: Colors.white),
                       ),
@@ -130,7 +125,7 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                         width: 10,
                       ),
                       Text(
-                        '₹ ${widget.trip.budget}',
+                        '₹ ${trip.budget}',
                         style: const TextStyle(
                           color: YellowColor.yellow,
                           fontWeight: FontWeight.w700,

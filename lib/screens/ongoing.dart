@@ -7,17 +7,12 @@ import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/widgets/edit.dart';
 import 'package:travel_app/widgets/ongoingexp.dart';
 
-class OngoingDetails extends StatefulWidget {
+class OngoingDetails extends StatelessWidget {
   final int id;
   final TripModel trip;
 
   const OngoingDetails({super.key, required this.trip, required this.id});
 
-  @override
-  State<OngoingDetails> createState() => _OngoingDetailsState();
-}
-
-class _OngoingDetailsState extends State<OngoingDetails> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -27,7 +22,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
         backgroundColor: GreenColor.green,
         centerTitle: true,
         title: Text(
-          widget.trip.endingingPoint,
+          trip.endingingPoint,
           style: const TextStyle(color: YellowColor.yellow),
         ),
         actions: [
@@ -37,19 +32,19 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                     context: context,
                     builder: (BuildContext context) {
                       return Edit(
-                        des: widget.trip.endingingPoint,
-                        endDate: widget.trip.endingDate,
-                        budget: widget.trip.budget,
-                        strt: widget.trip.startingPoint,
-                        id: widget.id,
-                        trip: widget.trip,
+                        des: trip.endingingPoint,
+                        endDate: trip.endingDate,
+                        budget: trip.budget,
+                        strt: trip.startingPoint,
+                        id: id,
+                        trip: trip,
                       );
                     });
               },
               icon: const Icon(Icons.edit, color: Colors.white)),
           IconButton(
               onPressed: () {
-                deleteTrip(widget.id);
+                deleteTrip(id);
                 deleteAllExp();
                 Navigator.pop(context);
               },
@@ -68,7 +63,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                   color: Colors.grey,
                 ),
                 image: DecorationImage(
-                  image: FileImage(File(widget.trip.image)),
+                  image: FileImage(File(trip.image)),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -89,7 +84,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
                 ),
                 subtitle: Text(
-                  widget.trip.startingDate,
+                  trip.startingDate,
                   style: const TextStyle(fontSize: 14, color: Colors.white),
                 ),
                 trailing: Column(
@@ -101,7 +96,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                           TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
                     ),
                     Text(
-                      widget.trip.endingDate,
+                      trip.endingDate,
                       style: const TextStyle(fontSize: 14, color: Colors.white),
                     ),
                   ],
@@ -131,7 +126,7 @@ class _OngoingDetailsState extends State<OngoingDetails> {
                     width: 10,
                   ),
                   Text(
-                    '₹ ${widget.trip.budget}',
+                    '₹ ${trip.budget}',
                     style: const TextStyle(
                       color: YellowColor.yellow,
                       fontWeight: FontWeight.w700,

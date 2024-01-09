@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
 
-class GalleryWidget extends StatefulWidget {
+class GalleryWidget extends StatelessWidget {
   final TripModel trip;
   const GalleryWidget({super.key, required this.trip});
 
-  @override
-  State<GalleryWidget> createState() => _GalleryWidgetState();
-}
-
-class _GalleryWidgetState extends State<GalleryWidget> {
   @override
   Widget build(BuildContext context) {
     Size mediaQuery = MediaQuery.of(context).size;
@@ -47,7 +42,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                         ),
                       ),
                       Text(
-                        widget.trip.startingPoint,
+                        trip.startingPoint,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -86,7 +81,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                         ),
                       ),
                       Text(
-                        '₹ ${widget.trip.budget}',
+                        '₹ ${trip.budget}',
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,

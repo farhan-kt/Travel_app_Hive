@@ -5,15 +5,11 @@ import 'package:travel_app/main.dart';
 import 'package:travel_app/widgets/bottombar.dart';
 import 'package:lottie/lottie.dart';
 
-class ScreenLogin extends StatefulWidget {
-  const ScreenLogin({super.key});
+class ScreenLogin extends StatelessWidget {
+  ScreenLogin({super.key});
 
-  @override
-  State<ScreenLogin> createState() => _ScreenLoginState();
-}
-
-class _ScreenLoginState extends State<ScreenLogin> {
   final _nameController = TextEditingController();
+
   final _passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();

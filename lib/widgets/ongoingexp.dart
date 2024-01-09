@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/screens/expence.dart';
 
-class OngoingExp extends StatefulWidget {
+class OngoingExp extends StatelessWidget {
   const OngoingExp({super.key});
 
-  @override
-  State<OngoingExp> createState() => _OngoingExpState();
-}
-
-class _OngoingExpState extends State<OngoingExp> {
   @override
   Widget build(BuildContext context) {
     Size mediaQuery = MediaQuery.of(context).size;
