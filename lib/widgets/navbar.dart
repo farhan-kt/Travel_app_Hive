@@ -1,7 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:travel_app/controller/expense_provider.dart';
 import 'package:travel_app/functions/exp_functions.dart';
 import 'package:travel_app/screens/appinfo.dart';
 import 'package:travel_app/screens/login.dart';
@@ -67,7 +69,8 @@ class _NavBarState extends State<NavBar> {
                         onPressed: () {
                           setState(() {
                             // deleteAllTrip();
-                            deleteAllExp();
+                            Provider.of<ExpenseProvider>(context, listen: false)
+                                .getAllExp();
                           });
                           Navigator.pop(context);
                           Navigator.pop(context);

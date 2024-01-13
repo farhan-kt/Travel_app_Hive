@@ -17,7 +17,7 @@ class ScreenHome extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    Provider.of<TripProvider>(context).getAllTrip();
+    Provider.of<TripProvider>(context, listen: false).getAllTrip();
     return Scaffold(
       drawer: const NavBar(),
       appBar: AppBar(
@@ -44,9 +44,6 @@ class ScreenHome extends StatelessWidget {
                 height: screenHeight * 0.26,
                 width: screenWidth * 0.97,
                 child: Consumer<TripProvider>(
-                  // valueListenable: ongoingTripsListNotifier,
-                  // builder: (BuildContext ctx, List<TripModel> tripList,
-                  //     Widget? child)
                   builder: (context, value, child) {
                     if (value.ongoingTrip.isNotEmpty) {
                       return ListView.builder(
@@ -112,9 +109,6 @@ class ScreenHome extends StatelessWidget {
                 height: screenHeight * 0.26,
                 width: screenWidth * 0.97,
                 child: Consumer<TripProvider>(
-                  // valueListenable: upcomingTripsListNotifier,
-                  // builder: (BuildContext ctx, List<TripModel> tripList,
-                  //     Widget? child)
                   builder: (context, value, child) {
                     if (value.upcomingTrip.isNotEmpty) {
                       return ListView.separated(

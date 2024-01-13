@@ -1,9 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
-import 'package:travel_app/service/service.dart';
+import 'package:travel_app/service/trip_service.dart';
 
 class TripProvider extends ChangeNotifier {
   List<TripModel> ongoingTrip = [];

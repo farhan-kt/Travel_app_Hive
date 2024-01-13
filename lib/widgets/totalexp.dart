@@ -1,7 +1,8 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
-import 'package:travel_app/functions/exp_functions.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_app/controller/expense_provider.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/widgets/exptextformfield.dart';
@@ -59,11 +60,10 @@ class TotalExp extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              ValueListenableBuilder<List<ExpenseModel>>(
-                valueListenable: expenseListNotifier,
-                builder: (context, expenses, child) {
+              Consumer<ExpenseProvider>(
+                builder: (context, value, child) {
                   return Text(
-                    calculateTotal(),
+                    calculateTotal(value.expense),
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
@@ -111,7 +111,7 @@ class TotalExp extends StatelessWidget {
                                                       YellowColor.yellow),
                                             ),
                                             onPressed: () {
-                                              onAddExpClicked();
+                                              onAddExpClicked(context);
                                               Navigator.pop(context);
                                             },
                                             child: const Text(
@@ -191,7 +191,8 @@ class TotalExp extends StatelessWidget {
     );
   }
 
-  Future<void> onAddExpClicked() async {
+  Future<void> onAddExpClicked(context) async {
+    final addProv = Provider.of<ExpenseProvider>(context, listen: false);
     final food = _foodController.text.trim();
     final travel = _travelController.text.trim();
     final hotel = _hotelController.text.trim();
@@ -206,8 +207,8 @@ class TotalExp extends StatelessWidget {
     int hotelAmount = int.tryParse(hotel) ?? 0;
     int othersAmount = int.tryParse(others) ?? 0;
 
-    if (expenseListNotifier.value.isNotEmpty) {
-      for (final expense in expenseListNotifier.value) {
+    if (addProv.expense.isNotEmpty) {
+      for (final expense in addProv.expense) {
         if (expense.food.isNotEmpty) {
           foodAmount += int.tryParse(expense.food) ?? 0;
         }
@@ -233,23 +234,22 @@ class TotalExp extends StatelessWidget {
       travel: travel,
       hotel: hotel,
       others: others,
-      total: calculateTotal(),
+      total: calculateTotal(addProv.expense),
     );
-    await addExp(amount);
-    getAllExp();
+    await addProv.addExpense(amount);
     _foodController.clear();
     _travelController.clear();
     _hotelController.clear();
     _othersController.clear();
   }
 
-  String calculateTotal() {
+  String calculateTotal(List<ExpenseModel> expenses) {
     int foodTotal = 0;
     int travelTotal = 0;
     int hotelTotal = 0;
     int othersTotal = 0;
 
-    for (final expense in expenseListNotifier.value) {
+    for (final expense in expenses) {
       foodTotal += int.tryParse(expense.food) ?? 0;
       travelTotal += int.tryParse(expense.travel) ?? 0;
       hotelTotal += int.tryParse(expense.hotel) ?? 0;

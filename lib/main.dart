@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/controller/addprovider.dart';
 import 'package:travel_app/controller/bottomprovider.dart';
+import 'package:travel_app/controller/expense_provider.dart';
 import 'package:travel_app/controller/tripprovider.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => AddProvider()),
         ChangeNotifierProvider(create: (context) => BottomProvider()),
         ChangeNotifierProvider(create: (context) => TripProvider()),
+        ChangeNotifierProvider(create: (context) => ExpenseProvider()),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

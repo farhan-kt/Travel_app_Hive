@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_app/controller/expense_provider.dart';
 import 'package:travel_app/controller/tripprovider.dart';
-import 'package:travel_app/functions/exp_functions.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/widgets/bottombar.dart';
@@ -42,16 +42,17 @@ class ScreenExp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final expProvider = Provider.of<TripProvider>(context);
+    final tripProvider = Provider.of<TripProvider>(context, listen: false);
+
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     const sizedBox = SizedBox(height: 15);
-    if (expProvider.ongoingTrip.isNotEmpty) {
-      ongoingBudget = expProvider.ongoingTrip.first.budget;
+    if (tripProvider.ongoingTrip.isNotEmpty) {
+      ongoingBudget = tripProvider.ongoingTrip.first.budget;
     } else {
       ongoingBudget = '₹ 0';
     }
-    getAllExp();
+    Provider.of<ExpenseProvider>(context, listen: false).getAllExp();
     return Scaffold(
       appBar: AppBar(
           backgroundColor: GreenColor.green,
@@ -82,93 +83,91 @@ class ScreenExp extends StatelessWidget {
               ),
             ),
             sizedBox,
-            ValueListenableBuilder(
-                valueListenable: expenseListNotifier,
-                builder: (BuildContext context, List<ExpenseModel> expe,
-                    Widget? child) {
-                  if (expe.isEmpty) {
-                    return const Column(
+            Consumer<ExpenseProvider>(builder: (context, value, child) {
+              if (value.expense.isEmpty) {
+                return const Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Expenses(
+                            money: '₹ 0',
+                            category: 'FOOD',
+                            icons: Icons.food_bank),
+                        Expenses(
+                            money: '₹ 0',
+                            category: 'TRAVEL',
+                            icons: Icons.airport_shuttle),
+                      ],
+                    ),
+                    SizedBox(height: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Expenses(
+                            money: '₹ 0',
+                            category: 'HOTEL',
+                            icons: Icons.hotel),
+                        Expenses(
+                            money: '₹ 0',
+                            category: 'OTHERS',
+                            icons: Icons.menu_rounded),
+                      ],
+                    )
+                  ],
+                );
+              }
+              return Expanded(
+                child: ListView.builder(
+                  itemCount: 1,
+                  itemBuilder: (context, index) {
+                    final totalFoodAmount =
+                        calculateTotalFoodAmount(value.expense);
+                    final totalTravelAmount =
+                        calculateTotalTravelAmount(value.expense);
+                    final totalHotelAmount =
+                        calculateTotalHotelAmount(value.expense);
+                    final totalOthersAmount =
+                        calculateTotalOthersAmount(value.expense);
+                    return Column(
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Expenses(
-                                money: '₹ 0',
-                                category: 'FOOD',
-                                icons: Icons.food_bank),
+                              money: totalFoodAmount.toString(),
+                              category: 'FOOD',
+                              icons: Icons.food_bank,
+                            ),
                             Expenses(
-                                money: '₹ 0',
-                                category: 'TRAVEL',
-                                icons: Icons.airport_shuttle),
+                              money: totalTravelAmount.toString(),
+                              category: 'TRAVEL',
+                              icons: Icons.airport_shuttle,
+                            ),
                           ],
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Expenses(
-                                money: '₹ 0',
-                                category: 'HOTEL',
-                                icons: Icons.hotel),
+                              money: totalHotelAmount.toString(),
+                              category: 'HOTEL',
+                              icons: Icons.hotel,
+                            ),
                             Expenses(
-                                money: '₹ 0',
-                                category: 'OTHERS',
-                                icons: Icons.menu_rounded),
+                              money: totalOthersAmount.toString(),
+                              category: 'OTHERS',
+                              icons: Icons.menu_rounded,
+                            ),
                           ],
-                        )
+                        ),
                       ],
                     );
-                  }
-                  return Expanded(
-                    child: ListView.builder(
-                      itemCount: 1,
-                      itemBuilder: (context, index) {
-                        final totalFoodAmount = calculateTotalFoodAmount(expe);
-                        final totalTravelAmount =
-                            calculateTotalTravelAmount(expe);
-                        final totalHotelAmount =
-                            calculateTotalHotelAmount(expe);
-                        final totalOthersAmount =
-                            calculateTotalOthersAmount(expe);
-                        return Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Expenses(
-                                  money: totalFoodAmount.toString(),
-                                  category: 'FOOD',
-                                  icons: Icons.food_bank,
-                                ),
-                                Expenses(
-                                  money: totalTravelAmount.toString(),
-                                  category: 'TRAVEL',
-                                  icons: Icons.airport_shuttle,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 30),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Expenses(
-                                  money: totalHotelAmount.toString(),
-                                  category: 'HOTEL',
-                                  icons: Icons.hotel,
-                                ),
-                                Expenses(
-                                  money: totalOthersAmount.toString(),
-                                  category: 'OTHERS',
-                                  icons: Icons.menu_rounded,
-                                ),
-                              ],
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  );
-                })
+                  },
+                ),
+              );
+            })
           ],
         ),
       ),

@@ -11,7 +11,7 @@ class ScreenGallery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<TripProvider>(context).getAllTrip();
+    Provider.of<TripProvider>(context, listen: false).getAllTrip();
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
@@ -34,9 +34,6 @@ class ScreenGallery extends StatelessWidget {
                 height: screenHeight * 0.75,
                 width: screenWidth * 0.97,
                 child: Consumer<TripProvider>(
-                  // valueListenable: successTripsListNotifier,
-                  // builder: (BuildContext ctx, List<TripModel> tripList,
-                  //     Widget? child)
                   builder: (context, value, child) {
                     if (value.successTrip.isNotEmpty) {
                       return Expanded(
