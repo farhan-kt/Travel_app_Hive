@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:travel_app/functions/db_functions.dart';
+import 'package:travel_app/controller/tripprovider.dart';
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/widgets/gallerybottomsheet.dart';
 import 'package:travel_app/widgets/successful.dart';
+import 'package:provider/provider.dart';
 
 class ScreenGallery extends StatelessWidget {
   const ScreenGallery({super.key});
 
   @override
   Widget build(BuildContext context) {
-    getAllTrip();
+    Provider.of<TripProvider>(context).getAllTrip();
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
@@ -33,18 +33,19 @@ class ScreenGallery extends StatelessWidget {
               SizedBox(
                 height: screenHeight * 0.75,
                 width: screenWidth * 0.97,
-                child: ValueListenableBuilder(
-                  valueListenable: successTripsListNotifier,
-                  builder: (BuildContext ctx, List<TripModel> tripList,
-                      Widget? child) {
-                    if (tripList.isNotEmpty) {
+                child: Consumer<TripProvider>(
+                  // valueListenable: successTripsListNotifier,
+                  // builder: (BuildContext ctx, List<TripModel> tripList,
+                  //     Widget? child)
+                  builder: (context, value, child) {
+                    if (value.successTrip.isNotEmpty) {
                       return Expanded(
                         child: ListView.separated(
-                          itemCount: tripList.length,
+                          itemCount: value.successTrip.length,
                           separatorBuilder: (context, index) =>
                               const SizedBox(height: 8),
                           itemBuilder: (ctx, index) {
-                            final data = tripList[index];
+                            final data = value.successTrip[index];
                             return SizedBox(
                               height: screenHeight * 0.24,
                               width: screenWidth * 0.97,

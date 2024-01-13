@@ -1,48 +1,26 @@
 // ignore_for_file: use_build_context_synchronously
-
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-import 'package:travel_app/functions/db_functions.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_app/controller/addprovider.dart';
+import 'package:travel_app/controller/tripprovider.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/widgets/bottombar.dart';
 import 'package:travel_app/widgets/textformfield.dart';
 
-class ScreenAdd extends StatefulWidget {
-  const ScreenAdd({super.key});
-
-  @override
-  State<ScreenAdd> createState() => _ScreenAddState();
-}
-
-final formKey2 = GlobalKey<FormState>();
-
-class _ScreenAddState extends State<ScreenAdd> {
-  final _startingPoint = TextEditingController();
-  final _destinationPoint = TextEditingController();
-  final _budget = TextEditingController();
-  final _startingDate = TextEditingController();
-  final _endingDate = TextEditingController();
-
-  File? selectedimage;
-
-  dynamic customValidator(dynamic value) {
-    if (value == null || value.isEmpty) {
-      return 'Value is empty';
-    } else {
-      return null;
-    }
-  }
+class ScreenAdd extends StatelessWidget {
+  final formKey2 = GlobalKey<FormState>();
+  ScreenAdd({super.key});
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     var sizedBox = const SizedBox(height: 10);
+    final addprov = Provider.of<AddProvider>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(
@@ -65,43 +43,47 @@ class _ScreenAddState extends State<ScreenAdd> {
                 const SizedBox(height: 10),
                 InkWell(
                   onTap: () {
-                    fromgallery();
+                    addprov.fromgallery();
                   },
-                  child: Container(
-                    height: screenHeight * 0.3,
-                    width: screenWidth * double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(8)),
-                      border: Border.all(color: Colors.grey, width: 3),
-                      image: selectedimage != null
-                          ? DecorationImage(
-                              image: FileImage(selectedimage!),
-                              fit: BoxFit.fill,
+                  child:
+                      Consumer<AddProvider>(builder: (context, value, child) {
+                    return Container(
+                      height: screenHeight * 0.3,
+                      width: screenWidth * double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                        border: Border.all(color: Colors.grey, width: 3),
+                        image: value.selectedimage != null
+                            ? DecorationImage(
+                                image: FileImage(value.selectedimage!),
+                                fit: BoxFit.fill,
+                              )
+                            : null,
+                      ),
+                      child: value.selectedimage == null
+                          ? Center(
+                              child: Lottie.asset(
+                                'assets/Animation - addimage.json',
+                                fit: BoxFit.fill,
+                              ),
                             )
                           : null,
-                    ),
-                    child: selectedimage == null
-                        ? Center(
-                            child: Lottie.asset(
-                              'assets/Animation - addimage.json',
-                              fit: BoxFit.fill,
-                            ),
-                          )
-                        : null,
-                  ),
+                    );
+                  }),
                 ),
                 sizedBox,
                 CustomTextFormField(
-                    labelText: 'Enter starting Point',
-                    suffixIcon: Icons.location_on,
-                    controller: _startingPoint,
-                    validator: (value) => customValidator(value)),
+                  labelText: 'Enter starting Point',
+                  suffixIcon: Icons.location_on,
+                  controller: addprov.startingPoint,
+                ),
                 sizedBox,
                 CustomTextFormField(
-                    labelText: 'Enter Destination',
-                    suffixIcon: Icons.location_on,
-                    controller: _destinationPoint,
-                    validator: (value) => customValidator(value)),
+                  labelText: 'Enter Destination',
+                  suffixIcon: Icons.location_on,
+                  controller: addprov.destinationPoint,
+                ),
                 sizedBox,
                 CustomTextFormField(
                   keyboardType: TextInputType.number,
@@ -110,8 +92,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                   ],
                   labelText: 'Enter Budget',
                   suffixIcon: Icons.currency_rupee_sharp,
-                  controller: _budget,
-                  validator: (value) => customValidator(value),
+                  controller: addprov.budget,
                   maxLength: 8,
                 ),
                 sizedBox,
@@ -124,8 +105,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                         ],
                         labelText: 'Enter starting Date',
                         suffixIcon: Icons.calendar_today_rounded,
-                        controller: _startingDate,
-                        validator: (value) => customValidator(value),
+                        controller: addprov.startingDate,
                         onTap: () async {
                           DateTime? pickedDate = await showDatePicker(
                               context: context,
@@ -133,10 +113,8 @@ class _ScreenAddState extends State<ScreenAdd> {
                               firstDate: DateTime(2000),
                               lastDate: DateTime(2075));
                           if (pickedDate != null) {
-                            setState(() {
-                              _startingDate.text =
-                                  DateFormat('dd-MM-yyyy').format(pickedDate);
-                            });
+                            addprov.startingDate.text =
+                                DateFormat('dd-MM-yyyy').format(pickedDate);
                           }
                         },
                         maxLength: 10,
@@ -150,8 +128,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                         ],
                         labelText: 'Enter ending Date',
                         suffixIcon: Icons.calendar_today_rounded,
-                        controller: _endingDate,
-                        validator: (value) => customValidator(value),
+                        controller: addprov.endingDate,
                         onTap: () async {
                           DateTime? pickedDate = await showDatePicker(
                             context: context,
@@ -160,15 +137,13 @@ class _ScreenAddState extends State<ScreenAdd> {
                             lastDate: DateTime(2075),
                           );
                           if (pickedDate != null) {
-                            if (_startingDate.text.isNotEmpty) {
+                            if (addprov.startingDate.text.isNotEmpty) {
                               DateTime startingDateTime =
                                   DateFormat('dd-MM-yyyy')
-                                      .parse(_startingDate.text);
+                                      .parse(addprov.startingDate.text);
                               if (pickedDate.isAfter(startingDateTime)) {
-                                setState(() {
-                                  _endingDate.text = DateFormat('dd-MM-yyyy')
-                                      .format(pickedDate);
-                                });
+                                addprov.endingDate.text =
+                                    DateFormat('dd-MM-yyyy').format(pickedDate);
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
@@ -193,7 +168,7 @@ class _ScreenAddState extends State<ScreenAdd> {
                     ),
                     onPressed: () {
                       if (formKey2.currentState!.validate()) {
-                        onaddTripClicked();
+                        onaddTripClicked(context);
                       }
                     },
                     child: Padding(
@@ -219,12 +194,13 @@ class _ScreenAddState extends State<ScreenAdd> {
     );
   }
 
-  Future<void> onaddTripClicked() async {
-    final sname = _startingPoint.text.trim();
-    final ename = _destinationPoint.text.trim();
-    final budgets = _budget.text.trim();
-    final sdate = _startingDate.text.trim();
-    final edate = _endingDate.text.trim();
+  Future<void> onaddTripClicked(context) async {
+    final addProvider = Provider.of<AddProvider>(context, listen: false);
+    final sname = addProvider.startingPoint.text.trim();
+    final ename = addProvider.destinationPoint.text.trim();
+    final budgets = addProvider.budget.text.trim();
+    final sdate = addProvider.startingDate.text.trim();
+    final edate = addProvider.endingDate.text.trim();
 
     if (sname.isEmpty ||
         ename.isEmpty ||
@@ -235,7 +211,7 @@ class _ScreenAddState extends State<ScreenAdd> {
     }
 
     final trip = TripModel(
-      image: selectedimage!.path,
+      image: addProvider.selectedimage!.path,
       startingPoint: sname,
       endingingPoint: ename,
       budget: budgets,
@@ -243,8 +219,13 @@ class _ScreenAddState extends State<ScreenAdd> {
       endingDate: edate,
     );
 
-    await addTrip(trip);
-
+    await Provider.of<TripProvider>(context, listen: false).addTrip(trip);
+    addProvider.startingPoint.clear();
+    addProvider.destinationPoint.clear();
+    addProvider.budget.clear();
+    addProvider.startingDate.clear();
+    addProvider.endingDate.clear();
+    addProvider.selectedimage = null;
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text(
         'Trip Added Successfully',
@@ -252,18 +233,9 @@ class _ScreenAddState extends State<ScreenAdd> {
       behavior: SnackBarBehavior.floating,
     ));
 
-    Navigator.pushAndRemoveUntil(
+    Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const ScreenBtm()),
-      (route) => false,
+      MaterialPageRoute(builder: (context) => ScreenBtm()),
     );
-  }
-
-  fromgallery() async {
-    final returnedimage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    setState(() {
-      selectedimage = File(returnedimage!.path);
-    });
   }
 }

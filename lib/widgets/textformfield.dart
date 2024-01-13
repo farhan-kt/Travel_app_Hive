@@ -6,7 +6,6 @@ class CustomTextFormField extends StatelessWidget {
   final String labelText;
   final IconData suffixIcon;
   final TextEditingController controller;
-  final FormFieldValidator validator;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final VoidCallback? onTap;
@@ -17,7 +16,6 @@ class CustomTextFormField extends StatelessWidget {
     required this.labelText,
     required this.suffixIcon,
     required this.controller,
-    required this.validator,
     this.keyboardType,
     this.inputFormatters,
     this.maxLength,
@@ -28,7 +26,13 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onTap: onTap,
-      validator: validator,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Value is empty';
+        } else {
+          return null;
+        }
+      },
       controller: controller,
       keyboardType: keyboardType,
       inputFormatters: [

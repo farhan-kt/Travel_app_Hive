@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:travel_app/functions/db_functions.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_app/controller/tripprovider.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/widgets/bottombar.dart';
@@ -14,6 +15,7 @@ class UpcomingDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size mediaQuery = MediaQuery.of(context).size;
+    final upcomingProvider = Provider.of<TripProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: GreenColor.green,
@@ -21,7 +23,7 @@ class UpcomingDetails extends StatelessWidget {
           onPressed: () {
             Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => const ScreenBtm()),
+              MaterialPageRoute(builder: (context) => ScreenBtm()),
               (route) => false,
             );
           },
@@ -37,9 +39,10 @@ class UpcomingDetails extends StatelessWidget {
           IconButton(
             onPressed: () {
               if (trip.id != null) {
-                deleteTrip(id);
+                // deleteTrip(id);
+                upcomingProvider.deleteTrip(id);
                 Navigator.pop(context);
-                getAllTrip();
+                upcomingProvider.getAllTrip();
               }
             },
             icon: const Icon(Icons.delete),

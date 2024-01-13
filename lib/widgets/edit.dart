@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:travel_app/functions/db_functions.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_app/controller/tripprovider.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
 
@@ -36,7 +37,6 @@ class _EditState extends State<Edit> {
   @override
   void initState() {
     super.initState();
-
     startingController.text = widget.strt;
     destinyController.text = widget.des;
     endDateController.text = widget.endDate;
@@ -110,10 +110,8 @@ class _EditState extends State<Edit> {
                         firstDate: DateTime(2000),
                         lastDate: DateTime(2075));
                     if (pickedDate != null) {
-                      setState(() {
-                        endDateController.text =
-                            DateFormat('dd-MM-yyyy').format(pickedDate);
-                      });
+                      endDateController.text =
+                          DateFormat('dd-MM-yyyy').format(pickedDate);
                     }
                   },
                 ),
@@ -158,6 +156,8 @@ class _EditState extends State<Edit> {
   }
 
   Future<void> updated(BuildContext context) async {
+    final editProvider = Provider.of<TripProvider>(context, listen: false);
+
     final starting = startingController.text.trim();
     final destiny = destinyController.text.trim();
     final enddate = endDateController.text.trim();
@@ -182,13 +182,13 @@ class _EditState extends State<Edit> {
         endingDate: enddate,
       );
 
-      await editTrip(widget.id, updated);
+      await editProvider.editTrip(widget.id, updated);
 
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Updated Successfully'),
         behavior: SnackBarBehavior.floating,
       ));
-      await getAllTrip();
+      await editProvider.getAllTrip();
       Navigator.pop(context);
     }
   }

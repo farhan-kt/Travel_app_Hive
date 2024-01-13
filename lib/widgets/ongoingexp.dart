@@ -18,8 +18,8 @@ class OngoingExp extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ScreenExp()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ScreenExp()));
         },
         child: const Padding(
           padding: EdgeInsets.all(8.0),

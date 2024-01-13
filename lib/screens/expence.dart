@@ -1,6 +1,9 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:travel_app/functions/db_functions.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_app/controller/tripprovider.dart';
 import 'package:travel_app/functions/exp_functions.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
@@ -8,14 +11,9 @@ import 'package:travel_app/widgets/bottombar.dart';
 import 'package:travel_app/widgets/expcategory.dart';
 import 'package:travel_app/widgets/totalexp.dart';
 
-class ScreenExp extends StatefulWidget {
-  const ScreenExp({super.key});
+class ScreenExp extends StatelessWidget {
+  ScreenExp({super.key});
 
-  @override
-  State<ScreenExp> createState() => _ScreenExpState();
-}
-
-class _ScreenExpState extends State<ScreenExp> {
   int calculateTotalFoodAmount(List<ExpenseModel> expenses) {
     return expenses
         .map((expense) => int.tryParse(expense.food) ?? 0)
@@ -43,20 +41,16 @@ class _ScreenExpState extends State<ScreenExp> {
   late String ongoingBudget;
 
   @override
-  void initState() {
-    super.initState();
-    if (ongoingTripsListNotifier.value.isNotEmpty) {
-      ongoingBudget = ongoingTripsListNotifier.value.first.budget;
-    } else {
-      ongoingBudget = '₹ 0';
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final expProvider = Provider.of<TripProvider>(context);
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     const sizedBox = SizedBox(height: 15);
+    if (expProvider.ongoingTrip.isNotEmpty) {
+      ongoingBudget = expProvider.ongoingTrip.first.budget;
+    } else {
+      ongoingBudget = '₹ 0';
+    }
     getAllExp();
     return Scaffold(
       appBar: AppBar(
@@ -70,7 +64,7 @@ class _ScreenExpState extends State<ScreenExp> {
             onPressed: () {
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => const ScreenBtm()),
+                  MaterialPageRoute(builder: (context) => ScreenBtm()),
                   (route) => false);
             },
           ),

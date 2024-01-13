@@ -6,26 +6,14 @@ import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/widgets/exptextformfield.dart';
 
-class TotalExp extends StatefulWidget {
+class TotalExp extends StatelessWidget {
   final String ongoingBudget;
-  const TotalExp({super.key, required this.ongoingBudget});
+  TotalExp({super.key, required this.ongoingBudget});
 
-  @override
-  State<TotalExp> createState() => _TotalExpState();
-}
-
-class _TotalExpState extends State<TotalExp> {
   final _foodController = TextEditingController();
   final _travelController = TextEditingController();
   final _hotelController = TextEditingController();
   final _othersController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-
-    calculateTotal();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +44,7 @@ class _TotalExpState extends State<TotalExp> {
                 width: 10,
               ),
               Text(
-                widget.ongoingBudget,
+                ongoingBudget,
                 style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,

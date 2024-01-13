@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_app/controller/bottomprovider.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/screens/add.dart';
 import 'package:travel_app/screens/expence.dart';
@@ -6,35 +8,28 @@ import 'package:travel_app/screens/gallery.dart';
 import 'package:travel_app/screens/home.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class ScreenBtm extends StatefulWidget {
-  const ScreenBtm({super.key});
+class ScreenBtm extends StatelessWidget {
+  ScreenBtm({super.key});
 
-  @override
-  State<ScreenBtm> createState() => _ScreenBtmState();
-}
-
-class _ScreenBtmState extends State<ScreenBtm> {
-  int _currentSelectedIndex = 0;
   final _screens = [
     const ScreenHome(),
-    const ScreenAdd(),
-    const ScreenExp(),
+    ScreenAdd(),
+    ScreenExp(),
     const ScreenGallery()
   ];
 
   @override
   Widget build(BuildContext context) {
+    final bottomProvider = Provider.of<BottomProvider>(context);
     return Scaffold(
-      body: _screens[_currentSelectedIndex],
+      body: _screens[bottomProvider.currentSelectedIndex],
       bottomNavigationBar: Container(
         color: GreenColor.green,
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: GNav(
             onTabChange: (newIndex) {
-              setState(() {
-                _currentSelectedIndex = newIndex;
-              });
+              bottomProvider.changeBottom(newIndex);
             },
             backgroundColor: GreenColor.green,
             color: Colors.white,

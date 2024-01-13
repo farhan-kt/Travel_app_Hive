@@ -50,7 +50,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
       gotoLogin();
     } else {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const ScreenBtm()));
+          context, MaterialPageRoute(builder: (context) => ScreenBtm()));
     }
   }
 }

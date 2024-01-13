@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:travel_app/controller/addprovider.dart';
+import 'package:travel_app/controller/bottomprovider.dart';
+import 'package:travel_app/controller/tripprovider.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/screens/splash.dart';
@@ -24,9 +28,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ScreenSplash(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AddProvider()),
+        ChangeNotifierProvider(create: (context) => BottomProvider()),
+        ChangeNotifierProvider(create: (context) => TripProvider()),
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: ScreenSplash(),
+      ),
     );
   }
 }
