@@ -8,7 +8,6 @@ import 'package:travel_app/controller/addprovider.dart';
 import 'package:travel_app/controller/tripprovider.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
-import 'package:travel_app/widgets/bottombar.dart';
 import 'package:travel_app/widgets/textformfield.dart';
 
 class ScreenAdd extends StatelessWidget {
@@ -232,10 +231,5 @@ class ScreenAdd extends StatelessWidget {
       ),
       behavior: SnackBarBehavior.floating,
     ));
-
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => ScreenBtm()),
-    );
   }
 }

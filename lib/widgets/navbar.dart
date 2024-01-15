@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_app/controller/expense_provider.dart';
-import 'package:travel_app/functions/exp_functions.dart';
+import 'package:travel_app/controller/tripprovider.dart';
 import 'package:travel_app/screens/appinfo.dart';
 import 'package:travel_app/screens/login.dart';
 
@@ -68,9 +68,10 @@ class _NavBarState extends State<NavBar> {
                       TextButton(
                         onPressed: () {
                           setState(() {
-                            // deleteAllTrip();
+                            Provider.of<TripProvider>(context, listen: false)
+                                .deleteAllTrip();
                             Provider.of<ExpenseProvider>(context, listen: false)
-                                .getAllExp();
+                                .deleteAllExp();
                           });
                           Navigator.pop(context);
                           Navigator.pop(context);

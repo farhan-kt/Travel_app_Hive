@@ -21,4 +21,9 @@ class TripService {
     final tripDB = await Hive.openBox<TripModel>("trip_db");
     await tripDB.putAt(id, value);
   }
+
+  Future deleteAllTrip() async {
+    final tripDB = await Hive.openBox<TripModel>("trip_db");
+    await tripDB.clear();
+  }
 }

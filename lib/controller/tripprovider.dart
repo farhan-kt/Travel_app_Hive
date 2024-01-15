@@ -63,8 +63,8 @@ class TripProvider extends ChangeNotifier {
     await getAllTrip();
   }
 
-  // Future<void> deleteAllTrip() async {
-  //   await tripservice.deleteAllTrip();
-  // await getAllTrip();
-  // }
+  Future<void> deleteAllTrip() async {
+    await tripservice.deleteAllTrip();
+    await getAllTrip();
+  }
 }

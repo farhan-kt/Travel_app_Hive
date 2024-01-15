@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/controller/expense_provider.dart';
 import 'package:travel_app/controller/tripprovider.dart';
-import 'package:travel_app/functions/exp_functions.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/widgets/edit.dart';
