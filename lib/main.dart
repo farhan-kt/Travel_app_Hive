@@ -7,7 +7,7 @@ import 'package:travel_app/controller/expense_provider.dart';
 import 'package:travel_app/controller/tripprovider.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
-import 'package:travel_app/screens/splash.dart';
+import 'package:travel_app/view/splash.dart';
 
 const saveKey = 'userLoggedin';
 

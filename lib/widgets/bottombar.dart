@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/controller/bottomprovider.dart';
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/screens/add.dart';
-import 'package:travel_app/screens/expence.dart';
-import 'package:travel_app/screens/gallery.dart';
-import 'package:travel_app/screens/home.dart';
+import 'package:travel_app/view/add.dart';
+import 'package:travel_app/view/expence.dart';
+import 'package:travel_app/view/gallery.dart';
+import 'package:travel_app/view/home.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 // class ScreenBtm extends StatelessWidget {

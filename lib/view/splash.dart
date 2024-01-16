@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_app/main.dart';
 import 'package:travel_app/widgets/bottombar.dart';
-import 'package:travel_app/screens/login.dart';
+import 'package:travel_app/view/login.dart';
 
 class ScreenSplash extends StatefulWidget {
   const ScreenSplash({super.key});

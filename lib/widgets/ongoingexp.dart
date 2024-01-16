@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/screens/expence.dart';
+import 'package:travel_app/view/expence.dart';
 
 class OngoingExp extends StatelessWidget {
   const OngoingExp({super.key});

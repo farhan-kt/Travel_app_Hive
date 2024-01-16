@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_app/controller/expense_provider.dart';
 import 'package:travel_app/controller/tripprovider.dart';
-import 'package:travel_app/screens/appinfo.dart';
-import 'package:travel_app/screens/login.dart';
+import 'package:travel_app/view/appinfo.dart';
+import 'package:travel_app/view/login.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({Key? key});
