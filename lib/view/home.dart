@@ -2,13 +2,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/controller/tripprovider.dart';
+import 'package:travel_app/controller/trip_provider.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/view/ongoing.dart';
 import 'package:travel_app/view/upcoming.dart';
 import 'package:travel_app/widgets/navbar.dart';
 import 'package:travel_app/widgets/ongoingtrip.dart';
-import 'package:travel_app/widgets/upcomingcontainer.dart';
+import 'package:travel_app/widgets/upcoming_container.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({super.key});

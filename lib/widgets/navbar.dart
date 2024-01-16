@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:travel_app/controller/expense_provider.dart';
-import 'package:travel_app/controller/tripprovider.dart';
-import 'package:travel_app/view/appinfo.dart';
+import 'package:travel_app/controller/trip_provider.dart';
+import 'package:travel_app/view/app_info.dart';
 import 'package:travel_app/view/login.dart';
 
 class NavBar extends StatefulWidget {

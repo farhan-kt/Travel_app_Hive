@@ -4,11 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/controller/addprovider.dart';
-import 'package:travel_app/controller/tripprovider.dart';
+import 'package:travel_app/controller/trip_add_provider.dart';
+import 'package:travel_app/controller/trip_provider.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
-import 'package:travel_app/widgets/textformfield.dart';
+import 'package:travel_app/widgets/trip_textformfield.dart';
 
 class ScreenAdd extends StatelessWidget {
   final formKey2 = GlobalKey<FormState>();
@@ -19,7 +19,7 @@ class ScreenAdd extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     var sizedBox = const SizedBox(height: 10);
-    final addprov = Provider.of<AddProvider>(context, listen: false);
+    final tripAddProvider = Provider.of<AddProvider>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +42,7 @@ class ScreenAdd extends StatelessWidget {
                 const SizedBox(height: 10),
                 InkWell(
                   onTap: () {
-                    addprov.fromgallery();
+                    tripAddProvider.fromgallery();
                   },
                   child:
                       Consumer<AddProvider>(builder: (context, value, child) {
@@ -75,13 +75,13 @@ class ScreenAdd extends StatelessWidget {
                 CustomTextFormField(
                   labelText: 'Enter starting Point',
                   suffixIcon: Icons.location_on,
-                  controller: addprov.startingPoint,
+                  controller: tripAddProvider.startingPoint,
                 ),
                 sizedBox,
                 CustomTextFormField(
                   labelText: 'Enter Destination',
                   suffixIcon: Icons.location_on,
-                  controller: addprov.destinationPoint,
+                  controller: tripAddProvider.destinationPoint,
                 ),
                 sizedBox,
                 CustomTextFormField(
@@ -91,7 +91,7 @@ class ScreenAdd extends StatelessWidget {
                   ],
                   labelText: 'Enter Budget',
                   suffixIcon: Icons.currency_rupee_sharp,
-                  controller: addprov.budget,
+                  controller: tripAddProvider.budget,
                   maxLength: 8,
                 ),
                 sizedBox,
@@ -104,7 +104,7 @@ class ScreenAdd extends StatelessWidget {
                         ],
                         labelText: 'Enter starting Date',
                         suffixIcon: Icons.calendar_today_rounded,
-                        controller: addprov.startingDate,
+                        controller: tripAddProvider.startingDate,
                         onTap: () async {
                           DateTime? pickedDate = await showDatePicker(
                               context: context,
@@ -112,7 +112,7 @@ class ScreenAdd extends StatelessWidget {
                               firstDate: DateTime(2000),
                               lastDate: DateTime(2075));
                           if (pickedDate != null) {
-                            addprov.startingDate.text =
+                            tripAddProvider.startingDate.text =
                                 DateFormat('dd-MM-yyyy').format(pickedDate);
                           }
                         },
@@ -127,7 +127,7 @@ class ScreenAdd extends StatelessWidget {
                         ],
                         labelText: 'Enter ending Date',
                         suffixIcon: Icons.calendar_today_rounded,
-                        controller: addprov.endingDate,
+                        controller: tripAddProvider.endingDate,
                         onTap: () async {
                           DateTime? pickedDate = await showDatePicker(
                             context: context,
@@ -136,12 +136,12 @@ class ScreenAdd extends StatelessWidget {
                             lastDate: DateTime(2075),
                           );
                           if (pickedDate != null) {
-                            if (addprov.startingDate.text.isNotEmpty) {
+                            if (tripAddProvider.startingDate.text.isNotEmpty) {
                               DateTime startingDateTime =
                                   DateFormat('dd-MM-yyyy')
-                                      .parse(addprov.startingDate.text);
+                                      .parse(tripAddProvider.startingDate.text);
                               if (pickedDate.isAfter(startingDateTime)) {
-                                addprov.endingDate.text =
+                                tripAddProvider.endingDate.text =
                                     DateFormat('dd-MM-yyyy').format(pickedDate);
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -167,7 +167,7 @@ class ScreenAdd extends StatelessWidget {
                     ),
                     onPressed: () {
                       if (formKey2.currentState!.validate()) {
-                        onaddTripClicked(context);
+                        onAddTripClicked(context);
                       }
                     },
                     child: Padding(
@@ -193,7 +193,7 @@ class ScreenAdd extends StatelessWidget {
     );
   }
 
-  Future<void> onaddTripClicked(context) async {
+  Future<void> onAddTripClicked(context) async {
     final addProvider = Provider.of<AddProvider>(context, listen: false);
     final sname = addProvider.startingPoint.text.trim();
     final ename = addProvider.destinationPoint.text.trim();

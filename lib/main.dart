@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/controller/addprovider.dart';
-import 'package:travel_app/controller/bottomprovider.dart';
+import 'package:travel_app/controller/trip_add_provider.dart';
+import 'package:travel_app/controller/bottom_provider.dart';
 import 'package:travel_app/controller/expense_provider.dart';
-import 'package:travel_app/controller/tripprovider.dart';
+import 'package:travel_app/controller/trip_provider.dart';
 import 'package:travel_app/model/trip_model/trip_model.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/view/splash.dart';

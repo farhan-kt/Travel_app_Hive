@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:travel_app/controller/expense_provider.dart';
 import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
-import 'package:travel_app/widgets/exptextformfield.dart';
+import 'package:travel_app/widgets/exp_textformfield.dart';
 
 class TotalExp extends StatelessWidget {
   final String ongoingBudget;

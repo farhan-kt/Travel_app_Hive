@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:travel_app/controller/tripprovider.dart';
+import 'package:travel_app/controller/trip_provider.dart';
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/widgets/gallerybottomsheet.dart';
+import 'package:travel_app/widgets/gallery_bottomsheet.dart';
 import 'package:travel_app/widgets/successful.dart';
 import 'package:provider/provider.dart';
 

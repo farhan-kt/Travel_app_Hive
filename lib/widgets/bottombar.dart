@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:travel_app/controller/bottomprovider.dart';
+import 'package:travel_app/controller/bottom_provider.dart';
 import 'package:travel_app/helper/colors.dart';
-import 'package:travel_app/view/add.dart';
+import 'package:travel_app/view/trip_add.dart';
 import 'package:travel_app/view/expence.dart';
 import 'package:travel_app/view/gallery.dart';
 import 'package:travel_app/view/home.dart';
