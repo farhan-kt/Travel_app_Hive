@@ -9,7 +9,7 @@ import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/model/expense_model/expense_model.dart';
 import 'package:travel_app/widgets/bottombar.dart';
 import 'package:travel_app/widgets/exp_category.dart';
-import 'package:travel_app/widgets/totalexp.dart';
+import 'package:travel_app/widgets/expense_add.dart';
 
 class ScreenExp extends StatelessWidget {
   ScreenExp({super.key});

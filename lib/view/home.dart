@@ -7,7 +7,7 @@ import 'package:travel_app/helper/colors.dart';
 import 'package:travel_app/view/ongoing.dart';
 import 'package:travel_app/view/upcoming.dart';
 import 'package:travel_app/widgets/navbar.dart';
-import 'package:travel_app/widgets/ongoingtrip.dart';
+import 'package:travel_app/widgets/ongoing_trip_container.dart';
 import 'package:travel_app/widgets/upcoming_container.dart';
 
 class ScreenHome extends StatelessWidget {

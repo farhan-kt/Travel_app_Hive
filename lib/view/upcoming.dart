@@ -39,7 +39,6 @@ class UpcomingDetails extends StatelessWidget {
           IconButton(
             onPressed: () {
               if (trip.id != null) {
-                // deleteTrip(id);
                 upcomingProvider.deleteTrip(id);
                 Navigator.pop(context);
                 upcomingProvider.getAllTrip();
