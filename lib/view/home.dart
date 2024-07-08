@@ -132,7 +132,6 @@ class ScreenHome extends StatelessWidget {
                                   MaterialPageRoute(
                                     builder: (context) => UpcomingDetails(
                                       trip: data,
-                                      id: index,
                                     ),
                                   ),
                                 );

@@ -44,8 +44,6 @@ class ScreenExp extends StatelessWidget {
   Widget build(BuildContext context) {
     final tripProvider = Provider.of<TripProvider>(context, listen: false);
 
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
     const sizedBox = SizedBox(height: 15);
     if (tripProvider.ongoingTrip.isNotEmpty) {
       ongoingBudget = tripProvider.ongoingTrip.first.budget;
@@ -75,8 +73,9 @@ class ScreenExp extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Lottie.asset('assets/expenses.json',
-                width: screenWidth * 0.25, height: screenHeight * 0.15),
+            SizedBox(
+              height: 80,
+            ),
             Center(
               child: TotalExp(
                 ongoingBudget: ongoingBudget,

@@ -31,7 +31,7 @@ class ScreenGallery extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: screenHeight * 0.75,
+                height: screenHeight * 0.25,
                 width: screenWidth * 0.97,
                 child: Consumer<TripProvider>(
                   builder: (context, value, child) {
@@ -70,8 +70,6 @@ class ScreenGallery extends StatelessWidget {
                       );
                     } else {
                       return Container(
-                        height: screenHeight * 0.24,
-                        width: screenWidth * 0.97,
                         decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8)),

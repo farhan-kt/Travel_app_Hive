@@ -8,9 +8,8 @@ import 'package:travel_app/widgets/bottombar.dart';
 
 class UpcomingDetails extends StatelessWidget {
   final TripModel trip;
-  final int id;
 
-  const UpcomingDetails({super.key, required this.trip, required this.id});
+  const UpcomingDetails({super.key, required this.trip});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class UpcomingDetails extends StatelessWidget {
           IconButton(
             onPressed: () {
               if (trip.id != null) {
-                upcomingProvider.deleteTrip(id);
+                upcomingProvider.deleteTrip(trip.id!);
                 Navigator.pop(context);
                 upcomingProvider.getAllTrip();
               }
